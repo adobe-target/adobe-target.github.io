@@ -711,16 +711,19 @@ Here is the sample response:</p>
 125,, value2
 126, value1, value2, value3, value4  </p>
 
-<p>You reference this file in the POST call to Target servers to process the file. When creating the batch file, bear in mind the following:
-* The first row of the file must specify column headers.
-* The first header should either be a pcId or thirdPartyId. The Marketing Cloud visitor ID is not supported. pcId is a Target-generated visitorID. thirdPartyId is an ID specified by the client application, which is passed to Target through an mbox call as mbox3rdPartyId. It must be referred to here as thirdPartyId.
-* Parameters and values you specify in the batch file must be URL-encoded using UTF-8 for security reasons. They can be forwarded to other edge nodes for processing through HTTP requests.
-* The parameters must be in the format paramName only. They are displayed in Target as profile.paramName.
-* If you are using Bulk Profile Update API v2, you need not specify all parameter values for each pcId. Profiles are created for any pcId or mbox3rdPartyId that is not found in Target. If you are using v1, profiles are not created for missing pcIds or mbox3rdPartyIds.
-* The size of the batch file must be less than 50MB. In addition, the total number of rows should not exceed 500,000. This limit ensures that servers don&rsquo;t get flooded with too many requests.
-* You can send multiple files. However, the sum total of the rows of all the files that you send in a day should not exceed one million for each client.
-* There is no limit on number of attributes you upload. However, the overall size of a profile including system data should not exceed 2000KB. Adobe recommends you use less than 1000KB of storage for profile attributes.
-* Parameters and values are case sensitive.  </p>
+<p>You reference this file in the POST call to Target servers to process the file. When creating the batch file, bear in mind the following:</p>
+
+<ul>
+<li>The first row of the file must specify column headers.</li>
+<li>The first header should either be a pcId or thirdPartyId. The Marketing Cloud visitor ID is not supported. pcId is a Target-generated visitorID. thirdPartyId is an ID specified by the client application, which is passed to Target through an mbox call as mbox3rdPartyId. It must be referred to here as thirdPartyId.</li>
+<li>Parameters and values you specify in the batch file must be URL-encoded using UTF-8 for security reasons. They can be forwarded to other edge nodes for processing through HTTP requests.</li>
+<li>The parameters must be in the format paramName only. They are displayed in Target as profile.paramName.</li>
+<li>If you are using Bulk Profile Update API v2, you need not specify all parameter values for each pcId. Profiles are created for any pcId or mbox3rdPartyId that is not found in Target. If you are using v1, profiles are not created for missing pcIds or mbox3rdPartyIds.</li>
+<li>The size of the batch file must be less than 50MB. In addition, the total number of rows should not exceed 500,000. This limit ensures that servers don&rsquo;t get flooded with too many requests.</li>
+<li>You can send multiple files. However, the sum total of the rows of all the files that you send in a day should not exceed one million for each client.</li>
+<li>There is no limit on number of attributes you upload. However, the overall size of a profile including system data should not exceed 2000KB. Adobe recommends you use less than 1000KB of storage for profile attributes.</li>
+<li>Parameters and values are case sensitive.<br></li>
+</ul>
 
 <h3 id="http-post-request">HTTP Post Request</h3>
 
