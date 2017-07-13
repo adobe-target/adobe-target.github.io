@@ -118,15 +118,678 @@
 
 <p>You can use the Target REST APIs to list, create and modify Target Activities, Audiences and Offers, retreive reports, update profiles etc.</p>
 
-<h1 id="before-you-begin">Before you begin</h1>
+<h1 id="server-side-delivery">Server Side Delivery</h1>
+
+<h2 id="overview">Overview</h2>
+
+<p>Adobe Target lets your application make mbox calls from any browser, mobile device, or even another server.  The Server Side delivery API is specifically designed to integrate Adobe Target with any server side platform that makes HTTP/s calls.  You can use the API to integrate your custom application with Target.  This is especially valuable for organizations that want to deliver targeting to a non-browser based, IoT device such as a connected TV, kiosk, or
+in-store digital screen.  This API implements existing mbox features in a RESTful manner.  This API does not process cookies or redirect calls.</p>
+
+<h2 id="authentication">Authentication</h2>
+
+<p>There is no authentication for this API.  </p>
+
+<p>There is no notion of a &ldquo;user role&rdquo; in the Server Side Delivery API because it represents a call to fetch content or report events to Target edge servers</p>
+
+<h2 id="delivery-postman-collection">Delivery Postman Collection</h2>
+
+<p>Postman is a application that makes it easy to fire API calls. This Postman collection contains Server Side Delivery and Profile API calls. Just click on the &lsquo;Run in Postman&rsquo; button to import the Target API collection.</p>
+
+<aside class="notice">
+Don&rsquo;t forget to replace the clientcode and the mbox name with your own in the API calls. The APIs in the collection use a demo account.
+</aside>
+
+<p><a href="https://app.getpostman.com/run-collection/94cb2f003ae62aef8136"><img src="https://run.pstmn.io/button.svg" alt="Run in Postman" /></a></p>
+
+<h2 id="input-parameters">Input Parameters</h2>
+
+<blockquote>
+<p>Delivery API Sample Request #1. This is a request with just the mbox name in the POST body. </p>
+</blockquote>
+<pre class="highlight shell"><code>curl -X POST <span class="se">\</span>
+  <span class="s1">'https://adobetargetmobile.tt.omtrdc.net/rest/v1/mbox/my-session-id?client=adobetargetmobile'</span> <span class="se">\</span>
+  -H <span class="s1">'cache-control: no-cache'</span> <span class="se">\</span>
+  -H <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
+  -d <span class="s1">'{
+  "mbox" : "l5-mobile-ab"
+}'</span>
+
+</code></pre>
+<blockquote>
+<p>Response for Sample Request #1</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"tntId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"111499796294071-449025.28_44"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"edgeHost"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mboxedge28.tt.omtrdc.net"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Use 10OFF for $10 off for orders over $100"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"sessionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"my-session-id"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>Delivery API request # 2 with all possible inputs</p>
+</blockquote>
+<pre class="highlight shell"><code>curl -X POST <span class="se">\</span>
+  <span class="s1">'https://adobetargetmobile.tt.omtrdc.net/rest/v1/mbox/A210702C-402F-4458-9869-FCE64F318AE6?client=adobetargetmobile'</span> <span class="se">\</span>
+  -H <span class="s1">'cache-control: no-cache'</span> <span class="se">\</span>
+  -H <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_3) AppleWebKit/537.75.14 (KHTML, like Gecko) Version/7.0.3 Safari/7046A194A'</span> <span class="se">\</span>
+  -d <span class="s1">'{
+  "mbox" : "a1-mobile-ab",
+  "thirdPartyId" : "12345abcde",
+  "profileParameters" : {  
+    "param1" : "value1",
+    "param2" : "value2",
+    "entity.id" : "entityId",
+    "entity.name" : "entityName"
+  },
+  "mboxParameters" : {
+    "screenHeight": 1057,
+    "screenWidth": 1920,
+    "browserWidth": 1040,
+    "browserHeight": 960,
+    "browserTimeOffset": 240,
+    "colorDepth": 24,
+    "mboxXDomain": "enabled",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36",
+    "mboxMCGVID": "91394045728588414913028121188926585416",
+    "mboxAAMB": "cIBAx_aQzFEHcPoEv0GwcQ",
+    "mboxMCGLH": 7,
+    "vst.alias.id" : "2342345364532",
+    "vst.alias.authState" : "1"
+ },
+  "requestLocation" : {
+    "pageURL" : "http://demo/demo/store/",
+    "referrerURL" : "http://demo/demo/store/",
+    "ipAddress" : "128.10.10.1",
+    "impressionId" : "15989",
+    "host" : "staging-1"
+  }
+}'</span>
+
+</code></pre>
+<blockquote>
+<p>Response for Delivery API request #2</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"thirdPartyId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345abcde"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"edgeHost"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mboxedge28.tt.omtrdc.net"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Get 5% off using code 5OFF!"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"sessionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A210702C-402F-4458-9869-FCE64F318AE6"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+<h3 id="post-request">POST Request</h3>
+
+<p>The Server Side Delivery API only supports POST requests.  Here is a sample POST call performed using the API.</p>
+
+<p><code class="prettyprint">https://your-client-code.tt.omtrdc.net/rest/v1/mbox/my-session-123?client=your-client-code</code></p>
+
+<p>In this request, </p>
+
+<table>
+    <tbody>
+        <tr>
+            <td>my-session-123</td>
+            <td>
+                <p>This is the Session Id that should be generated and maintained by you. The Session Id can be any printable string except a space, ?, or /. It should be between 1 and 128 characters in length.</p>
+                <p>For a particular session, its value must stay the same across multiple requests.</p>
+                <p>Routing to a particular node in the edge cluster is done using Session Id.</p>
+                <p>The session is active for 30 minutes on the server side. Therefore, you should n&rsquo;t use a different Session Id for a particular tntId/thirdPartyId within 30 minutes of the last request made with the tntId/thirdPartyId. Otherwise, changes to the profile could be inconsistent and unpredictable.</p>
+                <p>Using the same Session ID with multiple tntIds/thirdPartyIds may cause unpredictable changes to the profiles identified by the tntId/thirdPartyIDs.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>your-client-code</td>
+            <td>Your account&rsquo;s client code. This parameter is mandatory for each request.</td>
+        </tr>
+    </tbody>
+</table>
+
+<p>The list of parameters that you can supply in the body of the request. </p>
+
+<h3 id="request-parameters">Request Parameters</h3>
+
+<table class="delivery-api">
+    <thead>
+        <tr>
+            <th>Parameter</th>
+            <th>Description</th>
+            <th>Default Value</th>
+            <th>Validation</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="odd">
+            <td class="first">mbox</td>
+            <td>The mbox name.</td>
+            <td>None, it cannot be empty.</td>
+            <td class="last">
+                <p>Same validation as for all mbox calls.</p>
+                <p>1 &lt; Length &lt; 250</p>
+                <p>Cannot contains any of the following characters: &rsquo;, &ldquo;, %22, %27, &lt;, &gt;, %3C, %3E</p>
+            </td>
+        </tr>
+        <tr>
+            <td class="first">clicked</td>
+            <td>
+                <p>Equivalent of using the &rdquo;-clicked&quot; suffix in mbox names for mbox calls.</p>
+                <p><i>Click mboxes only work for campaigns with metrics that have a specific mbox selected, for example &ldquo;click from homePageHer&rdquo; and will not work if &ldquo;click from display mboxes&rdquo; is selected.</i>
+                </p>
+                <p>&nbsp;</p>
+            </td>
+            <td>False</td>
+            <td class="last">Can be empty or true/false</td>
+        </tr>
+        <tr class="odd">
+            <td class="first">tntId</td>
+            <td>New name for pcId/mboxPC.</td>
+            <td>
+                <p>Empty.</p>
+                <p>If no &ldquo;thirdPartyId&rdquo; was provided, a new tntId is generated and returned as part of the response. Otherwise remains empty.</p>
+            </td>
+            <td class="last">
+                <p>1 &lt; Length &lt; 128</p>
+                <p>Cannot contain more than a single &ldquo;.&rdquo; (dot).</p>
+                <p>The only dot allowed is for profile location suffix.</p>
+            </td>
+        </tr>
+        <tr>
+            <td class="first">thirdPartyId</td>
+            <td>Client-provided visitor ID.</td>
+            <td>Empty</td>
+            <td class="last">1 &lt; Length &lt; 128</td>
+        </tr>
+        <tr class="odd">
+            <td class="first">marketingCloudVisitorId</td>
+            <td>Marketing Cloud Visitor ID</td>
+            <td>Empty</td>
+            <td class="last">1 &lt; Length &lt; 128</td>
+        </tr>
+        <tr>
+            <td class="first">order > total</td>
+            <td>Order amount associated with the order</td>
+            <td>Empty</td>
+            <td class="last">If not empty, should be a valid decimal</td>
+        </tr>
+        <tr class="odd">
+            <td class="first">order.id</td>
+            <td>Order reference ID</td>
+            <td>Empty</td>
+            <td class="last">If not empty, Length &lt; 250</td>
+        </tr>
+        <tr>
+            <td class="first">order > purchasedProductIds</td>
+            <td>Order referenced product IDs</td>
+            <td>Empty</td>
+            <td class="last">
+                <p>Each ID cannot exceed 50 char length.</p>
+                <p>Total length of comma-delimited IDs as string cannot exceed 250 chars</p>
+            </td>
+        </tr>
+        <tr class="odd">
+            <td class="first">profileParameters</td>
+            <td>
+                <p>Parameters that should be set in the profile.</p>
+                <p>The end values in the profile are saved as profile.param=value.</p>
+            </td>
+            <td>Empty</td>
+            <td class="last">Cannot contain more than 50 parameters</td>
+        </tr>
+        <tr>
+            <td class="first">profileParameters.[name]</td>
+            <td>Profile parameter name</td>
+            <td>Empty</td>
+            <td class="last">
+                <p>Length &lt; 128</p>
+                <p>Should not start with &ldquo;profile.&rdquo; prefix.</p>
+            </td>
+        </tr>
+        <tr class="odd">
+            <td class="first">profileParameters.[value]</td>
+            <td>Profile parameter value</td>
+            <td>Empty</td>
+            <td class="last">Length &lt; 256</td>
+        </tr>
+        <tr>
+            <td class="first">mboxParameters</td>
+            <td>Any mbox parameters that may need to be provided. eg. screenWidth.</td>
+            <td>Empty</td>
+            <td class="last">
+                <p>Cannot contain more than 50 parameters.</p>
+                <p>Cannot contain order-related parameters that should be set in &ldquo;order&rdquo;.</p>
+                <p>Cannot contain parameters with &ldquo;profile.&rdquo; prefix. Those should be set in &ldquo;profileParameters&rdquo;.</p>
+            </td>
+        </tr>
+        <tr class="odd">
+            <td class="first">mboxParameters.[name]</td>
+            <td>Mbox parameter name</td>
+            <td>Empty</td>
+            <td class="last">Length &lt; 128</td>
+        </tr>
+        <tr>
+            <td class="first">mboxParameters.[value]</td>
+            <td>Mbox parameter value</td>
+            <td>Empty</td>
+            <td class="last">Length &lt; 256</td>
+        </tr>
+        <tr class="odd">
+            <td class="first">requestLocation > pageURL</td>
+            <td>Equivalent to mboxURL mbox parameter</td>
+            <td>Empty</td>
+            <td class="last">
+                <p>Valid URL.</p>
+                <p>Length &lt; 3072</p>
+            </td>
+        </tr>
+        <tr>
+            <td class="first">requestLocation > referrerURL</td>
+            <td>Equivalent to mboxReferrer mbox parameter</td>
+            <td>Empty</td>
+            <td class="last">
+                <p>Valid URL</p>
+                <p>Length &lt; 3072</p>
+            </td>
+        </tr>
+        <tr class="odd">
+            <td class="first">requestLocation > ipAddress</td>
+            <td>Override the IP address of the client server</td>
+            <td>IP address or the server making the call</td>
+            <td class="last">Valid IP address</td>
+        </tr>
+        <tr>
+            <td class="first">requestLocation > impressionId</td>
+            <td>
+                <p>Equivalent of pageId.</p>
+                <p>A unique one is generated with each request if no value was specified.</p>
+            </td>
+            <td>Empty</td>
+            <td class="last">Length &lt; 128</td>
+        </tr>
+        <tr class="odd">
+            <td class="first">requestLocation > host</td>
+            <td>Equivalent of mboxHost</td>
+            <td>&ldquo;unknown&rdquo;</td>
+            <td class="last">Length &lt; 250</td>
+        </tr>
+        <tr>
+            <td class="first">mboxTrace</td>
+            <td>Enabled detailed tracing of the call</td>
+            <td>False</td>
+            <td class="last">Empty/True/False
+                <a name="section_E846261F8F28465C91A7217AD11A2EB9"></a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<h3 id="response-parameteres">Response Parameteres</h3>
+
+<table>
+    <thead>
+        <tr class="odd">
+            <th>Field Path</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="first">sessionId</td>
+            <td class="last">Session ID that was provided for this call.</td>
+        </tr>
+        <tr class="odd">
+            <td class="first">tntId</td>
+            <td class="last">Provided or generated tntId.</td>
+        </tr>
+        <tr>
+            <td class="first">thirdPartyId</td>
+            <td class="last">thirdPartyId if one was provided.</td>
+        </tr>
+        <tr class="odd">
+            <td class="first">mboxTrace</td>
+            <td class="last">Serialized mbox trace details.
+                <a name="section_D56E60F7655246D295EFD0FBE1E9B490"></a>
+            </td>
+        </tr>
+    </tbody>
+</table> 
+
+<h2 id="identifying-visitors">Identifying Visitors</h2>
+
+<blockquote>
+<p>Delivery Calls with differnt identifiers - Using a thirdPartyId</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+   </span><span class="nt">"mbox"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"homePageHero"</span><span class="p">,</span><span class="w">
+   </span><span class="nt">"thirdPartyId"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"customId-123"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>Response when a thirdPartyId is provided</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+   </span><span class="nt">"content"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"content"</span><span class="p">,</span><span class="w">
+   </span><span class="nt">"sessionId"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"999888"</span><span class="p">,</span><span class="w">
+   </span><span class="nt">"thirdPartyId"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"customId-123"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+<blockquote>
+<p>Request using the Marketing Cloud Visitor ID</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+   </span><span class="nt">"mbox"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"homePageHero"</span><span class="p">,</span><span class="w">
+   </span><span class="nt">"marketingCloudVisitorId"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"23131312312312123123"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>Request using all three identifiers</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+   </span><span class="nt">"mbox"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"homePageHero"</span><span class="p">,</span><span class="w">
+   </span><span class="nt">"tntId"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"1234343422.17_01"</span><span class="p">,</span><span class="w">
+   </span><span class="nt">"marketingCloudVisitorId"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"23131312312312123123"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>There are a multiple ways in which a Visitor can be identified in Target. Target uses three identifiers </p>
+
+<p><strong>tntId</strong> – This is the primary identifier for an individual user. You can supply this id or Target will auto-generate it if the request doesn’t contain one. Also referred as PCID or mboxPCID.</p>
+
+<p><strong>thirdPartyId</strong> – This is your company’s internal identifier that you can send with every call. This could be your frequent flier number, loyalty id, crm id, guid etc. Also referred as mbox3rdPartyID.</p>
+
+<p><strong>marketingCloudVisitorId</strong> – This identifier is used to merge and share data between different Adobe solutions. The marketingCloudVisitorId  is required for features like Marketing cloud profiles and audiences, Analytics for Target, Device graph etc
+** </p>
+
+<p>Learn how <a href="https://marketing.adobe.com/resources/help/en_US/target/target/c_3rd-party_id.html">profiles are merged and synced</a> in real time using the different identifiers. </p>
+
+<h3 id="using-the-tntid">Using the tntId</h3>
+
+<p>A tntId is generated if it isn&rsquo;t provided in the request. See the Sample Request #1 on the right. </p>
+
+<p>Note that a new tntId is generated and provided in the response.  Subsequent requests need to include this TnT ID.
+Using Custom IDs
+If you want to use Custom IDs to identify visitors (profiles), use thirdpartyids only. You must provide these IDs with every call.
+https://mboxedge/rest/v1/mbox/999888?client=demo</p>
+
+<h3 id="combining-ids">Combining IDs</h3>
+
+<p>You can combine tntId/thirdPartyId/marketingCloudVisitorId and provide them in the same request. A typical scenario would be to provide tntId along with another ID.</p>
+
+<aside class = "warning"> 
+<b>Returning Visitors</b> : Calls for returning visitors need to include the identifier that was used initially, tntId or thirdPartyId.
+</aside>
+
+<aside class = "notice"> 
+<b>SessionID</b> : The sessionId is another identifier that goes hand in hand with visitor identity. Refer to the <a href="#input-parameters">input parameters</a> section to learn more about the sessionId
+</aside>
+
+<h1 id="profiles">Profiles</h1>
+
+<p>Adobe Target creates and maintains a profile for every individual user. This profile is stored on the Target edge cluster and is updated in real time after every visit.</p>
+
+<h2 id="structure-of-a-target-profile">Structure of a Target Profile</h2>
+
+<p>A Target Profile consists of these following objects</p>
+
+<ul>
+<li>clientcode    - The Target client code to which the profile is associated</li>
+<li>visitorId - The identifier for the profile. This can be a tntid or thirdpartyid or marketingcloudvisitorid</li>
+<li>modifiedAt    - The timestamp of when the profile was last updated.</li>
+<li>profileAttributes - List of all the profile attributes stored as key-value pairs on that the individual profile</li>
+</ul>
+
+<h2 id="fetching-a-profile">Fetching a profile</h2>
+
+<p>A Target Profile can be fetched in two ways</p>
+
+<h3 id="using-a-tnt-id">Using a tnt id</h3>
+
+<p>Target automatically assigns a tntid for every request. </p>
+
+<blockquote>
+<p>The request format to fetch a profile using a tntid</p>
+</blockquote>
+<pre class="highlight shell"><code>https://yourclientcode.tt.omtrdrc.com/rest/v1/profiles/your-tnt-id?client<span class="o">=</span>yourclientcode
+</code></pre>
+<blockquote>
+<p>Replace &ldquo;yourclientcode&rdquo; and &ldquo;your-tnt-id&rdquo; and fire a GET request. Here is an example profile fetch call using a tntid</p>
+</blockquote>
+<pre class="highlight shell"><code>http://adobetargetmobile.tt.omtrdc.net/rest/v1/profiles/111492025094307-353046?client<span class="o">=</span>adobetargetmobile
+</code></pre>
+<h3 id="using-a-thirdpartyid">Using a thirdPartyId</h3>
+
+<p>Target profiles can be augmented with your own identifier (eg: CRM id, uuid, membership number etc). See the profile update section to learn how you can attach a thirdPartyId to your profile. </p>
+
+<blockquote>
+<p>The request format to fetch a profile using a thirdPartyId</p>
+</blockquote>
+<pre class="highlight shell"><code>https://yourclientcode.tt.omtrdrc.com/rest/v1/profiles/thirdPartyId/your-thirdpartyid?client<span class="o">=</span>yourclientcode
+</code></pre>
+<blockquote>
+<p>Replace &ldquo;yourclientcode&rdquo; and &ldquo;your-thirdpartyid&rdquo; and fire a GET request. Here is an example profile fetch call using a thirdpartyid </p>
+</blockquote>
+<pre class="highlight shell"><code>http://adobetargetmobile.tt.omtrdc.net/rest/v1/profiles/thirdPartyId/a1-mbox3rdPartyId?client<span class="o">=</span>adobetargetmobile
+</code></pre>
+<p>When this call is made, Target attempts to locate the profile first in the cluster noted in the edge request, or wherever the profile is located and return the content. The profile contents are returned in JSON format. </p>
+
+<h3 id="authentication">Authentication</h3>
+
+<p>This API has no authentication. </p>
+
+<h3 id="metering">Metering</h3>
+
+<p>These calls do not count towards your mbox calls.</p>
+
+<h3 id="error-handling">Error Handling</h3>
+
+<p>In the case of a call to /thirdPartyId with an invalid or an expired thirdPartyId specified:</p>
+
+<p><code class="prettyprint">{&quot;status&quot; : 404, &quot;message&quot; : &quot;No profile found for client &lt;client_code&gt; with third party id=&lt;third_party_id&gt;&quot;}</code></p>
+
+<p>If the profile can not be located or has expired:</p>
+
+<p><code class="prettyprint">{&quot;status&quot; : 404, &quot;message&quot; : &quot;No profile found for client &lt;client_code&gt; with mboxPC=&lt;mbox_pc&gt;&quot;}</code></p>
+
+<h2 id="updating-profiles">Updating Profiles</h2>
+
+<p>A user profile contains demographic and behavioral information of a web page visitor, such as age, gender, products purchased, last time of visit, and so on that Target uses to personalize the content it serves to the visitor.</p>
+
+<p>The profile information for each visitor is either stored in cookies or in third-party apps.</p>
+
+<p>If your web page implements the Target code, the profile information from the cookies is passed to Target using profile parameters. Target identifies each visitor uniquely through a pcID that it generates the visitor’s cookies. However, you can pass profile parameters from an external app through mbox calls using mbox3rdPartyIds.  </p>
+
+<p>Use the profile APIs when you have profile data about your visitors to send to Target that you either can&rsquo;t or don&rsquo;t want to send as part of your page-based integration with Target. This might be data from a CRM or POS that isn&rsquo;t available on the page, or data of a more sensitive nature that does not make sense to pass on the page.</p>
+
+<p>There are two ways to update profiles via API:</p>
+
+<ul>
+<li>Single profile API</li>
+<li>Bulk profile update via batch<br></li>
+</ul>
+
+<h3 id="single-profile-update">Single Profile Update</h3>
+
+<p>Specify the profile parameters in the format profile.paramName=value.
+There is a limit of one million profile updates in a 24-hour period.</p>
+
+<blockquote>
+<p>To update the profile for a pcId, use : </p>
+</blockquote>
+<pre class="highlight shell"><code>https://CLIENT.tt.omtrdc.net/m2/client/profile/update?mboxPC<span class="o">=</span>1368007744041-575948.01_00&amp;profile.attr<span class="o">=</span>0&amp;profile.attr2<span class="o">=</span>1...
+</code></pre>
+<blockquote>
+<p>To update the profile for an mbox3rdPartyId, use:</p>
+</blockquote>
+<pre class="highlight shell"><code>http://CLIENT.tt.omtrdc.net/m2/client/profile/update?mbox3rdPartyId<span class="o">=</span>123456&amp;profile.attr<span class="o">=</span>0&amp;profile.attr2<span class="o">=</span>1...
+</code></pre>
+<p>The Single Profile Update API is for updates only. If nothing is found, a profile is not created.</p>
+
+<p><strong>Notes</strong>   </p>
+
+<ul>
+<li>Parameters and values must be URL-encoded using UTF-8.<br></li>
+<li>Parameter format is profile.paramName.</li>
+<li>Not all parameter values need to exist for all pcIds/mbox3rdPartyId.</li>
+<li>Parameters and values are case sensitive.</li>
+<li>Both GET and POST are supported.</li>
+<li>The current size limitations for limit is 8KB for GET and 60KB for POST.</li>
+<li>The calls to the profile update API do not count toward your mbox charges.</li>
+</ul>
+
+<p><strong>Response</strong></p>
+
+<p>A sample response for the above requests looks like this. 
+<code class="prettyprint">trueRequest successfully submitted</code></p>
+
+<p>This response indicates the response has been submitted and will be processed soon. In general, lag time is less than a minute.  </p>
+
+<h3 id="bulk-profile-update">Bulk Profile Update</h3>
+
+<p>The Bulk Profile Update API allows you to update user profiles for multiple visitors to a website in bulk using a batch file.</p>
+
+<p>Using Bulk Profile Update API, you can conveniently send detailed visitor profile data in the form of profile parameters for a bunch of users to Target from any external source, including CRM or POS, which isn&rsquo;t usually available on a web page.  </p>
+
+<table>
+    <tbody>
+        <tr>
+            <th>Version</th>
+            <th>URL Example</th>
+            <th>Features</th>
+        </tr>
+        <tr>
+            <td>V1</td>
+            <td><em>http://CLIENTCODE.tt.omtrdc.net/m2/ CLIENTCODE/profile/batchUpdate</em>
+            </td>
+            <td>Support for bulk profile update only</td>
+        </tr>
+        <tr>
+            <td>V2</td>
+            <td><em> http://CLIENTCODE.tt.omtrdc.net/m2/ CLIENTCODE/v2/profile/batchUpdate</em>
+            </td>
+            <td>
+                <ul>
+                    <li>Create profile if not found</li>
+                    <li>Per row status update</li>
+                </ul>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<p>version 2 (v2) of the Bulk Profile Update API is the current version. However, Target still supports version 1 (v1).  </p>
+
+<h3 id="authentication">Authentication</h3>
+
+<p>The Bulk Update API call requires a valid access token to be passed in the header of the request.</p>
+
+<p>The access token can be obtained in the following way:</p>
+
+<ul>
+<li>Using the Target Classic UI, go to Configuration &gt; Edit.</li>
+<li>Scroll to the bottom of the page.</li>
+<li>Under Profile API Settings, switch to ‘Enable’ Require Authorization.</li>
+<li>Click Generate Authentication Token.</li>
+<li>Copy the token and include it in the request in the header of the</li>
+<li>request in the format: “Authorization” : “Bearer ”</li>
+</ul>
+
+<p>Optionally, use the following API to generate the token:  </p>
+
+<p><code class="prettyprint">https://admin10.testandtarget.omniture.com/admin/rest/v1/authentication/token?client=clientname&amp;scope=profile_api&amp;email=approver@client.com&amp;password=*****</code></p>
+
+<p>Alternatively, use the Basic Authorization API as shown in the following curl example below. Basic Authorization header is a base-64 encoded string with the following structure email:password &#39;https://admin10.testandtarget.omniture.com/admin/rest/v1/authentication/token?client=clientname&amp;scope=profile_api&rsquo; -H &#39;Authorization: Basic bmluYWlyK3N1bW1pdEBhZG9iZXRlc3QuY29tOnN1bW1pdDEyMw==&rsquo;.
+Here is the sample response:</p>
+
+<p><code class="prettyprint">{ &quot;access_token&quot;: &quot;b106da37-301d-4cdd-b25f-59ab4c97b5a0&quot;, &quot;scope&quot;: &quot;profile_api&quot;, &quot;expires_in&quot;: 21599, &quot;token_type&quot;: &quot;bearer” }</code></p>
+
+<h3 id="batch-file">Batch File</h3>
+
+<p>To update profile data in bulk, create a batch file. The batch file is a text file with values separated by commas similar to the following sample file.</p>
+
+<p>batch=pcId, param1, param2, param3, param4
+123, value1
+124, value1,,, value4
+125,, value2
+126, value1, value2, value3, value4  </p>
+
+<p>You reference this file in the POST call to Target servers to process the file. When creating the batch file, bear in mind the following:
+* The first row of the file must specify column headers.
+* The first header should either be a pcId or thirdPartyId. The Marketing Cloud visitor ID is not supported. pcId is a Target-generated visitorID. thirdPartyId is an ID specified by the client application, which is passed to Target through an mbox call as mbox3rdPartyId. It must be referred to here as thirdPartyId.
+* Parameters and values you specify in the batch file must be URL-encoded using UTF-8 for security reasons. They can be forwarded to other edge nodes for processing through HTTP requests.
+* The parameters must be in the format paramName only. They are displayed in Target as profile.paramName.
+* If you are using Bulk Profile Update API v2, you need not specify all parameter values for each pcId. Profiles are created for any pcId or mbox3rdPartyId that is not found in Target. If you are using v1, profiles are not created for missing pcIds or mbox3rdPartyIds.
+* The size of the batch file must be less than 50MB. In addition, the total number of rows should not exceed 500,000. This limit ensures that servers don&rsquo;t get flooded with too many requests.
+* You can send multiple files. However, the sum total of the rows of all the files that you send in a day should not exceed one million for each client.
+* There is no limit on number of attributes you upload. However, the overall size of a profile including system data should not exceed 2000KB. Adobe recommends you use less than 1000KB of storage for profile attributes.
+* Parameters and values are case sensitive.  </p>
+
+<h3 id="http-post-request">HTTP Post Request</h3>
+
+<p>Make an HTTP POST request to Target edge servers to process the file. Here is a sample HTTP POST request for the file batch.txt using the curl command:</p>
+
+<p><code class="prettyprint">curl -X POST --data-binary @BATCH.TXT http://CLIENTCODE.tt.omtrdc.net/m2/ CLIENTCODE/v2/profile/batchUpdate</code></p>
+
+<p>Where:   </p>
+
+<p>BATCH.TXT is the filename.<br>
+CLIENTCODE is the Target client code.   </p>
+
+<p>If you don&rsquo;t know your client code, in the Target UI click Setup &gt; Implementation &gt; Edit Mbox.js Settings. The client code is shown in the Client field.</p>
+
+<p><strong>Inspect the response.</strong></p>
+
+<p>v2 returns a profile-by-profile
+status and v1 returns only the overall status. The response includes a
+link to a different URL that has the profile-by-profile success message.</p>
+
+<p><strong>Example Response:</strong></p>
+
+<p><response> <success>true</success> <batchStatus>http://mboxedge19.tt.omtrdc.net/m2/demo/v2/profile/batchStatus?batchId=demo-1845664501&amp;m2Node=00</batchStatus> <message>Batch submitted for processing</message> </response></p>
+
+<p>In case of an error, the response will contain success=false and a detailed message for the error.</p>
+
+<p>A successful response will look like the following:  </p>
+
+<p><response>  <batchId>demo-1845664501</batchId>  <profile>   <id>1436187396849-250353.03_03</id>   <status>success</status>  </profile>  <profile>   <id>2403081156529-351655.03_03</id>   <status>success</status>  </profile>  <profile>   <id>2403081156529-351656.03_03</id>   <status>success</status>  </profile>  <profile>   <id>1436187396849-250351.01_00</id>   <status>success</status>  </profile> </response>
+Expected values for the status fields are:   </p>
+
+<ul>
+<li><strong>success</strong>: The profile was updated. If the profile was not found, one was created with the values from the batch.<br></li>
+<li><strong>error</strong>: The profile was not updated or created due to a failure, exception, or message loss.<br></li>
+<li><strong>pending</strong>: The profile has not been updated or created yet.<br></li>
+</ul>
+
+<h1 id="admin-apis">Admin APIs</h1>
+
+<p>The Admin APIs will allow you to CRUD (Create, Read, Update and Delete) <a href="#activities">Activities</a>, <a href="#audiences">Audiences</a> and <a href="#offers">Offers</a>. </p>
+
+<h2 id="before-you-begin">Before you begin</h2>
 
 <p>In all the code examples, you must replace the {tenant} variable with your tenant value. You must replace <ACCESS_TOKEN> with your personal API key.</p>
 
-<p>You will need an account on Adobe I/O to get the access token and the API key. See the Authentication section for more information.</p>
+<h2 id="adobe-i-o-console">Adobe I/O Console</h2>
 
-<h1 id="postman-collection">Postman Collection</h1>
+<p>The Adobe I/O console (https://console.adobe.io) is where you can configure your API integration and obtain your API keys and access token. </p>
 
-<p>Postman is a application that makes it easy to fire API calls. We have created a Postman collection with all the common API calls. Just click on the &lsquo;Run in Postman&rsquo; button to import the Target API collection.</p>
+<p>Please refer to the <a href="https://docs.campaign.adobe.com/doc/standard/en/api/ACS_API.html#adobeio-configuration">authentication section</a> from the Adobe campaign API to learn how to configure Adobe I/O</p>
+
+<aside class="notice">
+All enterprise APIs that can be setup in the Adobe I/O console use the same configuration. 
+</aside>
+
+<aside class="notice">
+You have to be a marketing cloud admin to get access to the Adobe I/O console. 
+</aside>
+
+<h2 id="admin-postman-collection">Admin Postman Collection</h2>
+
+<p>Postman is a application that makes it easy to fire API calls. This Postman collection contains all the Admin API calls in the same order as the docs. Just click on the &#39;Run in Postman&rsquo; button to import the Target API collection.</p>
+
+<p>This collection contains all APIs that require authentication using Adobe I/O
+- Activities
+- Audiences
+- Offers
+- Reports
+- Mboxes and Environments</p>
 
 <aside class="notice">
 Don&rsquo;t forget to replace the {{tenant}}, {{access_token}} and {{api_key}} values with your own in the API calls.
@@ -134,7 +797,7 @@ Don&rsquo;t forget to replace the {{tenant}}, {{access_token}} and {{api_key}} v
 
 <p><a href="https://app.getpostman.com/run-collection/8df29390f5e380f44a7c"><img src="https://run.pstmn.io/button.svg" alt="Run in Postman" /></a></p>
 
-<h1 id="response-codes">Response Codes</h1>
+<h2 id="response-codes">Response Codes</h2>
 
 <p>Here are the common response codes for the Target Admin APIs</p>
 
