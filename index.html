@@ -296,23 +296,8 @@ function resizeText() {
         
     });
 </script> 
-<script>
-    wow = new WOW(
-      {
-        animateClass: 'animated',
-        offset:       100
-      }
-    );
-    wow.init();
-    document.getElementById('').onclick = function() {
-      var section = document.createElement('section');
-      section.className = 'wow fadeInDown';
-	  section.className = 'wow shake';
-	  section.className = 'wow zoomIn';
-	  section.className = 'wow lightSpeedIn';
-      this.parentNode.insertBefore(section, this);
-    };
-  </script> 
+
+
 <script type="text/javascript">
 	$(window).load(function(){
 		
@@ -335,6 +320,7 @@ function resizeText() {
 
 
 
+
 <script type="text/javascript">
 
    
@@ -343,25 +329,6 @@ function resizeText() {
 	var container = $('#portfolio-wrap');	
 	
 
-	container.isotope({
-		animationEngine : 'best-available',
-	  	animationOptions: {
-	     	duration: 200,
-	     	queue: false
-	   	},
-		layoutMode: 'fitRows'
-	});	
-
-	$('#filters a').click(function(){
-		$('#filters a').removeClass('active');
-		$(this).addClass('active');
-		var selector = $(this).attr('data-filter');
-	  	container.isotope({ filter: selector });
-        setProjects();		
-	  	return false;
-	});
-		
-		
 		function splitColumns() { 
 			var winWidth = $(window).width(), 
 				columnNumb = 1;
