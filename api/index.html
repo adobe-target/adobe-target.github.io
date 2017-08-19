@@ -88,6 +88,7 @@
     </style>
     <link href="stylesheets/screen.css" rel="stylesheet" media="screen" />
     <link href="stylesheets/print.css" rel="stylesheet" media="print" />
+    <link href="images/favicon.ico" rel="icon" type="image/ico" />
       <script src="javascripts/all.js"></script>
   </head>
 
@@ -122,12 +123,12 @@
 
 <h2 id="overview">Overview</h2>
 
-<p>Adobe Target lets your application make mbox calls from any browser, mobile device, or even another server.  The Server Side delivery API is specifically designed to integrate Adobe Target with any server side platform that makes HTTP/s calls.  You can use the API to integrate your custom application with Target.  This is especially valuable for organizations that want to deliver targeting to a non-browser based, IoT device such as a connected TV, kiosk, or
+<p>Adobe Target lets your application make mbox calls from any browser, mobile device, or even another server.  The Server Side delivery API is specifically designed to integrate Adobe Target with any server side platform that makes HTTP/s calls.  You can use the API to integrate your custom application with Target.  This is especially valuable for organizations that want to deliver targeting to a non-browser based IoT device, such as a connected TV, kiosk, or
 in-store digital screen.  This API implements existing mbox features in a RESTful manner.  This API does not process cookies or redirect calls.</p>
 
 <h2 id="authentication">Authentication</h2>
 
-<p>There is no authentication for this API.  </p>
+<p>There is no authentication for this API.</p>
 
 <p>There is no notion of a &ldquo;user role&rdquo; in the Server Side Delivery API because it represents a call to fetch content or report events to Target edge servers</p>
 
@@ -144,7 +145,7 @@ Don&rsquo;t forget to replace the clientcode and the mbox name with your own in 
 <h2 id="input-parameters">Input Parameters</h2>
 
 <blockquote>
-<p>Delivery API Sample Request #1. This is a request with just the mbox name in the POST body. </p>
+<p>Delivery API Sample Request. This is a request with just the mbox name in the POST body.</p>
 </blockquote>
 <pre class="highlight shell"><code>curl -X POST <span class="se">\</span>
   <span class="s1">'https://adobetargetmobile.tt.omtrdc.net/rest/v1/mbox/my-session-id?client=adobetargetmobile'</span> <span class="se">\</span>
@@ -156,7 +157,7 @@ Don&rsquo;t forget to replace the clientcode and the mbox name with your own in 
 
 </code></pre>
 <blockquote>
-<p>Response for Sample Request #1</p>
+<p>Response for Sample Request</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="nt">"tntId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"111499796294071-449025.28_44"</span><span class="p">,</span><span class="w">
@@ -166,7 +167,7 @@ Don&rsquo;t forget to replace the clientcode and the mbox name with your own in 
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <blockquote>
-<p>Delivery API request # 2 with all possible inputs</p>
+<p>Delivery API request with all possible inputs</p>
 </blockquote>
 <pre class="highlight shell"><code>curl -X POST <span class="se">\</span>
   <span class="s1">'https://adobetargetmobile.tt.omtrdc.net/rest/v1/mbox/A210702C-402F-4458-9869-FCE64F318AE6?client=adobetargetmobile'</span> <span class="se">\</span>
@@ -176,7 +177,7 @@ Don&rsquo;t forget to replace the clientcode and the mbox name with your own in 
   -d <span class="s1">'{
   "mbox" : "a1-mobile-ab",
   "thirdPartyId" : "12345abcde",
-  "profileParameters" : {  
+  "profileParameters" : {
     "param1" : "value1",
     "param2" : "value2",
     "entity.id" : "entityId",
@@ -208,7 +209,7 @@ Don&rsquo;t forget to replace the clientcode and the mbox name with your own in 
 
 </code></pre>
 <blockquote>
-<p>Response for Delivery API request #2</p>
+<p>Response for Delivery API request with all inputs</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="nt">"thirdPartyId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345abcde"</span><span class="p">,</span><span class="w">
@@ -224,7 +225,7 @@ Don&rsquo;t forget to replace the clientcode and the mbox name with your own in 
 
 <p><code class="prettyprint">https://your-client-code.tt.omtrdc.net/rest/v1/mbox/my-session-123?client=your-client-code</code></p>
 
-<p>In this request, </p>
+<p>In this request,</p>
 
 <table>
     <tbody>
@@ -245,7 +246,7 @@ Don&rsquo;t forget to replace the clientcode and the mbox name with your own in 
     </tbody>
 </table>
 
-<p>The list of parameters that you can supply in the body of the request. </p>
+<p>The list of parameters that you can supply in the body of the request.</p>
 
 <h3 id="request-parameters">Request Parameters</h3>
 
@@ -451,7 +452,7 @@ Don&rsquo;t forget to replace the clientcode and the mbox name with your own in 
             </td>
         </tr>
     </tbody>
-</table> 
+</table>
 
 <h2 id="identifying-visitors">Identifying Visitors</h2>
 
@@ -490,36 +491,36 @@ Don&rsquo;t forget to replace the clientcode and the mbox name with your own in 
    </span><span class="nt">"marketingCloudVisitorId"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"23131312312312123123"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>There are a multiple ways in which a Visitor can be identified in Target. Target uses three identifiers </p>
+<p>There are a multiple ways in which a Visitor can be identified in Target. Target uses three identifiers</p>
 
-<p><strong>tntId</strong> – This is the primary identifier for an individual user. You can supply this id or Target will auto-generate it if the request doesn’t contain one. Also referred as PCID or mboxPCID.</p>
+<ul>
+<li><p><strong>tntId</strong> – This is the primary identifier for an individual user. You can supply this id or Target will auto-generate it if the request doesn’t contain one. Also referred to as PCID or mboxPCID.</p></li>
+<li><p><strong>thirdPartyId</strong> – This is your company’s internal identifier that you can send with every call. This could be your frequent flier number, loyalty id, crm id, guid etc,. Also referred as mbox3rdPartyID.</p></li>
+<li><p><strong>marketingCloudVisitorId</strong> – This identifier is used to merge and share data between different Adobe solutions. The marketingCloudVisitorId  is required for features like Marketing Cloud Profiles and Audiences, Analytics for Target, Device graph etc.</p></li>
+</ul>
 
-<p><strong>thirdPartyId</strong> – This is your company’s internal identifier that you can send with every call. This could be your frequent flier number, loyalty id, crm id, guid etc. Also referred as mbox3rdPartyID.</p>
-
-<p><strong>marketingCloudVisitorId</strong> – This identifier is used to merge and share data between different Adobe solutions. The marketingCloudVisitorId  is required for features like Marketing cloud profiles and audiences, Analytics for Target, Device graph etc
-** </p>
-
-<p>Learn how <a href="https://marketing.adobe.com/resources/help/en_US/target/target/c_3rd-party_id.html">profiles are merged and synced</a> in real time using the different identifiers. </p>
+<p>Learn how <a href="https://marketing.adobe.com/resources/help/en_US/target/target/c_3rd-party_id.html">profiles are merged and synced</a> in real time using the different identifiers.</p>
 
 <h3 id="using-the-tntid">Using the tntId</h3>
 
-<p>A tntId is generated if it isn&rsquo;t provided in the request. See the Sample Request #1 on the right. </p>
+<p>A tntId is generated if it isn&rsquo;t provided in the request. See the Sample Request #1 on the right.</p>
 
-<p>Note that a new tntId is generated and provided in the response.  Subsequent requests need to include this TnT ID.
-Using Custom IDs
-If you want to use Custom IDs to identify visitors (profiles), use thirdpartyids only. You must provide these IDs with every call.
-https://mboxedge/rest/v1/mbox/999888?client=demo</p>
+<p>Note that a new tntId is generated and provided in the response.  Subsequent requests need to include this TnT ID.</p>
+
+<h3 id="using-custom-ids">Using Custom IDs</h3>
+
+<p>If you want to use Custom IDs to identify visitors (profiles), use the thirdPartyId. You must provide these IDs with every call.</p>
 
 <h3 id="combining-ids">Combining IDs</h3>
 
 <p>You can combine tntId/thirdPartyId/marketingCloudVisitorId and provide them in the same request. A typical scenario would be to provide tntId along with another ID.</p>
 
-<aside class = "warning"> 
-<b>Returning Visitors</b> : Calls for returning visitors need to include the identifier that was used initially, tntId or thirdPartyId.
+<aside class = "warning">
+<b>Returning Visitors</b>: Calls for returning visitors need to include the identifier that was used initially, tntId or thirdPartyId.
 </aside>
 
-<aside class = "notice"> 
-<b>SessionID</b> : The sessionId is another identifier that goes hand in hand with visitor identity. Refer to the <a href="#input-parameters">input parameters</a> section to learn more about the sessionId
+<aside class = "notice">
+<b>SessionID</b>: The sessionId is another identifier that goes hand in hand with visitor identity. Refer to the <a href="#input-parameters">input parameters</a> section to learn more about the sessionId
 </aside>
 
 <h1 id="profiles">Profiles</h1>
@@ -528,6 +529,54 @@ https://mboxedge/rest/v1/mbox/999888?client=demo</p>
 
 <h2 id="structure-of-a-target-profile">Structure of a Target Profile</h2>
 
+<blockquote>
+<p>Sample Profile Structure</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"client"</span><span class="p">:</span><span class="w"> </span><span class="s2">"adobetargetmobile"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"visitorId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a1-mbox3rdPartyId"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"modifiedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-08-18T17:53:39.003-04:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"profileAttributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"insurance"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"false"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"modifiedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-07-31T20:34:55.625-04:00"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nt">"country"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"france"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"modifiedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-07-31T14:26:30.879-04:00"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nt">"checking"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"modifiedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-07-31T20:34:55.625-04:00"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nt">"user.memberlevel"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"modifiedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-08-09T18:18:04.661-04:00"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nt">"param1"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"value1"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"modifiedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-08-09T18:18:04.659-04:00"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nt">"param2"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"value2"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"modifiedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-08-09T18:18:04.659-04:00"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nt">"firstSessionStart"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1500648715286"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"modifiedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-07-21T10:51:55.286-04:00"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nt">"entity.name"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"my-entityName"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"modifiedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-08-09T18:18:04.659-04:00"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nt">"entity.id"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"my-entityId"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"modifiedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-08-09T18:18:04.659-04:00"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
 <p>A Target Profile consists of these following objects</p>
 
 <ul>
@@ -543,37 +592,33 @@ https://mboxedge/rest/v1/mbox/999888?client=demo</p>
 
 <h3 id="using-a-tnt-id">Using a tnt id</h3>
 
-<p>Target automatically assigns a tntid for every request. </p>
+<p>Target automatically assigns a tntid for every request.</p>
 
-<blockquote>
 <p>The request format to fetch a profile using a tntid</p>
-</blockquote>
-<pre class="highlight shell"><code>https://yourclientcode.tt.omtrdrc.com/rest/v1/profiles/your-tnt-id?client<span class="o">=</span>yourclientcode
-</code></pre>
-<blockquote>
+
+<p><code class="prettyprint">https://yourclientcode.tt.omtrdrc.com/rest/v1/profiles/your-tnt-id?client=yourclientcode</code></p>
+
 <p>Replace &ldquo;yourclientcode&rdquo; and &ldquo;your-tnt-id&rdquo; and fire a GET request. Here is an example profile fetch call using a tntid</p>
-</blockquote>
-<pre class="highlight shell"><code>http://adobetargetmobile.tt.omtrdc.net/rest/v1/profiles/111492025094307-353046?client<span class="o">=</span>adobetargetmobile
-</code></pre>
+
+<p><code class="prettyprint">http://adobetargetmobile.tt.omtrdc.net/rest/v1/profiles/111492025094307-353046?client=adobetargetmobile</code></p>
+
 <h3 id="using-a-thirdpartyid">Using a thirdPartyId</h3>
 
-<p>Target profiles can be augmented with your own identifier (eg: CRM id, uuid, membership number etc). See the profile update section to learn how you can attach a thirdPartyId to your profile. </p>
+<p>Target profiles can be augmented with your own identifier (eg: CRM id, uuid, membership number etc). See the profile update section to learn how you can attach a thirdPartyId to your profile.</p>
 
-<blockquote>
 <p>The request format to fetch a profile using a thirdPartyId</p>
-</blockquote>
-<pre class="highlight shell"><code>https://yourclientcode.tt.omtrdrc.com/rest/v1/profiles/thirdPartyId/your-thirdpartyid?client<span class="o">=</span>yourclientcode
-</code></pre>
-<blockquote>
-<p>Replace &ldquo;yourclientcode&rdquo; and &ldquo;your-thirdpartyid&rdquo; and fire a GET request. Here is an example profile fetch call using a thirdpartyid </p>
-</blockquote>
-<pre class="highlight shell"><code>http://adobetargetmobile.tt.omtrdc.net/rest/v1/profiles/thirdPartyId/a1-mbox3rdPartyId?client<span class="o">=</span>adobetargetmobile
-</code></pre>
-<p>When this call is made, Target attempts to locate the profile first in the cluster noted in the edge request, or wherever the profile is located and return the content. The profile contents are returned in JSON format. </p>
+
+<p><code class="prettyprint">https://yourclientcode.tt.omtrdrc.com/rest/v1/profiles/thirdPartyId/your-thirdpartyid?client=yourclientcode</code></p>
+
+<p>Replace &ldquo;yourclientcode&rdquo; and &ldquo;your-thirdpartyid&rdquo; and fire a GET request. Here is an example profile fetch call using a thirdpartyid</p>
+
+<p><code class="prettyprint">http://adobetargetmobile.tt.omtrdc.net/rest/v1/profiles/thirdPartyId/a1-mbox3rdPartyId?client=adobetargetmobile</code></p>
+
+<p>When this call is made, Target attempts to locate the profile first in the cluster noted in the edge request, or wherever the profile is located and return the content. The profile contents are returned in JSON format.</p>
 
 <h3 id="authentication">Authentication</h3>
 
-<p>This API has no authentication. </p>
+<p>This API has no authentication.</p>
 
 <h3 id="metering">Metering</h3>
 
@@ -595,7 +640,7 @@ https://mboxedge/rest/v1/mbox/999888?client=demo</p>
 
 <p>The profile information for each visitor is either stored in cookies or in third-party apps.</p>
 
-<p>If your web page implements the Target code, the profile information from the cookies is passed to Target using profile parameters. Target identifies each visitor uniquely through a pcID that it generates the visitor’s cookies. However, you can pass profile parameters from an external app through mbox calls using mbox3rdPartyIds.  </p>
+<p>If your web page implements the Target code, the profile information from the cookies is passed to Target using profile parameters. Target identifies each visitor uniquely through a pcID that it generates the visitor’s cookies. However, you can pass profile parameters from an external app through mbox calls using mbox3rdPartyIds.</p>
 
 <p>Use the profile APIs when you have profile data about your visitors to send to Target that you either can&rsquo;t or don&rsquo;t want to send as part of your page-based integration with Target. This might be data from a CRM or POS that isn&rsquo;t available on the page, or data of a more sensitive nature that does not make sense to pass on the page.</p>
 
@@ -603,7 +648,7 @@ https://mboxedge/rest/v1/mbox/999888?client=demo</p>
 
 <ul>
 <li>Single profile API</li>
-<li>Bulk profile update via batch<br></li>
+<li>Bulk profile update via batch</li>
 </ul>
 
 <h3 id="single-profile-update">Single Profile Update</h3>
@@ -611,22 +656,21 @@ https://mboxedge/rest/v1/mbox/999888?client=demo</p>
 <p>Specify the profile parameters in the format profile.paramName=value.
 There is a limit of one million profile updates in a 24-hour period.</p>
 
-<blockquote>
-<p>To update the profile for a pcId, use : </p>
-</blockquote>
-<pre class="highlight shell"><code>https://CLIENT.tt.omtrdc.net/m2/client/profile/update?mboxPC<span class="o">=</span>1368007744041-575948.01_00&amp;profile.attr<span class="o">=</span>0&amp;profile.attr2<span class="o">=</span>1...
-</code></pre>
-<blockquote>
+<p>To update the profile for a pcId, use :</p>
+
+<p><code class="prettyprint">https://CLIENT.tt.omtrdc.net/m2/client/profile/update?mboxPC=1368007744041-575948.01_00&amp;profile.attr=0&amp;profile.attr2=1...</code></p>
+
 <p>To update the profile for an mbox3rdPartyId, use:</p>
-</blockquote>
-<pre class="highlight shell"><code>http://CLIENT.tt.omtrdc.net/m2/client/profile/update?mbox3rdPartyId<span class="o">=</span>123456&amp;profile.attr<span class="o">=</span>0&amp;profile.attr2<span class="o">=</span>1...
-</code></pre>
+
+<p><code class="prettyprint">shell
+http://CLIENT.tt.omtrdc.net/m2/client/profile/update?mbox3rdPartyId=123456&amp;profile.attr=0&amp;profile.attr2=1...</code></p>
+
 <p>The Single Profile Update API is for updates only. If nothing is found, a profile is not created.</p>
 
-<p><strong>Notes</strong>   </p>
+<p><strong>Notes</strong></p>
 
 <ul>
-<li>Parameters and values must be URL-encoded using UTF-8.<br></li>
+<li>Parameters and values must be URL-encoded using UTF-8.</li>
 <li>Parameter format is profile.paramName.</li>
 <li>Not all parameter values need to exist for all pcIds/mbox3rdPartyId.</li>
 <li>Parameters and values are case sensitive.</li>
@@ -637,16 +681,16 @@ There is a limit of one million profile updates in a 24-hour period.</p>
 
 <p><strong>Response</strong></p>
 
-<p>A sample response for the above requests looks like this. 
+<p>A sample response for the above requests looks like this.
 <code class="prettyprint">trueRequest successfully submitted</code></p>
 
-<p>This response indicates the response has been submitted and will be processed soon. In general, lag time is less than a minute.  </p>
+<p>This response indicates the response has been submitted and will be processed soon. In general, lag time is less than a minute.</p>
 
 <h3 id="bulk-profile-update">Bulk Profile Update</h3>
 
 <p>The Bulk Profile Update API allows you to update user profiles for multiple visitors to a website in bulk using a batch file.</p>
 
-<p>Using Bulk Profile Update API, you can conveniently send detailed visitor profile data in the form of profile parameters for a bunch of users to Target from any external source, including CRM or POS, which isn&rsquo;t usually available on a web page.  </p>
+<p>Using Bulk Profile Update API, you can conveniently send detailed visitor profile data in the form of profile parameters for a bunch of users to Target from any external source, including CRM or POS, which isn&rsquo;t usually available on a web page.</p>
 
 <table>
     <tbody>
@@ -675,7 +719,7 @@ There is a limit of one million profile updates in a 24-hour period.</p>
     </tbody>
 </table>
 
-<p>version 2 (v2) of the Bulk Profile Update API is the current version. However, Target still supports version 1 (v1).  </p>
+<p>version 2 (v2) of the Bulk Profile Update API is the current version. However, Target still supports version 1 (v1).</p>
 
 <h3 id="authentication">Authentication</h3>
 
@@ -692,7 +736,7 @@ There is a limit of one million profile updates in a 24-hour period.</p>
 <li>request in the format: “Authorization” : “Bearer ”</li>
 </ul>
 
-<p>Optionally, use the following API to generate the token:  </p>
+<p>Optionally, use the following API to generate the token:</p>
 
 <p><code class="prettyprint">https://admin10.testandtarget.omniture.com/admin/rest/v1/authentication/token?client=clientname&amp;scope=profile_api&amp;email=approver@client.com&amp;password=*****</code></p>
 
@@ -709,7 +753,7 @@ Here is the sample response:</p>
 123, value1
 124, value1,,, value4
 125,, value2
-126, value1, value2, value3, value4  </p>
+126, value1, value2, value3, value4</p>
 
 <p>You reference this file in the POST call to Target servers to process the file. When creating the batch file, bear in mind the following:</p>
 
@@ -722,7 +766,7 @@ Here is the sample response:</p>
 <li>The size of the batch file must be less than 50MB. In addition, the total number of rows should not exceed 500,000. This limit ensures that servers don&rsquo;t get flooded with too many requests.</li>
 <li>You can send multiple files. However, the sum total of the rows of all the files that you send in a day should not exceed one million for each client.</li>
 <li>There is no limit on number of attributes you upload. However, the overall size of a profile including system data should not exceed 2000KB. Adobe recommends you use less than 1000KB of storage for profile attributes.</li>
-<li>Parameters and values are case sensitive.<br></li>
+<li>Parameters and values are case sensitive.</li>
 </ul>
 
 <h3 id="http-post-request">HTTP Post Request</h3>
@@ -731,10 +775,10 @@ Here is the sample response:</p>
 
 <p><code class="prettyprint">curl -X POST --data-binary @BATCH.TXT http://CLIENTCODE.tt.omtrdc.net/m2/ CLIENTCODE/v2/profile/batchUpdate</code></p>
 
-<p>Where:   </p>
+<p>Where:</p>
 
-<p>BATCH.TXT is the filename.<br>
-CLIENTCODE is the Target client code.   </p>
+<p>BATCH.TXT is the filename.
+CLIENTCODE is the Target client code.</p>
 
 <p>If you don&rsquo;t know your client code, in the Target UI click Setup &gt; Implementation &gt; Edit Mbox.js Settings. The client code is shown in the Client field.</p>
 
@@ -750,37 +794,37 @@ link to a different URL that has the profile-by-profile success message.</p>
 
 <p>In case of an error, the response will contain success=false and a detailed message for the error.</p>
 
-<p>A successful response will look like the following:  </p>
+<p>A successful response will look like the following:</p>
 
 <p><response>  <batchId>demo-1845664501</batchId>  <profile>   <id>1436187396849-250353.03_03</id>   <status>success</status>  </profile>  <profile>   <id>2403081156529-351655.03_03</id>   <status>success</status>  </profile>  <profile>   <id>2403081156529-351656.03_03</id>   <status>success</status>  </profile>  <profile>   <id>1436187396849-250351.01_00</id>   <status>success</status>  </profile> </response>
-Expected values for the status fields are:   </p>
+Expected values for the status fields are:</p>
 
 <ul>
-<li><strong>success</strong>: The profile was updated. If the profile was not found, one was created with the values from the batch.<br></li>
-<li><strong>error</strong>: The profile was not updated or created due to a failure, exception, or message loss.<br></li>
-<li><strong>pending</strong>: The profile has not been updated or created yet.<br></li>
+<li><strong>success</strong>: The profile was updated. If the profile was not found, one was created with the values from the batch.</li>
+<li><strong>error</strong>: The profile was not updated or created due to a failure, exception, or message loss.</li>
+<li><strong>pending</strong>: The profile has not been updated or created yet.</li>
 </ul>
 
 <h1 id="admin-apis">Admin APIs</h1>
 
-<p>The Admin APIs will allow you to CRUD (Create, Read, Update and Delete) <a href="#activities">Activities</a>, <a href="#audiences">Audiences</a> and <a href="#offers">Offers</a>. </p>
+<p>The Admin APIs will allow you to CRUD (Create, Read, Update and Delete) <a href="#activities">Activities</a>, <a href="#audiences">Audiences</a> and <a href="#offers">Offers</a>.</p>
 
-<h2 id="before-you-begin">Before you begin</h2>
+<h2 id="before-you-begin">Before you Begin</h2>
 
-<p>In all the code examples, you must replace the {tenant} variable with your tenant value. You must replace <ACCESS_TOKEN> with your personal API key.</p>
+<p>In all the code examples, you must replace the <code class="prettyprint">{tenant}</code> variable with your tenant value, <code class="prettyprint">your-bearer-token</code> with the access token that you generate with your JWT and <code class="prettyprint">your-api-key</code> with your API key from the Adobe I/O console.</p>
 
 <h2 id="adobe-i-o-console">Adobe I/O Console</h2>
 
-<p>The Adobe I/O console (https://console.adobe.io) is where you can configure your API integration and obtain your API keys and access token. </p>
+<p>The Adobe I/O console (https://console.adobe.io) is where you can configure your API integration and obtain your API keys and access token.</p>
 
-<p>Please refer to the <a href="https://docs.campaign.adobe.com/doc/standard/en/api/ACS_API.html#adobeio-configuration">authentication section</a> from the Adobe campaign API to learn how to configure Adobe I/O</p>
+<p>Please refer to the <a href="https://docs.campaign.adobe.com/doc/standard/en/api/ACS_API.html#adobeio-configuration">authentication section</a> from the Adobe campaign API to learn how to configure Adobe I/O.</p>
 
 <aside class="notice">
-All enterprise APIs that can be setup in the Adobe I/O console use the same configuration. 
+All enterprise APIs that can be setup in the Adobe I/O console use the same configuration.
 </aside>
 
 <aside class="notice">
-You have to be a marketing cloud admin to get access to the Adobe I/O console. 
+You have to be a Experience Cloud Admin to get access to the Adobe I/O console.
 </aside>
 
 <h2 id="admin-postman-collection">Admin Postman Collection</h2>
@@ -788,11 +832,11 @@ You have to be a marketing cloud admin to get access to the Adobe I/O console.
 <p>Postman is a application that makes it easy to fire API calls. This Postman collection contains all the Admin API calls in the same order as the docs. Just click on the &#39;Run in Postman&rsquo; button to import the Target API collection.</p>
 
 <p>This collection contains all APIs that require authentication using Adobe I/O
-- Activities
-- Audiences
-- Offers
-- Reports
-- Mboxes and Environments</p>
+* Activities
+* Audiences
+* Offers
+* Reports
+* Mboxes and Environments</p>
 
 <aside class="notice">
 Don&rsquo;t forget to replace the {{tenant}}, {{access_token}} and {{api_key}} values with your own in the API calls.
@@ -840,7 +884,7 @@ Don&rsquo;t forget to replace the {{tenant}}, {{access_token}} and {{api_key}} v
 
 <h1 id="activities">Activities</h1>
 
-<p>An activity enables you to test, target or personalize content for your users. An activity can be one of the following types </p>
+<p>An activity enables you to test, target or personalize content for your users. An activity can be one of the following types</p>
 
 <ul>
 <li>AB Test</li>
@@ -856,7 +900,7 @@ Don&rsquo;t forget to replace the {{tenant}}, {{access_token}} and {{api_key}} v
 <p>Sample Request for GET Activities</p>
 </blockquote>
 <pre class="highlight shell"><code>
-curl -X GET 
+curl -X GET
 https://mc.adobe.io/adobetargetmobile/target/activities/ <span class="se">\</span>
   -H <span class="s1">'authorization: Bearer &lt;your-bearer-token&gt;'</span> <span class="se">\</span>
   -H <span class="s1">'cache-control: no-cache'</span> <span class="se">\</span>
@@ -948,25 +992,25 @@ https://mc.adobe.io/adobetargetmobile/target/activities/ <span class="se">\</spa
 
 <h3 id="some-common-examples">Some common Examples</h3>
 
-<p>GET list of all activities<br>
+<p>GET list of all activities
 <code class="prettyprint">https://mc.adobe.io/{tenant}/target/activities/</code></p>
 
-<p>GET activity list with limit<br>
+<p>GET activity list with limit
 <code class="prettyprint">https://mc.adobe.io/{tenant}/target/activities/?limit=1</code></p>
 
-<p>GET activity list with limit and offset<br>
+<p>GET activity list with limit and offset
 <code class="prettyprint">https://mc.adobe.io/{tenant}/target/activities/?limit=2&amp;offset=2</code></p>
 
-<p>GET activity list filtered by multiple values<br>
+<p>GET activity list filtered by multiple values
 <code class="prettyprint">https://mc.adobe.io/{tenant}/target/activities/?id=3&amp;id=4&amp;name=ab</code></p>
 
-<p>GET activity list filtered by negative values<br>
+<p>GET activity list filtered by negative values
 <code class="prettyprint">https://mc.adobe.io/{tenant}/target/activities/?priority=!4</code></p>
 
-<p>GET activity list sorted by multiple criteria<br>
+<p>GET activity list sorted by multiple criteria
 <code class="prettyprint">https://mc.adobe.io/{tenant}/target/activities/?sortBy=name&amp;sortBy=id</code></p>
 
-<p>GET activity list filtered by a date range<br>
+<p>GET activity list filtered by a date range
 <code class="prettyprint">https://mc.adobe.io/{tenant}/target/activities/?startsAt=1800-09-01T02:04:00.000-07:00/2114-11-30T14:10:00.000-07:00</code></p>
 
 <h2 id="get-ab-activity-by-id">Get AB Activity by ID</h2>
@@ -974,7 +1018,7 @@ https://mc.adobe.io/adobetargetmobile/target/activities/ <span class="se">\</spa
 <blockquote>
 <p>Sample Request for Get AB Activity by ID</p>
 </blockquote>
-<pre class="highlight shell"><code>curl -X GET 
+<pre class="highlight shell"><code>curl -X GET
 https://mc.adobe.io/adobetargetmobile/target/activities/ab/168824 <span class="se">\</span>
   -H <span class="s1">'authorization: Bearer &lt;your-bearer-token&gt;'</span> <span class="se">\</span>
   -H <span class="s1">'cache-control: no-cache'</span> <span class="se">\</span>
@@ -1237,7 +1281,7 @@ curl -X POST <span class="se">\</span>
 
 </code></pre>
 <blockquote>
-<p>Sample Response for Create AB Activity </p>
+<p>Sample Response for Create AB Activity</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">183916</span><span class="p">,</span><span class="w">
@@ -1319,7 +1363,7 @@ curl -X POST <span class="se">\</span>
 <p>Creates a new AB activity with the specified contents and returns the created activity.</p>
 
 <aside class="warning">
-Activities created using the API can only be edited using the API. You can&rsquo;t edit it in the UI. 
+Activities created using the API can only be edited using the API. You can&rsquo;t edit it in the UI.
 </aside>
 
 <h3 id="parameters">Parameters</h3>
@@ -1832,7 +1876,7 @@ Refer &ldquo;Create AB Activity&rdquo; for the available inputs, limitations and
 <blockquote>
 <p>Sample Request for Get XT Activity by ID</p>
 </blockquote>
-<pre class="highlight shell"><code>curl -X GET 
+<pre class="highlight shell"><code>curl -X GET
 https://mc.adobe.io/adobetargetmobile/target/activities/xt/168824 <span class="se">\</span>
   -H <span class="s1">'authorization: Bearer &lt;your-bearer-token&gt;'</span> <span class="se">\</span>
   -H <span class="s1">'cache-control: no-cache'</span> <span class="se">\</span>
@@ -2239,7 +2283,7 @@ Refer &ldquo;Create AB Activity&rdquo; for the available inputs, limitations and
 </aside>
 
 <aside class="warning">
-Activities created using the API can only be edited using the API. You can&rsquo;t edit it in the UI. 
+Activities created using the API can only be edited using the API. You can&rsquo;t edit it in the UI.
 </aside>
 
 <h2 id="update-xt-activity">Update XT Activity</h2>
@@ -2255,7 +2299,7 @@ To Update an XT Activity use the same input as described in &ldquo;Create XT Act
 <h2 id="update-activity-name">Update Activity Name</h2>
 
 <blockquote>
-<p>Sample Request for Update Activity Name (Rename Activity) </p>
+<p>Sample Request for Update Activity Name (Rename Activity)</p>
 </blockquote>
 <pre class="highlight shell"><code>
 curl -X PUT <span class="se">\</span>
@@ -2290,7 +2334,7 @@ You can also use the specific endpoints <b>/activities/ab/{id}/name</b> and /<b>
 <h2 id="update-activity-state">Update Activity State</h2>
 
 <blockquote>
-<p>Sample Request for Update Activity State </p>
+<p>Sample Request for Update Activity State</p>
 </blockquote>
 <pre class="highlight shell"><code>
 curl -X PUT <span class="se">\</span>
@@ -2314,8 +2358,8 @@ curl -X PUT <span class="se">\</span>
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre>
-<p>Update state for an activity that is referenced by the provided id. Valid values are: 
-* approved 
+<p>Update state for an activity that is referenced by the provided id. Valid values are:
+* approved
 * deactivated
 * saved</p>
 
@@ -2326,13 +2370,13 @@ You can also use the specific endpoints <b>/activities/ab/{id}/state</b> and <b>
 </aside>
 
 <aside class="warning">
-<b>Known Issue</b> : The Target UI has 5 states and the API only provides 3 out of the 5. Also, they use different terminologoes. Approved = Live, Deactivated = Inactive, Saved = Draft.  
+<b>Known Issue</b> : The Target UI has 5 states and the API only provides 3 out of the 5. Also, they use different terminologoes. Approved = Live, Deactivated = Inactive, Saved = Draft.
 </aside>
 
 <h2 id="update-activity-priority">Update Activity Priority</h2>
 
 <blockquote>
-<p>Sample Request for Update Activity Priotity </p>
+<p>Sample Request for Update Activity Priotity</p>
 </blockquote>
 <pre class="highlight shell"><code>
 curl -X PUT <span class="se">\</span>
@@ -2347,7 +2391,7 @@ curl -X PUT <span class="se">\</span>
 
 </code></pre>
 <blockquote>
-<p>Sample Response for Update Activity Priotity </p>
+<p>Sample Response for Update Activity Priotity</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">168816</span><span class="p">,</span><span class="w">
@@ -2356,7 +2400,7 @@ curl -X PUT <span class="se">\</span>
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre>
-<p>Change priority for the AB activity that is referenced by the supplied id. Allowed values for priority are 0-999. If you are using low, medium and high in the Target UI, those correspond to 0,5 and 10 respectively. You need to turn granular priority on in the settings page inorder to use the 0-999 scale. </p>
+<p>Change priority for the AB activity that is referenced by the supplied id. Allowed values for priority are 0-999. If you are using low, medium and high in the Target UI, those correspond to 0,5 and 10 respectively. You need to turn granular priority on in the settings page inorder to use the 0-999 scale.</p>
 
 <p><code class="prettyprint">PUT: /{tenant}/target/activities/{id}/priority</code></p>
 
@@ -2367,7 +2411,7 @@ You can also use the specific endpoints <b>/activities/ab/{id}/priority</b> and 
 <h2 id="update-activity-schedule">Update Activity Schedule</h2>
 
 <blockquote>
-<p>Sample Request for Update Activity Schedule </p>
+<p>Sample Request for Update Activity Schedule</p>
 </blockquote>
 <pre class="highlight shell"><code>
 curl -X PUT <span class="se">\</span>
@@ -2383,7 +2427,7 @@ curl -X PUT <span class="se">\</span>
 
 </code></pre>
 <blockquote>
-<p>Sample Response for Update Activity Schedule </p>
+<p>Sample Response for Update Activity Schedule</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">168816</span><span class="p">,</span><span class="w">
@@ -2509,11 +2553,11 @@ curl -X GET <span class="se">\</span>
 </span></code></pre>
 <p><code class="prettyprint">GET /{tenant}/target/activities/{id}/changelog</code></p>
 
-<p>Returns the changelog for a given activity id. </p>
+<p>Returns the changelog for a given activity id.</p>
 
 <h1 id="offers">Offers</h1>
 
-<p>API methods to Create, Read, Update and Delete Offers. Offers are also referred to as Content. </p>
+<p>API methods to Create, Read, Update and Delete Offers. Offers are also referred to as Content.</p>
 
 <h2 id="list-offers">List Offers</h2>
 
@@ -2622,7 +2666,7 @@ curl -X GET <span class="se">\</span>
 
             </td>
             <td>
-                <p><span class="text-code"> Returns the first ten offers 
+                <p><span class="text-code"> Returns the first ten offers
             <code>/target/offers/?limit=10</code></span>
                 </p>
             </td>
@@ -2634,9 +2678,9 @@ curl -X GET <span class="se">\</span>
                 <p>Defines the first offer to return from the list of total offers. Used in conjunction with limit, you can provide pagination in your application for users to browse through a large set of offers.</p>
             </td>
             <td>
-                <p><span>Returns the first ten offers<br> 
-            <code>/target/offers/?limit=10&amp;offset=0 </code><br><br> 
-            Returns offers between 11-20<br> 
+                <p><span>Returns the first ten offers<br>
+            <code>/target/offers/?limit=10&amp;offset=0 </code><br><br>
+            Returns offers between 11-20<br>
               <code>/target/offers/?limit=10&amp;offset=10</code> </span>
                 </p>
             </td>
@@ -2693,7 +2737,7 @@ curl -X GET <span class="se">\</span>
 </span></code></pre>
 <h3 id="get-tenant-target-offers-content-id"><code class="prettyprint">GET /{tenant}/target/offers/content/{id}</code></h3>
 
-<p>Retrieves the contents of an offer given an offer id. </p>
+<p>Retrieves the contents of an offer given an offer id.</p>
 
 <h2 id="create-offer">Create Offer</h2>
 
@@ -2916,7 +2960,7 @@ curl -X DELETE <span class="se">\</span>
 
             </td>
             <td>
-                <p><span> Returns the first ten audiences 
+                <p><span> Returns the first ten audiences
             <code>/target/audiences/?limit=10</code></span>
                 </p>
             </td>
@@ -2928,9 +2972,9 @@ curl -X DELETE <span class="se">\</span>
                 <p>Defines the first audience to return from the list of total offers. Used in conjunction with limit, you can provide pagination in your application for users to browse through a large set of offers.</p>
             </td>
             <td>
-                <p><span>Returns the first ten audiences<br> 
-            <code>/target/audiences/?limit=10&amp;offset=0 </code><br><br> 
-            Returns audiences between 11-20<br> 
+                <p><span>Returns the first ten audiences<br>
+            <code>/target/audiences/?limit=10&amp;offset=0 </code><br><br>
+            Returns audiences between 11-20<br>
               <code>/target/audiences/?limit=10&amp;offset=10</code> </span>
                 </p>
             </td>
@@ -2963,25 +3007,25 @@ curl -X DELETE <span class="se">\</span>
 
 <h3 id="some-additonal-examples">Some Additonal Examples</h3>
 
-<p>GET list of all audiences<br>
+<p>GET list of all audiences
 <code class="prettyprint">https://mc.adobe.io/{tenant}/target/audiences/</code></p>
 
-<p>GET audiences list with limit<br>
+<p>GET audiences list with limit
 <code class="prettyprint">https://mc.adobe.io/{tenant}/target/audiences/?limit=1</code></p>
 
-<p>GET audiences list with limit and offset<br>
+<p>GET audiences list with limit and offset
 <code class="prettyprint">https://mc.adobe.io/{tenant}/target/audiences/?limit=2&amp;offset=2</code></p>
 
-<p>GET audiences list filtered by multiple values<br>
+<p>GET audiences list filtered by multiple values
 <code class="prettyprint">https://mc.adobe.io/{tenant}/target/audiences/?id=3&amp;id=4&amp;name=ab</code></p>
 
-<p>GET audiences list filtered by negative values<br>
+<p>GET audiences list filtered by negative values
 <code class="prettyprint">https://mc.adobe.io/{tenant}/target/audiences/?priority=!4</code></p>
 
-<p>GET audiences list sorted by multiple criteria<br>
+<p>GET audiences list sorted by multiple criteria
 <code class="prettyprint">https://mc.adobe.io/{tenant}/target/audiences/?sortBy=name&amp;sortBy=id</code></p>
 
-<p>GET audiences list filtered by a date range<br>
+<p>GET audiences list filtered by a date range
 <code class="prettyprint">https://mc.adobe.io/{tenant}/target/audiences/?startsAt=1800-09-01T02:04:00.000-07:00/2114-11-30T14:10:00.000-07:00</code></p>
 
 <h2 id="get-audience-by-id">Get Audience by ID</h2>
@@ -3096,7 +3140,7 @@ curl -X POST <span class="se">\</span>
 <p><code class="prettyprint">POST /{tenant}/target/audiences</code></p>
 
 <aside class="warning">
-Audiences created using the API can only be edited using the API. You can&rsquo;t edit it in the UI. You can use it in your activities though. 
+Audiences created using the API can only be edited using the API. You can&rsquo;t edit it in the UI. You can use it in your activities though.
 </aside>
 
 <p>Create a new audience as specified by the contents of the request and return the newly-created audience definition.</p>
@@ -3687,9 +3731,142 @@ curl -X GET <span class="se">\</span>
 The request format is similar to AB and XT performance report. Change /ab or /xt to <b>/abt</b> in the request url. <b>abt</b> is the request paramater for Automated Personalization activities.
 </aside>
 
+<h2 id="get-audit-report">Get Audit Report</h2>
+
+<blockquote>
+<p>Sample Request for AB Audit Report</p>
+</blockquote>
+<pre class="highlight shell"><code>
+curl -X GET <span class="se">\</span>
+  https://mc.adobe.io/adobetargetmobile/target/activities/ab/167169/orders/performance <span class="se">\</span>
+  -H <span class="s1">'authorization: Bearer &lt;your-bearer-token&gt;'</span> <span class="se">\</span>
+  -H <span class="s1">'cache-control: no-cache'</span> <span class="se">\</span>
+  -H <span class="s1">'content-type: application/vnd.adobe.target.v1+json'</span> <span class="se">\</span>
+  -H <span class="s1">'x-api-key: &lt;your-api-token&gt;'</span>
+
+</code></pre>
+<blockquote>
+<p>Sample Response for AB and XT Audit Reports</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"reportParameters"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"activityId"</span><span class="p">:</span><span class="w"> </span><span class="mi">167169</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"environmentId"</span><span class="p">:</span><span class="w"> </span><span class="mi">8818</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"reportInterval"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-03-20T16:00Z/2017-08-19T00:01:01.721Z"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"conversionMetricLocalIds"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="mi">32767</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+</span><span class="nt">"activity"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">167169</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"thirdPartyId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6116ec53-5a2b-4f5d-9268-41e4c153e494"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xt"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"approved"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Master - Serverside - XT"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"priority"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"modifiedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-07-31T18:23:44Z"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"metrics"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Entry"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"metricLocalId"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Display mboxes"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"metricLocalId"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"metric_placeholder"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"metricLocalId"</span><span class="p">:</span><span class="w"> </span><span class="mi">32767</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="nt">"experiences"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USA Experience"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"experienceLocalId"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UK Experience"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"experienceLocalId"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"France Experience"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"experienceLocalId"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Australia Experience"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"experienceLocalId"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"orders"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-12-04T00:00:00.000-05:00"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"experienceLocalId"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"order ID 4444"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"total"</span><span class="p">:</span><span class="w"> </span><span class="mf">7.4</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"duplicate"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"outlier"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"productPurchasedIds"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"laptop3"</span><span class="p">,</span><span class="w"> </span><span class="s2">"book3"</span><span class="p">]</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-12-02T10:03:00.000-05:00"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"experienceLocalId"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"order REF ID#123"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"total"</span><span class="p">:</span><span class="w"> </span><span class="mf">23.01</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+
+          </span><span class="err">...</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+<blockquote>
+<p>Sample Response for AP Audit Reports. </p>
+</blockquote>
+<pre class="highlight json"><code><span class="w">
+  </span><span class="s2">"orders"</span><span class="err">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-01-11T00:00:00.000-05:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"decisionStackId"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1452535235728"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">325</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"productIds"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"5"</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-01-11T00:00:00.000-05:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"decisionStackId"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1452535342214"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">325</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"productIds"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"5"</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-01-11T00:00:00.000-05:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"decisionStackId"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1452535371489"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">429</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"productIds"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"9"</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="err">}</span><span class="w">
+
+</span></code></pre>
+<p><code class="prettyprint">GET /{tenant}/target/activities/ab/{id}/report/orders</code></p>
+
+<p>Retrieve the orders/audit report data for an AB, XT or Autotmated Personalization Activity</p>
+
+<aside class="notice">
+Change /ab to /xt or /abt in the request url for XT and AP activities. <b>abt</b> is the request paramater for Automated Personalization activities.
+</aside>
+
 <h1 id="mboxes-and-environments">Mboxes and Environments</h1>
 
-<p>APIs to retrive mboxes, mbox paramaters, profile parmeters and environments. </p>
+<p>APIs to retrive mboxes, mbox paramaters, profile parmeters and environments.</p>
 
 <h2 id="list-mboxes">List Mboxes</h2>
 
@@ -3744,7 +3921,7 @@ curl -X GET <span class="se">\</span>
 
 </span></code></pre>
 <aside class="notice">
-The limit, offset and Sortby paramaters described in List Offers and List Audiences can be used for this API as well. 
+The limit, offset and Sortby paramaters described in List Offers and List Audiences can be used for this API as well.
 </aside>
 
 <h3 id="get-tenant-target-mboxes"><code class="prettyprint">GET /{tenant}/target/mboxes</code></h3>
@@ -4008,13 +4185,13 @@ curl -X GET <span class="se">\</span>
 <p>Retrieve the list of available profile attributes and mbox parameters of type profile</p>
 
 <aside class="notice">
-Profile attributes and Profile Parameters mean the same thing. Both versions are used in the UI and the documentation. 
+Profile attributes and Profile Parameters mean the same thing. Both versions are used in the UI and the documentation.
 </aside>
 
-<h2 id="get-environments">Get Environments</h2>
+<h2 id="list-environments">List Environments</h2>
 
 <blockquote>
-<p>Sample Request for Get Environments</p>
+<p>Sample Request for List Environments</p>
 </blockquote>
 <pre class="highlight shell"><code>
 curl -X GET <span class="se">\</span>
@@ -4026,7 +4203,7 @@ curl -X GET <span class="se">\</span>
 
 </code></pre>
 <blockquote>
-<p>Sample Response for Get Environments</p>
+<p>Sample Response for List Environments</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="nt">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
@@ -4059,7 +4236,7 @@ If you are looking to retrieve &ldquo;Host Groups&rdquo;, use this API.
 
 <h1 id="batch-updates">Batch Updates</h1>
 
-<p>Execute multiple API calls as a single batch request. </p>
+<p>Execute multiple API calls as a single batch request.</p>
 
 <h2 id="execute-calls-in-batch">Execute Calls in Batch</h2>
 
