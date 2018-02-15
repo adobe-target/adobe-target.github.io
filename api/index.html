@@ -238,7 +238,7 @@ Don&rsquo;t forget to replace the clientcode and the mbox name with your own in 
                 <p>This is the Session Id that should be generated and maintained by you. The Session Id can be any printable string except a space, ?, or /. It should be between 1 and 128 characters in length.</p>
                 <p>For a particular session, its value must stay the same across multiple requests.</p>
                 <p>Routing to a particular node in the edge cluster is done using Session Id.</p>
-                <p>The session is active for 30 minutes on the server side. Therefore, you should n&rsquo;t use a different Session Id for a particular tntId/thirdPartyId within 30 minutes of the last request made with the tntId/thirdPartyId. Otherwise, changes to the profile could be inconsistent and unpredictable.</p>
+                <p>The session is active for 30 minutes on the server side. Therefore, you shouldn&rsquo;t use a different SessionId for a particular tntId/thirdPartyId within 30 minutes of the last request made with the tntId/thirdPartyId. Otherwise, changes to the profile could be inconsistent and unpredictable.</p>
                 <p>Using the same Session ID with multiple tntIds/thirdPartyIds may cause unpredictable changes to the profiles identified by the tntId/thirdPartyIDs.</p>
             </td>
         </tr>
@@ -537,6 +537,7 @@ Don&rsquo;t forget to replace the clientcode and the mbox name with your own in 
   https://&lt;your-tenant-name&gt;.tt.omtrdc.net/rest/v2/batchmbox/ <span class="se">\</span>
   -H <span class="s1">'cache-control: no-cache'</span> <span class="se">\</span>
   -H <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'session-id: your-unique-session-id'</span><span class="se">\</span>
   -d <span class="s1">'{
    "client": "&lt;your-tenant-name&gt;",
    "id": {
@@ -589,7 +590,7 @@ Don&rsquo;t forget to replace the clientcode and the mbox name with your own in 
 Don&rsquo;t forget to replace the clientcode and the mbox name with your own in the API calls. The APIs in the collection use a demo account.
 </aside>
 
-<p><a href="https://app.getpostman.com/run-collection/4db4eefc81c7b5a4d5d4"><img src="https://run.pstmn.io/button.svg" alt="Run in Postman" /></a></p>
+<p><a href="https://app.getpostman.com/run-collection/86e5c5003452af10b371"><img src="https://run.pstmn.io/button.svg" alt="Run in Postman" /></a></p>
 
 <h2 id="batch-limitations">Batch Limitations</h2>
 
@@ -606,6 +607,7 @@ Don&rsquo;t forget to replace the clientcode and the mbox name with your own in 
   https://&lt;your-tenant-name&gt;.tt.omtrdc.net/rest/v2/batchmbox/ <span class="se">\</span>
   -H <span class="s1">'cache-control: no-cache'</span> <span class="se">\</span>
   -H <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'session-id: your-unique-session-id'</span><span class="se">\</span>
   -d <span class="s1">'{
    "client": "&lt;your-tenant-name&gt;",
    "id": {
@@ -671,6 +673,7 @@ Don&rsquo;t forget to replace the clientcode and the mbox name with your own in 
   https://&lt;your-tenant-name&gt;.tt.omtrdc.net/rest/v2/batchmbox/ <span class="se">\</span>
   -H <span class="s1">'cache-control: no-cache'</span> <span class="se">\</span>
   -H <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
+  -H <span class="s1">'session-id: your-unique-session-id'</span><span class="se">\</span>
   -d <span class="s1">'{
    "client": "&lt;your-tenant-name&gt;",
    "id": {
