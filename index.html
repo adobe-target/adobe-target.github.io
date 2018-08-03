@@ -1,0 +1,326 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, maximum-scale=1">
+<title>Adobe Target Developers</title>
+<link rel="icon" href="favicon.png" type="image/png">
+<link href="css/bootstrap.css" rel="stylesheet" type="text/css">
+<link href="css/style.css" rel="stylesheet" type="text/css">
+<link href="css/linecons.css" rel="stylesheet" type="text/css">
+<link href="css/font-awesome.css" rel="stylesheet" type="text/css">
+<link href="css/responsive.css" rel="stylesheet" type="text/css">
+ <link href='https://fonts.googleapis.com/css?family=Lato:400,900,700,700italic,400italic,300italic,300,100italic,100,900italic' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Dosis:400,500,700,800,600,300,200' rel='stylesheet' type='text/css'>
+ <!--[if IE]><style type="text/css">.pie {behavior:url(PIE.htc);}</style><![endif]-->
+ <script type="text/javascript" src="js/jquery.1.8.3.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.js"></script>
+<script type="text/javascript" src="js/jquery-scrolltofixed.js"></script>
+<script type="text/javascript" src="js/jquery.easing.1.3.js"></script>
+<script type="text/javascript" src="js/jquery.isotope.js"></script>
+<script type="text/javascript" src="js/wow.js"></script>
+<script type="text/javascript" src="js/classie.js"></script>
+ <!--[if lt IE 9]>
+    <script src="js/respond-1.1.0.min.js"></script>
+    <script src="js/html5shiv.js"></script>
+    <script src="js/html5element.js"></script>
+<![endif]-->
+ <script type="text/javascript">
+	$(document).ready(function(e) {
+        $('.res-nav_click').click(function(){
+		$('ul.toggle').slideToggle(600)
+			});
+ 	$(document).ready(function() {
+$(window).bind('scroll', function() {
+         if ($(window).scrollTop() > 0) {
+             $('#header_outer').addClass('fixed');
+         }
+         else {
+             $('#header_outer').removeClass('fixed');
+         }
+    });
+ 	  });
+ 		    });
+function resizeText() {
+	var preferredWidth = 767;
+	var displayWidth = window.innerWidth;
+	var percentage = displayWidth / preferredWidth;
+	var fontsizetitle = 25;
+	var newFontSizeTitle = Math.floor(fontsizetitle * percentage);
+	$(".divclass").css("font-size", newFontSizeTitle)
+}
+</script>
+</head>
+<body>
+ <!--Header_section-->
+<header id="header_outer">
+  <div class="container">
+    <div class="header_section">
+      <div class="logo"><a href="javascript:void(0)"><img src="img/logob.png" alt=""></a></div>
+      <nav class="nav" id="nav">
+        <ul class="toggle">
+          <li><a href="#top_content">Home</a></li>
+          <li><a href="#implementation">Implementation</a></li>
+          <li><a href="#api_section">API</a></li>
+        </ul>
+        <ul class="">
+          <li><a href="#top_content">Home</a></li>
+          <li><a href="#implementation">Implementation</a></li>
+          <li><a href="#api_section">API</a></li>
+        </ul>
+      </nav>
+      <a class="res-nav_click animated wobble wow"  href="javascript:void(0)"><i class="fa-bars"></i></a> </div>
+  </div>
+</header>
+<!--Header_section-->
+ <!--Top_content-->
+<section id="top_content" class="top_cont_outer">
+  <div class="top_cont_inner">
+    <div class="container">
+      <div class="top_content">
+        <div class="row">
+          <div class="col-lg-5 col-sm-7">
+            <div class="top_left_cont flipInY wow animated">
+              <h3>Adobe Target</h3>
+              <h2>Develop and Deliver personalized experiences</h2>
+              <p> Implement Target on Client-Side Applications, Server-Side Applications, Mobile Apps, IoT and more. Export your Target data to third-party solutions. </p>
+              <a href="#implementation" class="learn_more2">Learn How</a> </div>
+          </div>
+          <div class="col-lg-7 col-sm-5"> </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!--Top_content-->
+ <!--Service-->
+<section  id="implementation">
+  <div class="container">
+    <h2>Implement Adobe Target</h2>
+    <div class="service_area">
+      <div class="row">
+        <div class="col-lg-4">
+          <div class="service_block">
+            <div class="service_icon"> <span><i class="fa-flash"></i></span> </div>
+            <h3 class="animated fadeInUp wow">Single-Page Apps</h3>
+            <p class="animated fadeInDown wow">Use at.js, our new js library, for both typical web implementations and single-page applications.</p>
+            <div class = "service_block_learn">
+              <div class="btnleft">
+                  <a href="https://marketing.adobe.com/resources/help/en_US/target/ov/c_how_atjs_works.html" class="learn_more3">Docs</a>
+              </div>
+              <div class="btnright">
+                  <a href="http://adobe-marketing-cloud.github.io/target-atjs-extensions/" class="learn_more3 ">Live Demos</a>
+              </div>
+            </div>
+           </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="service_block">
+            <div class="service_icon icon2"> <span><i class="fa-terminal"></i></span> </div>
+            <h3>Server-Side Apps</h3>
+            <p>Use the Server-Side Delivery API anywhere or our new node.js SDK</p>
+            <div class = "service_block_learn">
+              <div class="btnleft">
+                  <a href="/api/#server-side-delivery" class="learn_more3">Docs</a>
+              </div>
+              <div class="btnright">
+                  <a href="/api/#delivery-postman-collection" class="learn_more3">Run in Postman</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="service_block">
+            <div class="service_icon icon3"> <span><i class="fa-mobile-phone"></i></span> </div>
+            <h3>Mobile Apps</h3>
+            <p>Use the Adobe Experience Cloud native SDKs for iOS and Android</p>
+             <div class = "service_block_learn">
+              <div class="btnleft">
+                  <a href="https://marketing.adobe.com/resources/help/en_US/mobile/ios/c_target_methods.html" class="learn_more3">Docs</a>
+              </div>
+              <div class="btnright">
+                  <a href="https://github.com/adobe-target/mobile-lab/wiki/L1:-Download-the-app-and-login" class="learn_more3 ">Get Demo Apps</a>
+              </div>
+            </div>
+           </div>
+        </div>
+      </div>
+    </div>
+  </div>
+   <div id="api_section" class="container">
+    <h2>APIs and Services</h2>
+    <div class="service_area">
+      <div class="row">
+        <div class="col-lg-4">
+          <div class="service_block">
+            <div class="service_icon"> <span><i class="fa-file-code-o"></i></span> </div>
+            <h3>Admin APIs</h3>
+            <p>Programatically Create, Read, Update and Delete Activities, Audiences and Offers</p>
+             <div class = "service_block_learn">
+              <div class="btnleft">
+                  <a href="/api/#admin-apis" class="learn_more3">Docs</a>
+              </div>
+              <div class="btnright">
+                  <a href="/api/#admin-postman-collection" class="learn_more3">Run in Postman</a>
+              </div>
+            </div>
+           </div>
+        </div>
+         <div class="col-lg-4">
+          <div class="service_block">
+            <div class="service_icon icon2"> <span><i class="fa-database"></i></span> </div>
+            <h3>Reporting APIs</h3>
+            <p>Use the reporting API to export activity results and other reports out of Target.</p>
+             <div class = "service_block_learn">
+              <div class="btnleft">
+                  <a href="/api/#reports" class="learn_more3">Docs</a>
+              </div>
+              <div class="btnright">
+                  <a href="/api/#admin-postman-collection" class="learn_more3">Run in Postman</a>
+              </div>
+            </div>
+          </div>
+        </div>
+         <div class="col-lg-4">
+          <div class="service_block">
+            <div class="service_icon icon3"> <span><i class="fa-users"></i></span> </div>
+            <h3>Profile APIs</h3>
+            <p>Retreive and and update your user profiles stored in Target individually, or in batch.</p>
+             <div class = "service_block_learn">
+              <div class="btnleft">
+                  <a href="/api/#profiles" class="learn_more3">Docs</a>
+              </div>
+              <div class="btnright">
+                  <a href="/api/#delivery-postman-collection" class="learn_more3">Run in Postman</a>
+              </div>
+            </div>
+           </div>
+        </div>
+       </div>
+    </div>
+  </div>
+</section>
+ <section id="work_outer">
+<div class="top_cont_latest">
+  <div class="container">
+    <h2>Available Now - Node.js SDK</h2>
+    <div class="work_section">
+      <div class="row">
+        <div class="col-lg-6 col-sm-6 wow fadeInLeft delay-05s">
+           <div class="service-list">
+            <div class="service-list-col1"> <i class="icon-cog"></i> </div>
+            <div class="service-list-col2">
+              <h3>Easy Server-Side Testing</h3>
+              <p>Use the node.js SDK to easily implement and run server-side tests on your node.js applications</p>
+            </div>
+          </div>
+           <div class="service-list">
+            <div class="service-list-col1"> <i class="icon-search"></i> </div>
+            <div class="service-list-col2">
+              <h3>Install from npm</h3>
+              <p>Easily install the node sdk from npm - npm install @adobe/target-node-client
+              </p>
+            </div>
+          </div>
+           <div class="service-list">
+             <div class="service-list-col1"> <i class="icon-user"></i> </div>
+            <div class="service-list-col2">
+              <h3>Visitor ID Service</h3>
+              <p>The VisitorID service is enabled in the node SDK to connect all your Adobe data</p>
+            </div>
+          </div>
+           <div class="service-list">
+            <div class="service-list-col1"> <i class="icon-database"></i> </div>
+            <div class="service-list-col2">
+              <h3>Analytics 4 Target</h3>
+              <p>Use Adobe Analytics as your reporting source</p>
+            </div>
+          </div>
+           <div class="work_bottom"> <span>Integrate your node applications with Target</span> <a href="https://www.npmjs.com/package/@adobe/target-node-client" class="contact_btn">Get SDK on NPM</a></div>
+        </div>
+        <figure class="col-lg-6 col-sm-6  text-right wow fadeInUp delay-02s"></figure>
+      </div>
+    </div>
+  </div>
+  </div>
+</section>
+<!--main-section-end-->
+ <footer class="footer_section" id="contact">
+  <div class="container">
+  </div>
+  <div class="container">
+    <div class="footer_bottom"> <span>Copyright © Adobe </span> </div>
+  </div>
+</footer>
+<script type="text/javascript">
+    $(document).ready(function(e) {
+        $('#header_outer').scrollToFixed();
+        $('.res-nav_click').click(function(){
+            $('.main-nav').slideToggle();
+            return false
+         });
+     });
+</script>
+ <script type="text/javascript">
+	$(window).load(function(){
+ 		$('a').bind('click',function(event){
+			var $anchor = $(this);
+ 			$('html, body').stop().animate({
+				scrollTop: $($anchor.attr('href')).offset().top - 91
+			}, 1500,'easeInOutExpo');
+			/*
+			if you don't want to use the easing effects:
+			$('html, body').stop().animate({
+				scrollTop: $($anchor.attr('href')).offset().top
+			}, 1000);
+			*/
+			event.preventDefault();
+		});
+	})
+</script>
+ <script type="text/javascript">
+   jQuery(document).ready(function($){
+// Portfolio Isotope
+	var container = $('#portfolio-wrap');
+ 		function splitColumns() {
+			var winWidth = $(window).width(),
+				columnNumb = 1;
+ 			if (winWidth > 1024) {
+				columnNumb = 4;
+			} else if (winWidth > 900) {
+				columnNumb = 2;
+			} else if (winWidth > 479) {
+				columnNumb = 2;
+			} else if (winWidth < 479) {
+				columnNumb = 1;
+			}
+ 			return columnNumb;
+		}
+ 		function setColumns() {
+			var winWidth = $(window).width(),
+				columnNumb = splitColumns(),
+				postWidth = Math.floor(winWidth / columnNumb);
+ 			container.find('.portfolio-item').each(function () {
+				$(this).css( {
+					width : postWidth + 'px'
+				});
+			});
+		}
+ 		function setProjects() {
+			setColumns();
+			container.isotope('reLayout');
+		}
+ 		container.imagesLoaded(function () {
+			setColumns();
+		});
+ 		$(window).bind('resize', function () {
+			setProjects();
+		});
+ });
+$( window ).load(function() {
+	jQuery('#all').click();
+	return false;
+});
+</script>
+</body>
+</html>
