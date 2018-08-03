@@ -151,7 +151,7 @@ Don&rsquo;t forget to replace the clientcode and the mbox name with your own in 
 <p>Delivery API Sample Request. This is a request with just the mbox name in the POST body.</p>
 </blockquote>
 <pre class="highlight shell"><code>curl -X POST <span class="se">\</span>
-  <span class="s1">'https://&lt;your-tenant-name&gt;.tt.omtrdc.net/rest/v1/mbox/my-session-id?client=&lt;your-tenant-name&gt;'</span> <span class="se">\</span>
+  <span class="s1">'https://adobetargetmobile.tt.omtrdc.net/rest/v1/mbox/my-session-id?client=adobetargetmobile'</span> <span class="se">\</span>
   -H <span class="s1">'cache-control: no-cache'</span> <span class="se">\</span>
   -H <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
   -d <span class="s1">'{
@@ -173,7 +173,7 @@ Don&rsquo;t forget to replace the clientcode and the mbox name with your own in 
 <p>Delivery API request with all possible inputs</p>
 </blockquote>
 <pre class="highlight shell"><code>curl -X POST <span class="se">\</span>
-  <span class="s1">'https://&lt;your-tenant-name&gt;.tt.omtrdc.net/rest/v1/mbox/A210702C-402F-4458-9869-FCE64F318AE6?client=&lt;your-tenant-name&gt;'</span> <span class="se">\</span>
+  <span class="s1">'https://adobetargetmobile.tt.omtrdc.net/rest/v1/mbox/A210702C-402F-4458-9869-FCE64F318AE6?client=adobetargetmobile'</span> <span class="se">\</span>
   -H <span class="s1">'cache-control: no-cache'</span> <span class="se">\</span>
   -H <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
   -H <span class="s1">'user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_3) AppleWebKit/537.75.14 (KHTML, like Gecko) Version/7.0.3 Safari/7046A194A'</span> <span class="se">\</span>
@@ -238,7 +238,7 @@ Don&rsquo;t forget to replace the clientcode and the mbox name with your own in 
                 <p>This is the Session Id that should be generated and maintained by you. The Session Id can be any printable string except a space, ?, or /. It should be between 1 and 128 characters in length.</p>
                 <p>For a particular session, its value must stay the same across multiple requests.</p>
                 <p>Routing to a particular node in the edge cluster is done using Session Id.</p>
-                <p>The session is active for 30 minutes on the server side. Therefore, you shouldn&rsquo;t use a different SessionId for a particular tntId/thirdPartyId within 30 minutes of the last request made with the tntId/thirdPartyId. Otherwise, changes to the profile could be inconsistent and unpredictable.</p>
+                <p>The session is active for 30 minutes on the server side. Therefore, you should n&rsquo;t use a different Session Id for a particular tntId/thirdPartyId within 30 minutes of the last request made with the tntId/thirdPartyId. Otherwise, changes to the profile could be inconsistent and unpredictable.</p>
                 <p>Using the same Session ID with multiple tntIds/thirdPartyIds may cause unpredictable changes to the profiles identified by the tntId/thirdPartyIDs.</p>
             </td>
         </tr>
@@ -534,12 +534,11 @@ Don&rsquo;t forget to replace the clientcode and the mbox name with your own in 
 <p>Example 1 : Batch Delivery Request with multiple mboxes</p>
 </blockquote>
 <pre class="highlight shell"><code>curl -X POST <span class="se">\</span>
-  https://&lt;your-tenant-name&gt;.tt.omtrdc.net/rest/v2/batchmbox/ <span class="se">\</span>
+  https://adobetargetmobile.tt.omtrdc.net/rest/v2/batchmbox/ <span class="se">\</span>
   -H <span class="s1">'cache-control: no-cache'</span> <span class="se">\</span>
   -H <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
-  -H <span class="s1">'session-id: your-unique-session-id'</span><span class="se">\</span>
   -d <span class="s1">'{
-   "client": "&lt;your-tenant-name&gt;",
+   "client": "adobetargetmobile",
    "id": {
         "tntId": "123456789"
    },
@@ -556,11 +555,11 @@ Don&rsquo;t forget to replace the clientcode and the mbox name with your own in 
 }'</span>
 </code></pre>
 <blockquote>
-<p>Example 1 : Batch Delivery Response for multiple mboxes </p>
+<p>Example 1 : Batch Delivery Response for multiple mboxes</p>
 </blockquote>
 <pre class="highlight shell"><code><span class="o">{</span>
     <span class="s2">"requestId"</span>: <span class="s2">"1e20ec58-48c9-46a7-a43c-b34aafb1a18b"</span>,
-    <span class="s2">"client"</span>: <span class="s2">"&lt;your-tenant-name&gt;"</span>,
+    <span class="s2">"client"</span>: <span class="s2">"adobetargetmobile"</span>,
     <span class="s2">"id"</span>: <span class="o">{</span>
         <span class="s2">"tntId"</span>: <span class="s2">"123456789.28_51"</span>
     <span class="o">}</span>,
@@ -578,7 +577,7 @@ Don&rsquo;t forget to replace the clientcode and the mbox name with your own in 
     <span class="o">]</span>
 <span class="o">}</span>
 </code></pre>
-<p>The Batch Delivery API allows requesting content for multiple mboxes in a single call. It also has a prefetch mode that enables clients like mobile apps, servers etc to fetch content for multiple mboxes in one request, cache it locally and later notify Target when the user visits those mboxes. </p>
+<p>The Batch Delivery API allows requesting content for multiple mboxes in a single call. It also has a prefetch mode that enables clients like mobile apps, servers etc to fetch content for multiple mboxes in one request, cache it locally and later notify Target when the user visits those mboxes.</p>
 
 <aside class = "warning">
 <b>Beta API</b>: This API documenation section is a work in progress and the API is currently in beta. We will be adding more details and examples shortly. If you have any questions, please reach out to Adobe Client Care or your Customer Success Manager.
@@ -590,12 +589,12 @@ Don&rsquo;t forget to replace the clientcode and the mbox name with your own in 
 Don&rsquo;t forget to replace the clientcode and the mbox name with your own in the API calls. The APIs in the collection use a demo account.
 </aside>
 
-<p><a href="https://app.getpostman.com/run-collection/86e5c5003452af10b371"><img src="https://run.pstmn.io/button.svg" alt="Run in Postman" /></a></p>
+<p><a href="https://app.getpostman.com/run-collection/4db4eefc81c7b5a4d5d4"><img src="https://run.pstmn.io/button.svg" alt="Run in Postman" /></a></p>
 
 <h2 id="batch-limitations">Batch Limitations</h2>
 
 <aside class = "warning">
-<b>Support for AP and Recs Activities</b>: This API should only be used for AB and XT activities. Support for Automated Personalization, Auto-Allocate, Auto-Target and Recommendations activty types will be added in Q1 2018. The API request and response structure won&rsquo;t change when the support is added. 
+<b>Support for AP and Recs Activities</b>: This API should only be used for AB and XT activities. Support for Automated Personalization, Auto-Allocate, Auto-Target and Recommendations activty types will be added in Q1 2018. The API request and response structure won&rsquo;t change when the support is added.
 </aside>
 
 <h2 id="batch-terminology">Batch Terminology</h2>
@@ -604,12 +603,11 @@ Don&rsquo;t forget to replace the clientcode and the mbox name with your own in 
 <p>Example 2 : Batch Delivery Request with one regular mbox and one prefetched mbox</p>
 </blockquote>
 <pre class="highlight shell"><code>curl -X POST <span class="se">\</span>
-  https://&lt;your-tenant-name&gt;.tt.omtrdc.net/rest/v2/batchmbox/ <span class="se">\</span>
+  https://adobetargetmobile.tt.omtrdc.net/rest/v2/batchmbox/ <span class="se">\</span>
   -H <span class="s1">'cache-control: no-cache'</span> <span class="se">\</span>
   -H <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
-  -H <span class="s1">'session-id: your-unique-session-id'</span><span class="se">\</span>
   -d <span class="s1">'{
-   "client": "&lt;your-tenant-name&gt;",
+   "client": "adobetargetmobile",
    "id": {
         "tntId": "123456789"
    },
@@ -632,7 +630,7 @@ Don&rsquo;t forget to replace the clientcode and the mbox name with your own in 
 </blockquote>
 <pre class="highlight shell"><code><span class="o">{</span>
     <span class="s2">"requestId"</span>: <span class="s2">"77a45e19-732f-42ea-98de-e4a36ceecd55"</span>,
-    <span class="s2">"client"</span>: <span class="s2">"&lt;your-tenant-name&gt;"</span>,
+    <span class="s2">"client"</span>: <span class="s2">"adobetargetmobile"</span>,
     <span class="s2">"id"</span>: <span class="o">{</span>
         <span class="s2">"tntId"</span>: <span class="s2">"123456789.28_3"</span>
     <span class="o">}</span>,
@@ -655,13 +653,13 @@ Don&rsquo;t forget to replace the clientcode and the mbox name with your own in 
     <span class="o">]</span>
 <span class="o">}</span>
 </code></pre>
-<p>Here are some common terms that you need to be familiar with. </p>
+<p>Here are some common terms that you need to be familiar with.</p>
 
 <ul>
-<li><p><strong>mboxes</strong> – List of mboxes that should be fetched and marked as visited immediately on content delivery. If you just want to get the content for multiple mboxes but don&rsquo;t have a necessary to prefetch and cache them, use this. </p></li>
+<li><p><strong>mboxes</strong> – List of mboxes that should be fetched and marked as visited immediately on content delivery. If you just want to get the content for multiple mboxes but don&rsquo;t have a necessary to prefetch and cache them, use this.</p></li>
 <li><p><strong>prefetch</strong> – List of mboxes that should be fetched but shouldn&rsquo;t be marked as visited. The Target edge returns an eventToken for each mbox that is present in the the prefetch array</p></li>
-<li><p><strong>notifications</strong> – List of mboxes that were previously prefetched and should be marked as visited. </p></li>
-<li><p><strong>eventTokens</strong> – A hashed encrypted token that is returned when content is prefetched. This eventToken should be sent back to Target in the notifications array.  </p></li>
+<li><p><strong>notifications</strong> – List of mboxes that were previously prefetched and should be marked as visited.</p></li>
+<li><p><strong>eventTokens</strong> – A hashed encrypted token that is returned when content is prefetched. This eventToken should be sent back to Target in the notifications array.</p></li>
 </ul>
 
 <h2 id="batch-input-parameters">Batch Input Parameters</h2>
@@ -670,12 +668,11 @@ Don&rsquo;t forget to replace the clientcode and the mbox name with your own in 
 <p>Example 3: Batch Delivery with all possible inputs</p>
 </blockquote>
 <pre class="highlight shell"><code>curl -X POST <span class="se">\</span>
-  https://&lt;your-tenant-name&gt;.tt.omtrdc.net/rest/v2/batchmbox/ <span class="se">\</span>
+  https://adobetargetmobile.tt.omtrdc.net/rest/v2/batchmbox/ <span class="se">\</span>
   -H <span class="s1">'cache-control: no-cache'</span> <span class="se">\</span>
   -H <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
-  -H <span class="s1">'session-id: your-unique-session-id'</span><span class="se">\</span>
   -d <span class="s1">'{
-   "client": "&lt;your-tenant-name&gt;",
+   "client": "adobetargetmobile",
    "id": {
         "tntId": "123456789",
         "thirdPartyId": "32jh4jk23h4kj2",
@@ -685,7 +682,7 @@ Don&rsquo;t forget to replace the clientcode and the mbox name with your own in 
                 "id": "32jh4jk23h4kj2",
                 "integrationCode": "userid",
                 "authenticatedState": "authenticated"
-            }   
+            }
         ]
    },
    "aamParameters": {
@@ -953,7 +950,7 @@ Don&rsquo;t forget to replace the clientcode and the mbox name with your own in 
 <p>Sample Profile Structure</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-    </span><span class="nt">"client"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;your-tenant-name&gt;"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"client"</span><span class="p">:</span><span class="w"> </span><span class="s2">"adobetargetmobile"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"visitorId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a1-mbox3rdPartyId"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"modifiedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-08-18T17:53:39.003-04:00"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"profileAttributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -1020,7 +1017,7 @@ Don&rsquo;t forget to replace the clientcode and the mbox name with your own in 
 
 <p>Replace &ldquo;yourclientcode&rdquo; and &ldquo;your-tnt-id&rdquo; and fire a GET request. Here is an example profile fetch call using a tntid</p>
 
-<p><code class="prettyprint">http://&lt;your-tenant-name&gt;.tt.omtrdc.net/rest/v1/profiles/111492025094307-353046?client=&lt;your-tenant-name&gt;</code></p>
+<p><code class="prettyprint">http://adobetargetmobile.tt.omtrdc.net/rest/v1/profiles/111492025094307-353046?client=adobetargetmobile</code></p>
 
 <h3 id="using-a-thirdpartyid">Using a thirdPartyId</h3>
 
@@ -1032,7 +1029,7 @@ Don&rsquo;t forget to replace the clientcode and the mbox name with your own in 
 
 <p>Replace &ldquo;yourclientcode&rdquo; and &ldquo;your-thirdpartyid&rdquo; and fire a GET request. Here is an example profile fetch call using a thirdpartyid</p>
 
-<p><code class="prettyprint">http://&lt;your-tenant-name&gt;.tt.omtrdc.net/rest/v1/profiles/thirdPartyId/a1-mbox3rdPartyId?client=&lt;your-tenant-name&gt;</code></p>
+<p><code class="prettyprint">http://adobetargetmobile.tt.omtrdc.net/rest/v1/profiles/thirdPartyId/a1-mbox3rdPartyId?client=adobetargetmobile</code></p>
 
 <p>When this call is made, Target attempts to locate the profile first in the cluster noted in the edge request, or wherever the profile is located and return the content. The profile contents are returned in JSON format.</p>
 
@@ -1233,36 +1230,6 @@ Expected values for the status fields are:</p>
 
 <p>In all the code examples, you must replace the <code class="prettyprint">{tenant}</code> variable with your tenant value, <code class="prettyprint">your-bearer-token</code> with the access token that you generate with your JWT and <code class="prettyprint">your-api-key</code> with your API key from the Adobe I/O console.</p>
 
-<h2 id="versioning">Versioning</h2>
-
-<blockquote>
-<p>Error Message for unsupported features</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-    </span><span class="nt">"httpStatus"</span><span class="p">:</span><span class="w"> </span><span class="mi">406</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"requestId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8752b736-cf71-4d81-86c3-94be2b5ae648"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"requestTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-02-02T21:39:06.405Z"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-            </span><span class="nt">"errorCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Unsupported.Feature"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Unsupported features detected"</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-    </span><span class="p">]</span><span class="w">
-</span><span class="p">}</span><span class="w">
-
-</span></code></pre>
-<p>All APIs have a version associated with it. It is important to provide the right version of the API that you want to use. </p>
-
-<ul>
-<li><p>If the request contains a payload (POST or PUT), the <strong>Content-Type</strong> header of the request is used to specify the version. </p></li>
-<li><p>If the request doesn&rsquo;t contain a payload (GET, DELETE or OPTIONS), the <strong>Accept</strong> header is used to specify the version. </p></li>
-<li><p>If a version isn&rsquo;t provided, the call will default to V1 (application/vnd.adobe.target.v1+json) . </p></li>
-</ul>
-
-<aside class="notice">
-If the correct version isn&rsquo;t specified (eg: If you use a V2 payload but don&rsquo;t specify the Content-Type header), then the API will respond with an unsupported error if the API is not backwards compatible.
-</aside>
-
 <h2 id="adobe-i-o-console">Adobe I/O Console</h2>
 
 <p>The Adobe I/O console (https://console.adobe.io) is where you can configure your API integration and obtain your API keys and access token.</p>
@@ -1351,7 +1318,7 @@ Don&rsquo;t forget to replace the {{tenant}}, {{access_token}} and {{api_key}} v
 </blockquote>
 <pre class="highlight shell"><code>
 curl -X GET
-https://mc.adobe.io/&lt;your-tenant-name&gt;/target/activities/ <span class="se">\</span>
+https://mc.adobe.io/adobetargetmobile/target/activities/ <span class="se">\</span>
   -H <span class="s1">'authorization: Bearer &lt;your-bearer-token&gt;'</span> <span class="se">\</span>
   -H <span class="s1">'cache-control: no-cache'</span> <span class="se">\</span>
   -H <span class="s1">'content-type: application/vnd.adobe.target.v1+json'</span> <span class="se">\</span>
@@ -1469,7 +1436,7 @@ https://mc.adobe.io/&lt;your-tenant-name&gt;/target/activities/ <span class="se"
 <p>Sample Request for Get AB Activity by ID</p>
 </blockquote>
 <pre class="highlight shell"><code>curl -X GET
-https://mc.adobe.io/&lt;your-tenant-name&gt;/target/activities/ab/168824 <span class="se">\</span>
+https://mc.adobe.io/adobetargetmobile/target/activities/ab/168824 <span class="se">\</span>
   -H <span class="s1">'authorization: Bearer &lt;your-bearer-token&gt;'</span> <span class="se">\</span>
   -H <span class="s1">'cache-control: no-cache'</span> <span class="se">\</span>
   -H <span class="s1">'content-type: application/vnd.adobe.target.v1+json'</span> <span class="se">\</span>
@@ -1564,7 +1531,7 @@ https://mc.adobe.io/&lt;your-tenant-name&gt;/target/activities/ab/168824 <span c
 </blockquote>
 <pre class="highlight shell"><code>
 curl -X DELETE <span class="se">\</span>
-  https://mc.adobe.io/&lt;your-tenant-name&gt;/target/activities/ab/168805 <span class="se">\</span>
+  https://mc.adobe.io/adobetargetmobile/target/activities/ab/168805 <span class="se">\</span>
   -H <span class="s1">'authorization: Bearer &lt;your-bearer-token&gt;'</span> <span class="se">\</span>
   -H <span class="s1">'cache-control: no-cache'</span> <span class="se">\</span>
   -H <span class="s1">'content-type: application/vnd.adobe.target.v1+json'</span> <span class="se">\</span>
@@ -1653,7 +1620,7 @@ curl -X DELETE <span class="se">\</span>
 </blockquote>
 <pre class="highlight shell"><code>
 curl -X POST <span class="se">\</span>
-  https://mc.adobe.io/&lt;your-tenant-name&gt;/target/activities/ab/ <span class="se">\</span>
+  https://mc.adobe.io/adobetargetmobile/target/activities/ab/ <span class="se">\</span>
   -H <span class="s1">'authorization: Bearer &lt;your-bearer-token&gt;'</span> <span class="se">\</span>
   -H <span class="s1">'cache-control: no-cache'</span> <span class="se">\</span>
   -H <span class="s1">'content-type: application/vnd.adobe.target.v1+json'</span> <span class="se">\</span>
@@ -2102,7 +2069,7 @@ Activities created using the API can only be edited using the API. You can&rsquo
 <p>Sample Request for Update AB Activity</p>
 </blockquote>
 <pre class="highlight shell"><code>curl -X PUT <span class="se">\</span>
-  https://mc.adobe.io/&lt;your-tenant-name&gt;/target/activities/ab/183916 <span class="se">\</span>
+  https://mc.adobe.io/adobetargetmobile/target/activities/ab/183916 <span class="se">\</span>
   -H <span class="s1">'authorization: Bearer &lt;your-bearer-token&gt;'</span> <span class="se">\</span>
   -H <span class="s1">'cache-control: no-cache'</span> <span class="se">\</span>
   -H <span class="s1">'content-type: application/vnd.adobe.target.v1+json'</span> <span class="se">\</span>
@@ -2327,7 +2294,7 @@ Refer &ldquo;Create AB Activity&rdquo; for the available inputs, limitations and
 <p>Sample Request for Get XT Activity by ID</p>
 </blockquote>
 <pre class="highlight shell"><code>curl -X GET
-https://mc.adobe.io/&lt;your-tenant-name&gt;/target/activities/xt/168824 <span class="se">\</span>
+https://mc.adobe.io/adobetargetmobile/target/activities/xt/168824 <span class="se">\</span>
   -H <span class="s1">'authorization: Bearer &lt;your-bearer-token&gt;'</span> <span class="se">\</span>
   -H <span class="s1">'cache-control: no-cache'</span> <span class="se">\</span>
   -H <span class="s1">'content-type: application/vnd.adobe.target.v1+json'</span> <span class="se">\</span>
@@ -2413,8 +2380,8 @@ https://mc.adobe.io/&lt;your-tenant-name&gt;/target/activities/xt/168824 <span c
         </span><span class="p">}</span><span class="w">
     </span><span class="p">],</span><span class="w">
     </span><span class="nt">"analytics"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"reportSuite"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;your-tenant-name&gt;iosdemo"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"dataCollectionHost"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;your-tenant-name&gt;.sc.omtrdc.net"</span><span class="w">
+        </span><span class="nt">"reportSuite"</span><span class="p">:</span><span class="w"> </span><span class="s2">"adobetargetmobileiosdemo"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"dataCollectionHost"</span><span class="p">:</span><span class="w"> </span><span class="s2">"adobetargetmobile.sc.omtrdc.net"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="nt">"modifiedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-06-12T14:27:44Z"</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -2429,7 +2396,7 @@ https://mc.adobe.io/&lt;your-tenant-name&gt;/target/activities/xt/168824 <span c
 </blockquote>
 <pre class="highlight shell"><code>
 curl -X DELETE <span class="se">\</span>
-  https://mc.adobe.io/&lt;your-tenant-name&gt;/target/activities/xt/168333 <span class="se">\</span>
+  https://mc.adobe.io/adobetargetmobile/target/activities/xt/168333 <span class="se">\</span>
   -H <span class="s1">'authorization: Bearer &lt;your-bearer-token&gt;'</span> <span class="se">\</span>
   -H <span class="s1">'cache-control: no-cache'</span> <span class="se">\</span>
   -H <span class="s1">'content-type: application/vnd.adobe.target.v1+json'</span> <span class="se">\</span>
@@ -2529,7 +2496,7 @@ curl -X DELETE <span class="se">\</span>
 </blockquote>
 <pre class="highlight shell"><code>
 curl -X POST <span class="se">\</span>
-  https://mc.adobe.io/&lt;your-tenant-name&gt;/target/activities/xt/ <span class="se">\</span>
+  https://mc.adobe.io/adobetargetmobile/target/activities/xt/ <span class="se">\</span>
   -H <span class="s1">'authorization: Bearer &lt;your-bearer-token&gt;'</span> <span class="se">\</span>
   -H <span class="s1">'cache-control: no-cache'</span> <span class="se">\</span>
   -H <span class="s1">'content-type: application/vnd.adobe.target.v1+json'</span> <span class="se">\</span>
@@ -2621,8 +2588,8 @@ curl -X POST <span class="se">\</span>
         }
     ],
     "analytics": {
-        "reportSuite": "&lt;your-tenant-name&gt;westeros",
-        "dataCollectionHost": "&lt;your-tenant-name&gt;.sc.omtrdc.net"
+        "reportSuite": "adobetargetmobilewesteros",
+        "dataCollectionHost": "adobetargetmobile.sc.omtrdc.net"
     }
 }'</span>
 
@@ -2719,8 +2686,8 @@ curl -X POST <span class="se">\</span>
         </span><span class="p">}</span><span class="w">
     </span><span class="p">],</span><span class="w">
     </span><span class="nt">"analytics"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"reportSuite"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;your-tenant-name&gt;westeros"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"dataCollectionHost"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;your-tenant-name&gt;.sc.omtrdc.net"</span><span class="w">
+        </span><span class="nt">"reportSuite"</span><span class="p">:</span><span class="w"> </span><span class="s2">"adobetargetmobilewesteros"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"dataCollectionHost"</span><span class="p">:</span><span class="w"> </span><span class="s2">"adobetargetmobile.sc.omtrdc.net"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="nt">"modifiedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-07-10T06:01:27Z"</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -2753,7 +2720,7 @@ To Update an XT Activity use the same input as described in &ldquo;Create XT Act
 </blockquote>
 <pre class="highlight shell"><code>
 curl -X PUT <span class="se">\</span>
-  https://mc.adobe.io/&lt;your-tenant-name&gt;/target/activities/168816/name <span class="se">\</span>
+  https://mc.adobe.io/adobetargetmobile/target/activities/168816/name <span class="se">\</span>
   -H <span class="s1">'authorization: Bearer &lt;your-bearer-token&gt;'</span> <span class="se">\</span>
   -H <span class="s1">'cache-control: no-cache'</span> <span class="se">\</span>
   -H <span class="s1">'content-type: application/vnd.adobe.target.v1+json'</span> <span class="se">\</span>
@@ -2788,7 +2755,7 @@ You can also use the specific endpoints <b>/activities/ab/{id}/name</b> and /<b>
 </blockquote>
 <pre class="highlight shell"><code>
 curl -X PUT <span class="se">\</span>
-  https://mc.adobe.io/&lt;your-tenant-name&gt;/target/activities/168816/state <span class="se">\</span>
+  https://mc.adobe.io/adobetargetmobile/target/activities/168816/state <span class="se">\</span>
   -H <span class="s1">'authorization: Bearer &lt;your-bearer-token&gt;'</span> <span class="se">\</span>
   -H <span class="s1">'cache-control: no-cache'</span> <span class="se">\</span>
   -H <span class="s1">'content-type: application/vnd.adobe.target.v1+json'</span> <span class="se">\</span>
@@ -2830,7 +2797,7 @@ You can also use the specific endpoints <b>/activities/ab/{id}/state</b> and <b>
 </blockquote>
 <pre class="highlight shell"><code>
 curl -X PUT <span class="se">\</span>
-  https://mc.adobe.io/&lt;your-tenant-name&gt;/target/activities/168816/priority <span class="se">\</span>
+  https://mc.adobe.io/adobetargetmobile/target/activities/168816/priority <span class="se">\</span>
   -H <span class="s1">'authorization: Bearer &lt;your-bearer-token&gt;'</span> <span class="se">\</span>
   -H <span class="s1">'cache-control: no-cache'</span> <span class="se">\</span>
   -H <span class="s1">'content-type: application/vnd.adobe.target.v1+json'</span> <span class="se">\</span>
@@ -2865,7 +2832,7 @@ You can also use the specific endpoints <b>/activities/ab/{id}/priority</b> and 
 </blockquote>
 <pre class="highlight shell"><code>
 curl -X PUT <span class="se">\</span>
-  https://mc.adobe.io/&lt;your-tenant-name&gt;/target/activities/168816/schedule <span class="se">\</span>
+  https://mc.adobe.io/adobetargetmobile/target/activities/168816/schedule <span class="se">\</span>
   -H <span class="s1">'authorization: Bearer &lt;your-bearer-token&gt;'</span> <span class="se">\</span>
   -H <span class="s1">'cache-control: no-cache'</span> <span class="se">\</span>
   -H <span class="s1">'content-type: application/vnd.adobe.target.v1+json'</span> <span class="se">\</span>
@@ -2911,7 +2878,7 @@ You can also use the specific endpoints <b>/activities/ab/{id}/schedule </b> and
 </blockquote>
 <pre class="highlight shell"><code>
 curl -X GET <span class="se">\</span>
-  https://mc.adobe.io/&lt;your-tenant-name&gt;/target/activities/173980/changelog <span class="se">\</span>
+  https://mc.adobe.io/adobetargetmobile/target/activities/173980/changelog <span class="se">\</span>
   -H <span class="s1">'authorization: Bearer &lt;your-bearer-token&gt;'</span> <span class="se">\</span>
   -H <span class="s1">'cache-control: no-cache'</span> <span class="se">\</span>
   -H <span class="s1">'content-type: application/vnd.adobe.target.v1+json'</span> <span class="se">\</span>
@@ -3016,7 +2983,7 @@ curl -X GET <span class="se">\</span>
 </blockquote>
 <pre class="highlight shell"><code>
 curl -X GET <span class="se">\</span>
-  <span class="s1">'https://mc.adobe.io/&lt;your-tenant-name&gt;/target/offers?limit=10'</span> <span class="se">\</span>
+  <span class="s1">'https://mc.adobe.io/adobetargetmobile/target/offers?limit=10'</span> <span class="se">\</span>
   -H <span class="s1">'authorization: Bearer &lt;your-bearer-token&gt;'</span> <span class="se">\</span>
   -H <span class="s1">'cache-control: no-cache'</span> <span class="se">\</span>
   -H <span class="s1">'content-type: application/vnd.adobe.target.v1+json'</span> <span class="se">\</span>
@@ -3167,7 +3134,7 @@ curl -X GET <span class="se">\</span>
 <p>Sample Request for Get Offer by ID</p>
 </blockquote>
 <pre class="highlight shell"><code>curl -X GET <span class="se">\</span>
-  https://mc.adobe.io/&lt;your-tenant-name&gt;/target/offers/content/391902 <span class="se">\</span>
+  https://mc.adobe.io/adobetargetmobile/target/offers/content/391902 <span class="se">\</span>
   -H <span class="s1">'authorization: Bearer &lt;your-bearer-token&gt;'</span> <span class="se">\</span>
   -H <span class="s1">'cache-control: no-cache'</span> <span class="se">\</span>
   -H <span class="s1">'content-type: application/vnd.adobe.target.v1+json'</span> <span class="se">\</span>
@@ -3195,7 +3162,7 @@ curl -X GET <span class="se">\</span>
 <p>Sample Request for Create Offer</p>
 </blockquote>
 <pre class="highlight shell"><code>curl -X POST <span class="se">\</span>
-  https://mc.adobe.io/&lt;your-tenant-name&gt;/target/offers/content <span class="se">\</span>
+  https://mc.adobe.io/adobetargetmobile/target/offers/content <span class="se">\</span>
   -H <span class="s1">'authorization: Bearer &lt;your-bearer-token&gt;'</span> <span class="se">\</span>
   -H <span class="s1">'cache-control: no-cache'</span> <span class="se">\</span>
   -H <span class="s1">'content-type: application/vnd.adobe.target.v1+json'</span> <span class="se">\</span>
@@ -3229,7 +3196,7 @@ curl -X GET <span class="se">\</span>
 <p>Sample Request for Update Offer by ID</p>
 </blockquote>
 <pre class="highlight shell"><code>curl -X PUT <span class="se">\</span>
-  https://mc.adobe.io/&lt;your-tenant-name&gt;/target/offers/content/438180 <span class="se">\</span>
+  https://mc.adobe.io/adobetargetmobile/target/offers/content/438180 <span class="se">\</span>
   -H <span class="s1">'authorization: Bearer &lt;your-bearer-token&gt;'</span> <span class="se">\</span>
   -H <span class="s1">'cache-control: no-cache'</span> <span class="se">\</span>
   -H <span class="s1">'content-type: application/vnd.adobe.target.v1+json'</span> <span class="se">\</span>
@@ -3264,7 +3231,7 @@ curl -X GET <span class="se">\</span>
 </blockquote>
 <pre class="highlight shell"><code>
 curl -X DELETE <span class="se">\</span>
-  https://mc.adobe.io/&lt;your-tenant-name&gt;/target/offers/content/438180 <span class="se">\</span>
+  https://mc.adobe.io/adobetargetmobile/target/offers/content/438180 <span class="se">\</span>
   -H <span class="s1">'authorization: Bearer &lt;your-bearer-token&gt;'</span> <span class="se">\</span>
   -H <span class="s1">'cache-control: no-cache'</span> <span class="se">\</span>
   -H <span class="s1">'content-type: application/vnd.adobe.target.v1+json'</span> <span class="se">\</span>
@@ -3297,7 +3264,7 @@ curl -X DELETE <span class="se">\</span>
 <p>Sample Request for List Audiences</p>
 </blockquote>
 <pre class="highlight shell"><code>curl -X GET <span class="se">\</span>
-  <span class="s1">'https://mc.adobe.io/&lt;your-tenant-name&gt;/target/audiences/'</span> <span class="se">\</span>
+  <span class="s1">'https://mc.adobe.io/adobetargetmobile/target/audiences/'</span> <span class="se">\</span>
   -H <span class="s1">'authorization: Bearer &lt;your-bearer-token&gt;'</span> <span class="se">\</span>
   -H <span class="s1">'cache-control: no-cache'</span> <span class="se">\</span>
   -H <span class="s1">'content-type: application/vnd.adobe.target.v1+json'</span> <span class="se">\</span>
@@ -3484,7 +3451,7 @@ curl -X DELETE <span class="se">\</span>
 <p>Sample Request for Get Audience by ID</p>
 </blockquote>
 <pre class="highlight shell"><code>curl -X GET <span class="se">\</span>
-  https://mc.adobe.io/&lt;your-tenant-name&gt;/target/audiences/1397972 <span class="se">\</span>
+  https://mc.adobe.io/adobetargetmobile/target/audiences/1397972 <span class="se">\</span>
   -H <span class="s1">'authorization: Bearer &lt;your-bearer-token&gt;'</span> <span class="se">\</span>
   -H <span class="s1">'cache-control: no-cache'</span> <span class="se">\</span>
   -H <span class="s1">'content-type: application/vnd.adobe.target.v1+json'</span> <span class="se">\</span>
@@ -3531,7 +3498,7 @@ curl -X DELETE <span class="se">\</span>
 </blockquote>
 <pre class="highlight shell"><code>
 curl -X POST <span class="se">\</span>
-  https://mc.adobe.io/&lt;your-tenant-name&gt;/target/audiences <span class="se">\</span>
+  https://mc.adobe.io/adobetargetmobile/target/audiences <span class="se">\</span>
   -H <span class="s1">'authorization: Bearer &lt;your-bearer-token&gt;'</span> <span class="se">\</span>
   -H <span class="s1">'cache-control: no-cache'</span> <span class="se">\</span>
   -H <span class="s1">'content-type: application/vnd.adobe.target.v1+json'</span> <span class="se">\</span>
@@ -3648,7 +3615,7 @@ Audiences created using the API can only be edited using the API. You can&rsquo;
 <p>Sample Request for Update Audience by ID</p>
 </blockquote>
 <pre class="highlight shell"><code>curl -X PUT <span class="se">\</span>
-  https://mc.adobe.io/&lt;your-tenant-name&gt;/target/audiences/1537195 <span class="se">\</span>
+  https://mc.adobe.io/adobetargetmobile/target/audiences/1537195 <span class="se">\</span>
   -H <span class="s1">'authorization: Bearer &lt;your-bearer-token&gt;'</span> <span class="se">\</span>
   -H <span class="s1">'cache-control: no-cache'</span> <span class="se">\</span>
   -H <span class="s1">'content-type: application/vnd.adobe.target.v1+json'</span> <span class="se">\</span>
@@ -3714,7 +3681,7 @@ Audiences created using the API can only be edited using the API. You can&rsquo;
 <p>Sample Request for Delete Audience by ID</p>
 </blockquote>
 <pre class="highlight shell"><code>curl -X DELETE <span class="se">\</span>
-  https://mc.adobe.io/&lt;your-tenant-name&gt;/target/audiences/1537214 <span class="se">\</span>
+  https://mc.adobe.io/adobetargetmobile/target/audiences/1537214 <span class="se">\</span>
   -H <span class="s1">'authorization: Bearer &lt;your-bearer-token&gt;'</span> <span class="se">\</span>
   -H <span class="s1">'cache-control: no-cache'</span> <span class="se">\</span>
   -H <span class="s1">'content-type: application/vnd.adobe.target.v1+json'</span> <span class="se">\</span>
@@ -3762,7 +3729,7 @@ Audiences created using the API can only be edited using the API. You can&rsquo;
 </blockquote>
 <pre class="highlight shell"><code>
 curl -X GET <span class="se">\</span>
-  https://mc.adobe.io/&lt;your-tenant-name&gt;/target/activities/ab/166423/report/performance <span class="se">\</span>
+  https://mc.adobe.io/adobetargetmobile/target/activities/ab/166423/report/performance <span class="se">\</span>
   -H <span class="s1">'authorization: Bearer &lt;your-bearer-token&gt;'</span> <span class="se">\</span>
   -H <span class="s1">'cache-control: no-cache'</span> <span class="se">\</span>
   -H <span class="s1">'content-type: application/vnd.adobe.target.v1+json'</span> <span class="se">\</span>
@@ -3953,7 +3920,7 @@ curl -X GET <span class="se">\</span>
 </blockquote>
 <pre class="highlight shell"><code>
 curl -X GET <span class="se">\</span>
-  https://mc.adobe.io/&lt;your-tenant-name&gt;/target/activities/xt/167169/report/performance <span class="se">\</span>
+  https://mc.adobe.io/adobetargetmobile/target/activities/xt/167169/report/performance <span class="se">\</span>
   -H <span class="s1">'authorization: Bearer &lt;your-bearer-token&gt;'</span> <span class="se">\</span>
   -H <span class="s1">'cache-control: no-cache'</span> <span class="se">\</span>
   -H <span class="s1">'content-type: application/vnd.adobe.target.v1+json'</span> <span class="se">\</span>
@@ -4188,7 +4155,7 @@ The request format is similar to AB and XT performance report. Change /ab or /xt
 </blockquote>
 <pre class="highlight shell"><code>
 curl -X GET <span class="se">\</span>
-  https://mc.adobe.io/&lt;your-tenant-name&gt;/target/activities/ab/167169/orders/performance <span class="se">\</span>
+  https://mc.adobe.io/adobetargetmobile/target/activities/ab/167169/orders/performance <span class="se">\</span>
   -H <span class="s1">'authorization: Bearer &lt;your-bearer-token&gt;'</span> <span class="se">\</span>
   -H <span class="s1">'cache-control: no-cache'</span> <span class="se">\</span>
   -H <span class="s1">'content-type: application/vnd.adobe.target.v1+json'</span> <span class="se">\</span>
@@ -4325,7 +4292,7 @@ Change /ab to /xt or /abt in the request url for XT and AP activities. <b>abt</b
 </blockquote>
 <pre class="highlight shell"><code>
 curl -X GET <span class="se">\</span>
-  https://mc.adobe.io/&lt;your-tenant-name&gt;/target/mboxes <span class="se">\</span>
+  https://mc.adobe.io/adobetargetmobile/target/mboxes <span class="se">\</span>
   -H <span class="s1">'authorization: Bearer &lt;your-bearer-token&gt;'</span> <span class="se">\</span>
   -H <span class="s1">'cache-control: no-cache'</span> <span class="se">\</span>
   -H <span class="s1">'content-type: application/vnd.adobe.target.v1+json'</span> <span class="se">\</span>
@@ -4384,7 +4351,7 @@ The limit, offset and Sortby paramaters described in List Offers and List Audien
 <p>Sample Request for List Mbox Parameters</p>
 </blockquote>
 <pre class="highlight shell"><code>curl -X GET <span class="se">\</span>
-  <span class="s1">'https://mc.adobe.io/&lt;your-tenant-name&gt;/target/mbox/a1-mobile-mboxparams?limit=5'</span> <span class="se">\</span>
+  <span class="s1">'https://mc.adobe.io/adobetargetmobile/target/mbox/a1-mobile-mboxparams?limit=5'</span> <span class="se">\</span>
   -H <span class="s1">'authorization: Bearer &lt;your-bearer-token&gt;'</span> <span class="se">\</span>
   -H <span class="s1">'cache-control: no-cache'</span> <span class="se">\</span>
   -H <span class="s1">'content-type: application/vnd.adobe.target.v1+json'</span> <span class="se">\</span>
@@ -4597,7 +4564,7 @@ The limit, offset and Sortby paramaters described in List Offers and List Audien
 </blockquote>
 <pre class="highlight shell"><code>
 curl -X GET <span class="se">\</span>
-  https://mc.adobe.io/&lt;your-tenant-name&gt;/target/profileattributes/mbox <span class="se">\</span>
+  https://mc.adobe.io/adobetargetmobile/target/profileattributes/mbox <span class="se">\</span>
   -H <span class="s1">'authorization: Bearer &lt;your-bearer-token&gt;'</span> <span class="se">\</span>
   -H <span class="s1">'cache-control: no-cache'</span> <span class="se">\</span>
   -H <span class="s1">'content-type: application/vnd.adobe.target.v1+json'</span> <span class="se">\</span>
@@ -4645,7 +4612,7 @@ Profile attributes and Profile Parameters mean the same thing. Both versions are
 </blockquote>
 <pre class="highlight shell"><code>
 curl -X GET <span class="se">\</span>
-  https://mc.adobe.io/&lt;your-tenant-name&gt;/target/environments <span class="se">\</span>
+  https://mc.adobe.io/adobetargetmobile/target/environments <span class="se">\</span>
   -H <span class="s1">'authorization: Bearer &lt;your-bearer-token&gt;'</span> <span class="se">\</span>
   -H <span class="s1">'cache-control: no-cache'</span> <span class="se">\</span>
   -H <span class="s1">'content-type: application/vnd.adobe.target.v1+json'</span> <span class="se">\</span>
@@ -4942,6 +4909,220 @@ In order to execute batch API actions the underlying user has to have at least &
         </tr>
     </tbody>
 </table>
+
+<h1 id="recommendations">Recommendations</h1>
+
+<p>Recommendations activities automatically display products or content that might interest your customers based on previous user activity or other algorithms. Recommendations help direct customers to relevant items they might otherwise not know about.</p>
+
+<p>Note: Recommendations activities are available as part of the Target Premium solution. They are not available in Target Standard without a Target Premium license.</p>
+
+<h2 id="collections">Collections</h2>
+
+<p>A collection is a set of products or items that are eligible for a recommendation.</p>
+
+<p>Commonly, a collection is a set of similar or related items, such as a single product collection.</p>
+
+<h3 id="list-collections">List Collections</h3>
+
+<blockquote>
+<p>Sample Request for List Collections</p>
+</blockquote>
+<pre class="highlight shell"><code>
+curl -X GET
+https://mc.adobe.io/recspm1/target/recs/collections <span class="se">\</span>
+  -H <span class="s1">'authorization: Bearer &lt;your-bearer-token&gt;'</span> <span class="se">\</span>
+  -H <span class="s1">'cache-control: no-cache'</span> <span class="se">\</span>
+  -H <span class="s1">'content-type: application/vnd.adobe.target.v1+json'</span> <span class="se">\</span>
+  -H <span class="s1">'x-api-key: &lt;your-api-token&gt;'</span>
+
+</code></pre>
+<blockquote>
+<p>Sample Response for List Collections</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"offset"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">2147483647</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">21</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"list"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">7257</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"All Articles"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4418</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Catalog Y"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4044</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Empty Collection"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">5128</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Female Products"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">7491</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Generic"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">7029</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hotels"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">6765</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Macbook"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">6591</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mens Nike Hats"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">6605</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mens Nike Hats, Shirts, Shorts"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">6589</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mens Nike Shirts"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">6590</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mens Nike Shorts"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4316</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Product Collection"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">6892</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Retail 4000-4010"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">5213</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Running Shoes"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">5447</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sample collection name"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Get the list of collections available in your account.</p>
+
+<h4 id="get-tenant-target-recs-collections">GET: /{tenant}/target/recs/collections</h4>
+
+<h3 id="get-collection-by-id">Get Collection by ID</h3>
+
+<blockquote>
+<p>Sample Request for Get Collection by ID</p>
+</blockquote>
+<pre class="highlight shell"><code>
+curl -X GET
+https://mc.adobe.io/recspm1/target/recs/collections/5213 <span class="se">\</span>
+  -H <span class="s1">'authorization: Bearer &lt;your-bearer-token&gt;'</span> <span class="se">\</span>
+  -H <span class="s1">'cache-control: no-cache'</span> <span class="se">\</span>
+  -H <span class="s1">'content-type: application/vnd.adobe.target.v1+json'</span> <span class="se">\</span>
+  -H <span class="s1">'x-api-key: &lt;your-api-token&gt;'</span>
+
+</code></pre>
+<blockquote>
+<p>Sample Response for Get Collection by ID</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">5213</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Running Shoes"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"rules"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"category"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nt">"contains"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                    </span><span class="s2">"Running Shoes"</span><span class="w">
+                </span><span class="p">]</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Get the collection for a given ID.</p>
+
+<h4 id="get-tenant-target-recs-collections-id">GET: /{tenant}/target/recs/collections/{id}</h4>
+
+<h3 id="create-collection">Create Collection</h3>
+
+<blockquote>
+<p>Sample Request for Create Collection</p>
+</blockquote>
+<pre class="highlight shell"><code>curl -X POST <span class="se">\</span>
+  https://mc.adobe.io/recspm1/target/recs/collections/ <span class="se">\</span>
+  -H <span class="s1">'authorization: Bearer &lt;your-bearer-token&gt;'</span> <span class="se">\</span>
+  -H <span class="s1">'cache-control: no-cache'</span> <span class="se">\</span>
+  -H <span class="s1">'content-type: application/vnd.adobe.target.v1+json'</span> <span class="se">\</span>
+  -H <span class="s1">'x-api-key: &lt;your-api-token&gt;'</span>
+  -d <span class="s1">'{
+ "name":"Smartphones",
+ "rules":[
+   {"category": {"equals":["smartphone"]}},
+   {"name": {"contains": ["android", "Android"]}},
+   {"value": {"greaterOrEquals": ["600"] }},
+   {"message": {"doesNotContain": ["ios"]}}
+  ]
+}'</span>
+</code></pre>
+<blockquote>
+<p>Sample Response for Create Collection</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">8886</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Smartphones"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"rules"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"category"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nt">"equals"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                    </span><span class="s2">"smartphone"</span><span class="w">
+                </span><span class="p">]</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nt">"contains"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                    </span><span class="s2">"android"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"Android"</span><span class="w">
+                </span><span class="p">]</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nt">"greaterOrEquals"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                    </span><span class="s2">"600"</span><span class="w">
+                </span><span class="p">]</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nt">"doesNotContain"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                    </span><span class="s2">"ios"</span><span class="w">
+                </span><span class="p">]</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<h3 id="update-collection">Update Collection</h3>
+
+<h3 id="delete-collection">Delete Collection</h3>
+
+<h2 id="feeds">Feeds</h2>
+
+<h3 id="list-feeds">List Feeds</h3>
+
+<h3 id="get-feed-by-id">Get Feed by ID</h3>
+
+<h3 id="create-feed-http">Create Feed (HTTP)</h3>
+
+<h3 id="create-feed-ftp">Create Feed (FTP)</h3>
+
+<h3 id="update-feed-http">Update Feed (HTTP)</h3>
+
+<h3 id="update-feed-ftp">Update Feed (FTP)</h3>
 
       </div>
       <div class="dark-box">
