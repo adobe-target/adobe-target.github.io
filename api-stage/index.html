@@ -120,6 +120,8 @@
 
 <p>Target&rsquo;s RESTful APIs enable you to manage and deliver personalized experiences across channels. You can use the Target REST APIs to manage Target Activities, Audiences and Offers, retrieve reports, deliver experiences and manage visitor profiles.</p>
 
+<p><a href="https://app.getpostman.com/run-collection/94cb2f003ae62aef8136"><img src="https://run.pstmn.io/button.svg" alt="Run in Postman" /></a></p>
+
 <h1 id="server-side-delivery">Server Side Delivery</h1>
 
 <p>The Server Side Delivery API is designed to deliver experiences with any server side platform or an application that can make HTTP/s calls. This is valuable for organizations that want to deliver targeting to a non-browser based IoT device, such as a connected TV, kiosk, or in-store digital screen.</p>
@@ -155,9 +157,8 @@
 <li>The response of the Delivery API includes the <em>edgeHost</em> parameter. This is the URL of the Target edge that served this request. All subsequent requests for this visitor/session should be sent to this edge.</li>
 <li>The session-id in the REST API must be unique for every visitor in your application.</li>
 <li>Use mboxTrace with a Debug Authentication Token to debug your API integrations. The Debug Authentication Token is valid for six hours and needs to be refreshed accordingly.</li>
+<li>You can pass user-agent in the request header in order to leverage browser and device based audience segmentations.</li>
 </ol>
-
-<p><a href="https://app.getpostman.com/run-collection/94cb2f003ae62aef8136"><img src="https://run.pstmn.io/button.svg" alt="Run in Postman" /></a></p>
 
 <h2 id="input-parameters">Input Parameters</h2>
 
@@ -208,7 +209,6 @@
     "browserTimeOffset": 240,
     "colorDepth": 24,
     "mboxXDomain": "enabled",
-    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36",
     "mboxMCGVID": "91394045728588414913028121188926585416",
     "mboxAAMB": "cIBAx_aQzFEHcPoEv0GwcQ",
     "mboxMCGLH": 7,
@@ -642,8 +642,6 @@
 Don&rsquo;t forget to replace the clientcode and the mbox name with your own in the API calls. The APIs in the collection use a demo account.
 </aside>
 
-<p><a href="https://app.getpostman.com/run-collection/86e5c5003452af10b371"><img src="https://run.pstmn.io/button.svg" alt="Run in Postman" /></a></p>
-
 <h3 id="known-limitations">Known Limitations</h3>
 
 <aside class = "warning">
@@ -663,7 +661,8 @@ Don&rsquo;t forget to replace the clientcode and the mbox name with your own in 
   https://&lt;your-client-code&gt;.tt.omtrdc.net/rest/v2/batchmbox?client<span class="o">=</span>&lt;your-client-code&gt;&amp;sessionId<span class="o">=</span>&lt;sessionId&gt; <span class="se">\</span>
   -H <span class="s1">'cache-control: no-cache'</span> <span class="se">\</span>
   -H <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
-  -H <span class="s1">'session-id: your-unique-session-id'</span><span class="se">\</span>
+  -H <span class="s1">'session-id: your-unique-session-id'</span> <span class="se">\</span>
+  -H <span class="s1">'user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_3) AppleWebKit/537.75.14 (KHTML, like Gecko) Version/7.0.3 Safari/7046A194A'</span> <span class="se">\</span>
   -d <span class="s1">'{
    "client": "&lt;your-client-code&gt;",
    "host": "www.foo.com",
@@ -1140,11 +1139,135 @@ Don&rsquo;t forget to replace the clientcode and the mbox name with your own in 
 
 <h2 id="integration-with-adobe-audience-manager">Integration with Adobe Audience Manager</h2>
 
-<p>AAM integration parameters and their descriptions</p>
+<blockquote>
+<p>Example: A sample request with AAM parameters.</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"aamParameters"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"blob"</span><span class="p">:</span><span class="w"> </span><span class="s2">"32fdghkjh34kj5h43"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"82394234238798437"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"dcsLocationHint"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"dataPartnerId"</span><span class="p">:</span><span class="w"> </span><span class="mi">86567576</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"dataPartnerUserId"</span><span class="p">:</span><span class="w"> </span><span class="mi">348382232423424</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>You can send AAM parameters with the Batch Mbox API to leverage AAM Audience Segments.</p>
+
+<table>
+    <tbody>
+        <tr>
+            <th>Field Name</th>
+            <th>Required</th>
+            <th>Description</th>
+        </tr>
+        <tr>
+            <td>dcsLocationHint</td>
+            <td>Y</td>
+            <td>DCS Location Hint is used to determine which AAM DCS Endpoint to hit in order to retrieve the profile. Must be &gt;= 1.</td>
+        </tr>
+        <tr>
+            <td>uuid</td>
+            <td>N</td>
+            <td>AAM Unique user identifier is the internal AAM ID used to uniquely identify a user id. Must not be blank.</td>
+        </tr>
+        <tr>
+            <td>dataPartnerId</td>
+            <td>N</td>
+            <td>AAM Data Partner ID is the ID for a Data Partner. Must be &gt;=1.</td>
+        </tr>
+        <tr>
+            <td>dataPartnerUserId</td>
+            <td>N</td>
+            <td>AAM Data Partner Unique User Identifier is the user ID provided by a Data Partner. It must be a string.</td>
+        </tr>
+        <tr>
+            <td>blob</td>
+            <td>N</td>
+            <td>AAM Blob is used to send additional data to AAM. Must not be blank and the size &lt;= 1024.</td>
+        </tr>
+    </tbody>
+</table>
 
 <h2 id="a4t-for-batch-delivery-api">A4T for Batch Delivery API</h2>
 
-<p>How to make A4T work</p>
+<blockquote>
+<p>Example 1:  Response when a A4T-enabled campaign qualifies for the mbox/prefetch request.</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+   </span><span class="err">...</span><span class="w">
+   </span><span class="nt">"mboxResponses"</span><span class="p">:[</span><span class="w"> 
+      </span><span class="p">{</span><span class="w"> 
+         </span><span class="nt">"mbox"</span><span class="p">:</span><span class="s2">"homePageHero1"</span><span class="p">,</span><span class="w">
+         </span><span class="nt">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"some content"</span><span class="p">,</span><span class="w">
+         </span><span class="nt">"clientSideAnalyticsLoggingPayload"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"pe"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tnt"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"tnta"</span><span class="p">:</span><span class="w"> </span><span class="s2">"86492:0:0|0,86492:0:0|2,86492:0:0|1"</span><span class="w">
+         </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+   </span><span class="p">],</span><span class="w">
+   </span><span class="nt">"prefetchResponses"</span><span class="p">:[</span><span class="w"> 
+      </span><span class="p">{</span><span class="w"> 
+         </span><span class="nt">"mbox"</span><span class="p">:</span><span class="s2">"homePageHero2"</span><span class="p">,</span><span class="w">
+         </span><span class="nt">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"some content"</span><span class="p">,</span><span class="w">
+         </span><span class="nt">"eventTokens"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="err">...</span><span class="p">],</span><span class="w">
+         </span><span class="nt">"clientSideAnalyticsLoggingPayload"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"pe"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tnt"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"tnta"</span><span class="p">:</span><span class="w"> </span><span class="s2">"86494:0:0|0,86494:0:0|2,86494:0:0|1"</span><span class="w">
+         </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+   </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>Example 1: Sample request to the Analytics Tracking Server with the Target A4T Payload</p>
+</blockquote>
+<pre class="highlight shell"><code>curl -X GET <span class="se">\</span>
+<span class="s1">'https://&lt;Analytics_Tracking_Server&gt;/b/ss/&lt;Report_Suite_IDs&gt;/0/&lt;Code_Version&gt;?pe=tnt&amp;tnta=86492:0:0|0,86492:0:0|2,86492:0:0|1,86494:0:0|0,86494:0:0|2,86494:0:0|1&amp;mcid=&lt;Marketing_Cloud_ID&gt;&amp;vid=&lt;Custom_Visitor_ID&gt;&amp;aid=&lt;Analytics_ID&gt;'</span>
+</code></pre>
+<p>In case any qualifying campaign is A4T enabled - target will send offer content containing also a payload (under a variable <em>clientSideAnalyticsLoggingPayload</em>) that should be logged by the client in Analytics using the Data Insertion API. A sample Target response and corresponding Analytics request is shown in the example alongside.</p>
+
+<table>
+    <tbody>
+        <tr>
+            <th>Field Name</th>
+            <th>Required</th>
+            <th>Description</th>
+        </tr>
+        <tr>
+            <td>Analytics_Tracking_Server</td>
+            <td>Y</td>
+            <td>The Analytics Tracking Server used in Target Reporting Destination.</td>
+        </tr>
+        <tr>
+            <td>Report_Suite_IDs</td>
+            <td>Y</td>
+            <td>The Report Suite ID for the Report Suite used for the Target Activity. Multiple report suite IDs can be provided in a comma separated format.</td>
+        </tr>
+        <tr>
+            <td>tnta</td>
+            <td>Y</td>
+            <td>Analytics payload (under the tnta variable) returned by Target server in clientSideAnalyticsLoggingPayload. Multiple payloads can be provided in a comma separated format.</td>
+        </tr>
+        <tr>
+            <td>mcid</td>
+            <td>N</td>
+            <td>Marketing Cloud Visitor ID. This is optional, but recommended.</td>
+        </tr>
+        <tr>
+            <td>vid</td>
+            <td>N</td>
+            <td>Custom Visitor ID</td>
+        </tr>
+        <tr>
+            <td>aid</td>
+            <td>N</td>
+            <td>Analytics ID</td>
+        </tr>
+    </tbody>
+</table>
+
+<p>Note that the API used above is the Adobe Analytics Data Insertion API that can also be used as a POST request outlined <a href="https://helpx.adobe.com/analytics/kb/data-insertion-api-post-method-adobe-analytics.html">here</a>.</p>
 
 <h2 id="best-practices-for-batch-delivery">Best Practices for Batch Delivery</h2>
 
@@ -1170,7 +1293,33 @@ Don&rsquo;t forget to replace the clientcode and the mbox name with your own in 
 
 <h1 id="creating-a-adobe-io-integration">Creating a Adobe.io Integration</h1>
 
-<p>The steps to create a Adobe.io integration for Target with a link to the Adobe.io docs go here.</p>
+<blockquote>
+<p>Example 1: Sample request to exchange a JWT token with a Bearer Access Token</p>
+</blockquote>
+<pre class="highlight shell"><code>curl -X POST <span class="se">\</span>
+  <span class="s1">'https://ims-na1.adobelogin.com/ims/exchange/jwt/?client_id=&lt;Adobe.IO API KEY&gt;&amp;client_secret=&lt;Adobe.IO Client Secret&gt;&amp;jwt_token=JWT_TOKEN'</span>
+</code></pre>
+<blockquote>
+<p>Example 1: Sample response with the Bearer Access Token</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"token_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bearer"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"access_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eyJ4NXUiOiJpbXNfbmExLWtleS0xLmNlciIsImFsZyI6IlJTMjU2In0.eyJpZCI6IjE1MzM2NjIxNDAzNTNfOWFiYWRlNTYtZWY5YS00ZmM0LTg2MjYtZTMyYjk2Y2JjMTM0X3VlMSIsImNsaWVudF9pZCI6ImE5YjQ0YWQzZjgxMzQyNTg5NDRkNmVkYmE1MGZjNTFkIiwidXNlcl9pZCI6IjY2OUM3RkQ3NUFDM0UxNTgwQTQ5NUU3MEB0ZWNoYWNjdC5hZG9iZS5jb20iLCJ0eXBlIjoiYWNjZXNzX3Rva2VuIiwiYXMiOiJpbXMtbmExIiwiZmciOiJTVkRLWDZSNEZMTjdDSERPQUVBQUFBQUFWQT09PT09PSIsInNpZCI6IjE1MzM2NjIxNDAzNTVfOTE0NWIyMDItZjg3OC00ZjBiLWFhYjMtNmVkZTUzZWRkOTgyX3VlMSIsIm1vaSI6IjI1MGQ4MzFmIiwiYyI6ImJEMFJlQUQ0bU5sRzV4Z0psTmFJQmc9PSIsImV4cGlyZXNfaW4iOiI4NjQwMDAwMCIsInNjb3BlIjoib3BlbmlkLEFkb2JlSUQsdGFyZ2V0X3NkayxyZWFkX29yZ2FuaXphdGlvbnMsYWRkaXRpb25hbF9pbmZvLnByb2plY3RlZFByb2R1Y3RDb250ZXh0IiwiY3JlYXRlZF9hdCI6IjE1MzM2NjIxNDAzNTMifQ.AXpmjYPFUxvSkKjkO9DryCbqeGQDlrR07HIHjY-9alQIxe0JNIRfOjRjginvOO6ihWA71lfvtJ5iD6Yc7L9EDCCnztjSYYKfvK8NlDyN7uTOT7-Ky7OFQPnFX7m57d3vblj0Daq9Xbo0MbDfUtBl-0RpsfMz3tBN5OP1tOkgweuGHmnmeg-mUhbZf0SVrvlfM1aXQMx2gAL4c12f1YfviSUPQUPzB3ZozNHxKf321HiG-bUW06tRdZRdH-KhupdsJUlAHXSBZNDp0Gn93uGoDxNO7xuOqcFhRAJuqJQ96njPKLzmD_6V0SDDGHYb1IEcx7n0OYIf4BMK46W9tYXbdQ"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"expires_in"</span><span class="p">:</span><span class="w"> </span><span class="mi">86399990</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>All Admin APIs and the Authenticated Profile APIs must use the Adobe.IO integration. You can create an Adobe.io integration by following these steps:</p>
+
+<ol>
+<li>Login to https://console.adobe.io and create a Target Integration by following the instructions <a href="https://www.adobe.io/authentication/auth-methods.html#!adobeio/adobeio-documentation/master/auth/JWTAuthenticationQuickStart.md">here</a>.
+
+<ol>
+<li>Note that you must be a product admin to create an integration.</li>
+</ol></li>
+<li>Generate a JSON Web Token (JWT) as described in the Adobe.io documentation.</li>
+<li>Exchange the JWT for a Bearer Access Token by using the request shown in the example alongside. The Access Token has an expiry value set and must be re-created on expiry.</li>
+<li>All Adobe.IO APIs must include the Access Token in the request header.</li>
+</ol>
 
 <h1 id="generating-authentication-tokens">Generating Authentication Tokens</h1>
 
@@ -1179,7 +1328,7 @@ Don&rsquo;t forget to replace the clientcode and the mbox name with your own in 
 </blockquote>
 <pre class="highlight shell"><code>curl -X POST <span class="se">\</span>
   <span class="s1">'https://mc.adobe.io/&lt;your-tenant-name&gt;/target/authentication/token?scope=debug_tools'</span> <span class="se">\</span>
-  -H <span class="s1">'Authorization: Bearer BEARER_TOKEN_FROM_JWT_EXCHAGE'</span> <span class="se">\</span>
+  -H <span class="s1">'Authorization: Bearer BEARER_TOKEN_FROM_JWT_EXCHANGE'</span> <span class="se">\</span>
   -H <span class="s1">'Cache-Control: no-cache'</span> <span class="se">\</span>
   -H <span class="s1">'Content-Type: application/vnd.adobe.target.v1+json'</span> <span class="se">\</span>
   -H <span class="s1">'X-Api-Key: a9b44ad3f8134258944d6edba50fc51d'</span>
@@ -1521,20 +1670,6 @@ Expected values for the status fields are:</p>
 
 <aside class="notice">
 If the correct version isn&rsquo;t specified (eg: If you use a V2 payload but don&rsquo;t specify the Content-Type header), then the API will respond with an unsupported error if the API is not backwards compatible.
-</aside>
-
-<h2 id="adobe-i-o-console">Adobe I/O Console</h2>
-
-<p>The Adobe I/O console (https://console.adobe.io) is where you can configure your API integration and obtain your API keys and access token.</p>
-
-<p>Please refer to the <a href="https://docs.campaign.adobe.com/doc/standard/en/api/ACS_API.html#adobeio-configuration">authentication section</a> from the Adobe campaign API to learn how to configure Adobe I/O.</p>
-
-<aside class="notice">
-All enterprise APIs that can be setup in the Adobe I/O console use the same configuration.
-</aside>
-
-<aside class="notice">
-You have to be a Experience Cloud Admin to get access to the Adobe I/O console.
 </aside>
 
 <h2 id="admin-postman-collection">Admin Postman Collection</h2>
