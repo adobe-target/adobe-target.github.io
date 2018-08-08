@@ -560,7 +560,7 @@
 <h2 id="batch-overview">Batch Overview</h2>
 
 <blockquote>
-<p>Example 1 : Batch Delivery Request with two mboxes and one prefetched mbox</p>
+<p>Batch Delivery Request with two mboxes and one prefetched mbox</p>
 </blockquote>
 <pre class="highlight shell"><code>curl -X POST <span class="se">\</span>
   https://&lt;your-client-code&gt;.tt.omtrdc.net/rest/v2/batchmbox?client<span class="o">=</span>&lt;your-client-code&gt;&amp;sessionId<span class="o">=</span>&lt;sessionId&gt; <span class="se">\</span>
@@ -591,7 +591,7 @@
 }'</span>
 </code></pre>
 <blockquote>
-<p>Example 1: Batch Delivery Response for two mboxes and one prefetched mbox</p>
+<p>Batch Delivery Response for two mboxes and one prefetched mbox</p>
 </blockquote>
 <pre class="highlight shell"><code><span class="o">{</span>
     <span class="s2">"requestId"</span>: <span class="s2">"77a45e19-732f-42ea-98de-e4a36ceecd55"</span>,
@@ -655,7 +655,7 @@ Don&rsquo;t forget to replace the clientcode and the mbox name with your own in 
 <h2 id="batch-input-parameters">Batch Input Parameters</h2>
 
 <blockquote>
-<p>Example 2: Batch Delivery with all possible inputs</p>
+<p>Batch Delivery with all possible inputs</p>
 </blockquote>
 <pre class="highlight shell"><code>curl -X POST <span class="se">\</span>
   https://&lt;your-client-code&gt;.tt.omtrdc.net/rest/v2/batchmbox?client<span class="o">=</span>&lt;your-client-code&gt;&amp;sessionId<span class="o">=</span>&lt;sessionId&gt; <span class="se">\</span>
@@ -1271,14 +1271,43 @@ Don&rsquo;t forget to replace the clientcode and the mbox name with your own in 
 
 <h2 id="best-practices-for-batch-delivery">Best Practices for Batch Delivery</h2>
 
+<blockquote>
+<p>Mbox response for a qualifying campaign with a click metric</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"mboxResponses"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"mbox"</span><span class="p">:</span><span class="w"> </span><span class="s2">"homePageHero1"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"clickToken"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1d2r"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>Sample notification request for a mbox click event</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+   </span><span class="nt">"notifications"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+         </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"click"</span><span class="p">,</span><span class="w">
+         </span><span class="nt">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1505944567000</span><span class="p">,</span><span class="w">
+         </span><span class="nt">"mbox"</span><span class="p">:</span><span class="w"> </span><span class="s2">"homePageHero1"</span><span class="p">,</span><span class="w">
+         </span><span class="nt">"clickToken"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1d2r"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+   </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
 <ol>
 <li>It is not necessary to have all three kind of mboxes in a request. You can make a request for just a single mbox using this API.</li>
 <li>Note that the profileParameters are set at the top level of a Batch request and all mboxes, prefetch or regular, will be associated with the same visitor profile.</li>
 <li>When working with multiple mboxes in the batch mbox request, the Target edge will process the mboxes in the sequence specified by the IndexId parameter value.</li>
+<li><strong>Overriding Parameters</strong>: You can override mbox parameters, such as IP, time.</li>
 <li><strong>Prefetch:</strong> Fetch offers associated with an mbox in advance without incrementing the impression or visit/visitor count.
 
 <ol>
 <li>Make sure you manage the eventTokens associated with an mbox for use at the notifications stage.</li>
+<li>When the qualifying campaign has a click metric defined for an mbox, then the <strong>clickToken</strong> will be <em>returned</em> in the response. When the visitor clicks the mbox and a notification request is sent, the notification <em>type</em> should be set to <em>click</em> and the corresponding <em>clickToken</em> should be included.</li>
 </ol></li>
 <li><strong>Notifications:</strong> There are two kinds of notifications - <em>hit</em> and <em>click</em>.</li>
 <li><strong>Profile Scripts</strong> are executed per each mbox inside mboxes, prefetch and notifications, as per the following logic:
@@ -1294,13 +1323,13 @@ Don&rsquo;t forget to replace the clientcode and the mbox name with your own in 
 <h1 id="creating-a-adobe-io-integration">Creating a Adobe.io Integration</h1>
 
 <blockquote>
-<p>Example 1: Sample request to exchange a JWT token with a Bearer Access Token</p>
+<p>Sample request to exchange a JWT token with a Bearer Access Token</p>
 </blockquote>
 <pre class="highlight shell"><code>curl -X POST <span class="se">\</span>
   <span class="s1">'https://ims-na1.adobelogin.com/ims/exchange/jwt/?client_id=&lt;Adobe.IO API KEY&gt;&amp;client_secret=&lt;Adobe.IO Client Secret&gt;&amp;jwt_token=JWT_TOKEN'</span>
 </code></pre>
 <blockquote>
-<p>Example 1: Sample response with the Bearer Access Token</p>
+<p>Sample response with the Bearer Access Token</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="nt">"token_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bearer"</span><span class="p">,</span><span class="w">
@@ -1324,7 +1353,7 @@ Don&rsquo;t forget to replace the clientcode and the mbox name with your own in 
 <h1 id="generating-authentication-tokens">Generating Authentication Tokens</h1>
 
 <blockquote>
-<p>Example 1 : Generate a Debug Authentication Token for use with mboxTrace</p>
+<p>Generate a Debug Authentication Token for use with mboxTrace</p>
 </blockquote>
 <pre class="highlight shell"><code>curl -X POST <span class="se">\</span>
   <span class="s1">'https://mc.adobe.io/&lt;your-tenant-name&gt;/target/authentication/token?scope=debug_tools'</span> <span class="se">\</span>
@@ -1334,7 +1363,7 @@ Don&rsquo;t forget to replace the clientcode and the mbox name with your own in 
   -H <span class="s1">'X-Api-Key: a9b44ad3f8134258944d6edba50fc51d'</span>
 </code></pre>
 <blockquote>
-<p>Example 1 : Response to the Debug Authentication Token request</p>
+<p>Response to the Debug Authentication Token request</p>
 </blockquote>
 <pre class="highlight shell"><code><span class="o">{</span>
     <span class="s2">"accessToken"</span>: <span class="s2">"c62922d4-2cc1-4074-9407-c91f697d5796"</span>,
@@ -1344,7 +1373,7 @@ Don&rsquo;t forget to replace the clientcode and the mbox name with your own in 
 <span class="o">}</span>
 </code></pre>
 <blockquote>
-<p>Example 2 : Generate a Profile Authentication Token for use with Profile APIs</p>
+<p>Generate a Profile Authentication Token for use with Profile APIs</p>
 </blockquote>
 <pre class="highlight shell"><code>curl -X POST <span class="se">\</span>
   <span class="s1">'https://mc.adobe.io/&lt;your-tenant-name&gt;/target/authentication/token?scope=profile_api'</span> <span class="se">\</span>
@@ -1354,7 +1383,7 @@ Don&rsquo;t forget to replace the clientcode and the mbox name with your own in 
   -H <span class="s1">'X-Api-Key: a9b44ad3f8134258944d6edba50fc51d'</span>
 </code></pre>
 <blockquote>
-<p>Example 2 : Response to the Profile Authentication Token request</p>
+<p>Response to the Profile Authentication Token request</p>
 </blockquote>
 <pre class="highlight shell"><code><span class="o">{</span>
     <span class="s2">"accessToken"</span>: <span class="s2">"bbf8ae69-6e29-4b8e-b3d6-f7567723f5b0"</span>,
