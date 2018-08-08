@@ -188,7 +188,7 @@
 <p>Delivery API request with all possible inputs</p>
 </blockquote>
 <pre class="highlight shell"><code>curl -X POST <span class="se">\</span>
-  <span class="s1">'https://&lt;your-tenant-name&gt;.tt.omtrdc.net/rest/v1/mbox/A210702C-402F-4458-9869-FCE64F318AE6?client=&lt;your-tenant-name&gt;'</span> <span class="se">\</span>
+  <span class="s1">'https://&lt;your-client-code&gt;.tt.omtrdc.net/rest/v1/mbox/A210702C-402F-4458-9869-FCE64F318AE6?client=&lt;your-tenant-name&gt;'</span> <span class="se">\</span>
   -H <span class="s1">'cache-control: no-cache'</span> <span class="se">\</span>
   -H <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
   -H <span class="s1">'user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_3) AppleWebKit/537.75.14 (KHTML, like Gecko) Version/7.0.3 Safari/7046A194A'</span> <span class="se">\</span>
@@ -581,12 +581,6 @@
             "indexId": 1,
             "mbox": "batch-req-2"
         }
-    ],
-    "prefetch": [
-        {
-            "indexId": 0,
-            "mbox": "batch-req-3"
-        }
     ]
 }'</span>
 </code></pre>
@@ -680,7 +674,7 @@ Don&rsquo;t forget to replace the clientcode and the mbox name with your own in 
                 "id": "32jh4jk23h4kj2",
                 "integrationCode": "userid",
                 "authenticatedState": "authenticated"
-            }   
+            }
         ]
    },
    "aamParameters": {
@@ -1480,9 +1474,9 @@ Don&rsquo;t forget to replace the clientcode and the mbox name with your own in 
 
 <p><code class="prettyprint">https://&lt;your-client-code&gt;.tt.omtrdc.net/rest/v1/profiles/your-tnt-id?client=&lt;your-client-code&gt;</code></p>
 
-<p>Replace &ldquo;yourclientcode&rdquo; and &ldquo;your-tnt-id&rdquo; and fire a GET request. Here is an example profile fetch call using a tntid</p>
+<p>Replace &ldquo;<your-client-code>&rdquo; and &ldquo;your-tnt-id&rdquo; and fire a GET request. Here is an example profile fetch call using a tntid</p>
 
-<p><code class="prettyprint">http://&lt;your-client-code&gt;.tt.omtrdc.net/rest/v1/profiles/111492025094307-353046?client=&lt;your-client-code&gt;</code></p>
+<p><code class="prettyprint">http://&lt;your-client-code&gt;.tt.omtrdc.net/rest/v1/profiles/111492025094307-353046?client=&lt;your-tenant-name&gt;</code></p>
 
 <h3 id="using-a-thirdpartyid">Using a thirdPartyId</h3>
 
@@ -1492,9 +1486,9 @@ Don&rsquo;t forget to replace the clientcode and the mbox name with your own in 
 
 <p><code class="prettyprint">https://&lt;your-client-code&gt;.tt.omtrdc.net/rest/v1/profiles/thirdPartyId/your-thirdpartyid?&lt;your-client-code&gt;</code></p>
 
-<p>Replace &ldquo;yourclientcode&rdquo; and &ldquo;your-thirdpartyid&rdquo; and fire a GET request. Here is an example profile fetch call using a thirdpartyid</p>
+<p>Replace &ldquo;<your-client-code>&rdquo; and &ldquo;your-thirdpartyid&rdquo; and fire a GET request. Here is an example profile fetch call using a thirdpartyid</p>
 
-<p><code class="prettyprint">http://&lt;your-client-code&gt;.tt.omtrdc.net/rest/v1/profiles/thirdPartyId/a1-mbox3rdPartyId?client=&lt;your-client-code&gt;</code></p>
+<p><code class="prettyprint">http://&lt;your-client-code&gt;.tt.omtrdc.net/rest/v1/profiles/thirdPartyId/a1-mbox3rdPartyId?client=&lt;your-tenant-name&gt;</code></p>
 
 <p>When this call is made, Target attempts to locate the profile first in the cluster noted in the edge request, or wherever the profile is located and return the content. The profile contents are returned in JSON format.</p>
 
@@ -1545,7 +1539,7 @@ There is a limit of one million profile updates in a 24-hour period.</p>
 <p>To update the profile for an mbox3rdPartyId, use:</p>
 
 <p><code class="prettyprint">shell
-http://CLIENT.tt.omtrdc.net/m2/client/profile/update?mbox3rdPartyId=123456&amp;profile.attr=0&amp;profile.attr2=1...</code></p>
+http://&lt;your-client-code&gt;.tt.omtrdc.net/m2/client/profile/update?mbox3rdPartyId=123456&amp;profile.attr=0&amp;profile.attr2=1...</code></p>
 
 <p>The Single Profile Update API is for updates only. If nothing is found, a profile is not created.</p>
 
@@ -1602,6 +1596,14 @@ http://CLIENT.tt.omtrdc.net/m2/client/profile/update?mbox3rdPartyId=123456&amp;p
 </table>
 
 <p>version 2 (v2) of the Bulk Profile Update API is the current version. However, Target still supports version 1 (v1).</p>
+
+<h3 id="caveats">Caveats</h3>
+
+<ul>
+<li>The size of the batch file must be less than 50 MB. In addition, the total number of rows should not exceed 500,000 rows per upload.</li>
+<li>There is no limit on the number or rows you can upload over a period of 24 hours in subsequent batches. However, the ingestion process might be throttled during business hours to ensure that other processes run efficiently.</li>
+<li>Consecutive V2 batch update calls without mbox calls in between for the same thirdPartyIds override the properties updated in the first batch update call.</li>
+</ul>
 
 <h3 id="batch-file">Batch File</h3>
 
@@ -1689,12 +1691,12 @@ Expected values for the status fields are:</p>
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre>
-<p>All APIs have a version associated with it. It is important to provide the right version of the API that you want to use. </p>
+<p>All APIs have a version associated with it. It is important to provide the right version of the API that you want to use.</p>
 
 <ul>
-<li><p>If the request contains a payload (POST or PUT), the <strong>Content-Type</strong> header of the request is used to specify the version. </p></li>
-<li><p>If the request doesn&rsquo;t contain a payload (GET, DELETE or OPTIONS), the <strong>Accept</strong> header is used to specify the version. </p></li>
-<li><p>If a version isn&rsquo;t provided, the call will default to V1 (application/vnd.adobe.target.v1+json) . </p></li>
+<li><p>If the request contains a payload (POST or PUT), the <strong>Content-Type</strong> header of the request is used to specify the version.</p></li>
+<li><p>If the request doesn&rsquo;t contain a payload (GET, DELETE or OPTIONS), the <strong>Accept</strong> header is used to specify the version.</p></li>
+<li><p>If a version isn&rsquo;t provided, the call will default to V1 (application/vnd.adobe.target.v1+json) .</p></li>
 </ul>
 
 <aside class="notice">
