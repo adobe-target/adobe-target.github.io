@@ -120,8 +120,6 @@
 
 <p>Target&rsquo;s RESTful APIs enable you to manage and deliver personalized experiences across channels. You can use the Target REST APIs to manage Target Activities, Audiences and Offers, retrieve reports, deliver experiences and manage visitor profiles.</p>
 
-<p><a href="https://app.getpostman.com/run-collection/94cb2f003ae62aef8136"><img src="https://run.pstmn.io/button.svg" alt="Run in Postman" /></a></p>
-
 <h1 id="server-side-delivery">Server Side Delivery</h1>
 
 <p>The Server Side Delivery API is designed to deliver experiences with any server side platform or an application that can make HTTP/s calls. This is valuable for organizations that want to deliver targeting to a non-browser based IoT device, such as a connected TV, kiosk, or in-store digital screen.</p>
@@ -159,6 +157,14 @@
 <li>Use mboxTrace with a Debug Authentication Token to debug your API integrations. The Debug Authentication Token is valid for six hours and needs to be refreshed accordingly.</li>
 <li>You can pass user-agent in the request header in order to leverage browser and device based audience segmentations.</li>
 </ol>
+
+<h2 id="delivery-postman-collection">Delivery Postman Collection</h2>
+
+<p>Postman is a application that makes it easy to fire API calls. This Postman collection contains Server Side Delivery and Profile API calls. Just click on the ‘Run in Postman’ button to import the Target API collection.</p>
+
+<p>Don’t forget to replace the clientcode and the mbox name with your own in the API calls. The APIs in the collection use a demo account.</p>
+
+<p><a href="https://app.getpostman.com/run-collection/94cb2f003ae62aef8136"><img src="https://run.pstmn.io/button.svg" alt="Run in Postman" /></a></p>
 
 <h2 id="input-parameters">Input Parameters</h2>
 
@@ -1331,7 +1337,7 @@ Don&rsquo;t forget to replace the clientcode and the mbox name with your own in 
     </span><span class="nt">"expires_in"</span><span class="p">:</span><span class="w"> </span><span class="mi">86399990</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>All Admin APIs and the Authenticated Profile APIs must use the Adobe.IO integration. You can create an Adobe.io integration by following these steps:</p>
+<p>All <strong>Admin APIs</strong> and the <strong>Authenticated Profile APIs</strong> must use the Adobe.IO integration. You can create an Adobe.io integration by following these steps:</p>
 
 <ol>
 <li>Login to https://console.adobe.io and create a Target Integration by following the instructions <a href="https://www.adobe.io/authentication/auth-methods.html#!adobeio/adobeio-documentation/master/auth/JWTAuthenticationQuickStart.md">here</a>.
@@ -1494,7 +1500,7 @@ Don&rsquo;t forget to replace the clientcode and the mbox name with your own in 
 
 <h3 id="authentication">Authentication</h3>
 
-<p>The Profile API can be secured by turning authentication on from the Target UI as <a href="https://marketing.adobe.com/resources/help/en_US/target/ov2/c_profile-api-settings.html">described here</a>. Once authentication is switched ON, all profile API requests must have the profile authentication token set in the request headers. The token itself can be generated using the Target UI or using the steps explained above.</p>
+<p>The Profile API can be secured by turning authentication on from the Target UI as <a href="https://marketing.adobe.com/resources/help/en_US/target/ov2/c_profile-api-settings.html">described here</a>. Once authentication is switched ON, all profile API requests must have the profile authentication token set in the request headers. The token itself can be generated using the Target UI or using the steps explained above in the <a href="#authentication-tokens">Profile Authentication Token section</a>.</p>
 
 <h3 id="metering">Metering</h3>
 
