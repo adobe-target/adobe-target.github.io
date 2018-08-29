@@ -1,6 +1,14 @@
 <!doctype html>
 <html>
   <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-124799808-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-124799808-1');
+    </script>
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -645,11 +653,11 @@ Don&rsquo;t forget to replace the clientcode and the mbox name with your own in 
 <h3 id="known-limitations">Known Limitations</h3>
 
 <aside class = "warning">
-<b>Support for AP and Recs Activities</b>: This API has two modes for fetching content - regular mbox batch mode and prefetch mode. The prefetch mode can only be used for AB and XT activities. Don’t use the prefetch mode for Automated Personalization, Auto-Allocate, Auto-Target and Recommendations activty types. Prefetch support for these activity types will be added in the future. The API request and response structure won’t change when the support is added. 
+<b>Support for AP and Recs Activities</b>: This API has two modes for fetching content - regular mbox batch mode and prefetch mode. The prefetch mode can only be used for AB and XT activities. Don’t use the prefetch mode for Automated Personalization, Auto-Allocate, Auto-Target and Recommendations activty types. Prefetch support for these activity types will be added in the future. The API request and response structure won’t change when the support is added.
 </aside>
 
 <aside class = "notice">
-<b>The batch mode or the “mboxes” object in the API can be used for all activity types</b>: If you are looking to fetch the content for multiple mboxes is a single call, this is a great option. 
+<b>The batch mode or the “mboxes” object in the API can be used for all activity types</b>: If you are looking to fetch the content for multiple mboxes is a single call, this is a great option.
 </aside>
 
 <h2 id="batch-input-parameters">Batch Input Parameters</h2>
@@ -667,7 +675,7 @@ Don&rsquo;t forget to replace the clientcode and the mbox name with your own in 
    "client": "&lt;your-client-code&gt;",
    "host": "www.foo.com",
    "ipAddress": "1.2.3.4",
-   "trace" : { 
+   "trace" : {
         "enabled": true,
         "includeMetrics": true
    },
@@ -1196,8 +1204,8 @@ Don&rsquo;t forget to replace the clientcode and the mbox name with your own in 
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
    </span><span class="err">...</span><span class="w">
-   </span><span class="nt">"mboxResponses"</span><span class="p">:[</span><span class="w"> 
-      </span><span class="p">{</span><span class="w"> 
+   </span><span class="nt">"mboxResponses"</span><span class="p">:[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
          </span><span class="nt">"mbox"</span><span class="p">:</span><span class="s2">"homePageHero1"</span><span class="p">,</span><span class="w">
          </span><span class="nt">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"some content"</span><span class="p">,</span><span class="w">
          </span><span class="nt">"clientSideAnalyticsLoggingPayload"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -1206,8 +1214,8 @@ Don&rsquo;t forget to replace the clientcode and the mbox name with your own in 
          </span><span class="p">}</span><span class="w">
       </span><span class="p">}</span><span class="w">
    </span><span class="p">],</span><span class="w">
-   </span><span class="nt">"prefetchResponses"</span><span class="p">:[</span><span class="w"> 
-      </span><span class="p">{</span><span class="w"> 
+   </span><span class="nt">"prefetchResponses"</span><span class="p">:[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
          </span><span class="nt">"mbox"</span><span class="p">:</span><span class="s2">"homePageHero2"</span><span class="p">,</span><span class="w">
          </span><span class="nt">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"some content"</span><span class="p">,</span><span class="w">
          </span><span class="nt">"eventTokens"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="err">...</span><span class="p">],</span><span class="w">
@@ -3575,14 +3583,14 @@ curl -X GET <span class="se">\</span>
             </td>
             <td>
                 <p><span>
-    
+
              <p>Returns the first ten offers sorted by ID<br>
             <code>/target/offers/?sortBy=id&amp;limit=10</code><br></p>
 
 
             <p>Returns the first ten offers sorted in descending order by ID<br>
             <code>/target/offers/?sortBy=-id&amp;limit=10</code><br></p>
-    
+
          <p>Returns the first ten offers sorted by ascending IDs and descending names
         <code>/target/offers/?sortBy=id,-name&amp;limit=10</code><br></p>
 
@@ -3869,14 +3877,14 @@ curl -X DELETE <span class="se">\</span>
             </td>
             <td>
                 <p><span>
-    
+
              <p>Returns the first ten audiences sorted by ID<br>
             <code>/target/audiences/?sortBy=id&amp;limit=10</code><br></p>
 
 
             <p>Returns the first ten audiences sorted in descending order by ID<br>
             <code>/target/audiences/?sortBy=-id&amp;limit=10</code><br></p>
-    
+
          <p>Returns the first ten audiences sorted by ascending IDs and descending names
         <code>/target/audiences/?sortBy=id,-name&amp;limit=10</code><br></p>
 
