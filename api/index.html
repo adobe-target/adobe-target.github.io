@@ -198,7 +198,7 @@
 <p>Delivery API request with all possible inputs</p>
 </blockquote>
 <pre class="highlight shell"><code>curl -X POST <span class="se">\</span>
-  <span class="s1">'https://&lt;your-client-code&gt;.tt.omtrdc.net/rest/v1/mbox/A210702C-402F-4458-9869-FCE64F318AE6?client=&lt;your-tenant-name&gt;'</span> <span class="se">\</span>
+  <span class="s1">'https://&lt;your-client-code&gt;.tt.omtrdc.net/rest/v1/mbox/A210702C-402F-4458-9869-FCE64F318AE6?client=&lt;your-client-code&gt;'</span> <span class="se">\</span>
   -H <span class="s1">'cache-control: no-cache'</span> <span class="se">\</span>
   -H <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
   -H <span class="s1">'user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_3) AppleWebKit/537.75.14 (KHTML, like Gecko) Version/7.0.3 Safari/7046A194A'</span> <span class="se">\</span>
@@ -1486,7 +1486,7 @@ Don&rsquo;t forget to replace the clientcode and the mbox name with your own in 
 
 <p>Replace &ldquo;<your-client-code>&rdquo; and &ldquo;your-tnt-id&rdquo; and fire a GET request. Here is an example profile fetch call using a tntid</p>
 
-<p><code class="prettyprint">http://&lt;your-client-code&gt;.tt.omtrdc.net/rest/v1/profiles/111492025094307-353046?client=&lt;your-tenant-name&gt;</code></p>
+<p><code class="prettyprint">http://&lt;your-client-code&gt;.tt.omtrdc.net/rest/v1/profiles/111492025094307-353046?client=&lt;your-client-code&gt;</code></p>
 
 <h3 id="using-a-thirdpartyid">Using a thirdPartyId</h3>
 
@@ -1498,7 +1498,7 @@ Don&rsquo;t forget to replace the clientcode and the mbox name with your own in 
 
 <p>Replace &ldquo;<your-client-code>&rdquo; and &ldquo;your-thirdpartyid&rdquo; and fire a GET request. Here is an example profile fetch call using a thirdpartyid</p>
 
-<p><code class="prettyprint">http://&lt;your-client-code&gt;.tt.omtrdc.net/rest/v1/profiles/thirdPartyId/a1-mbox3rdPartyId?client=&lt;your-tenant-name&gt;</code></p>
+<p><code class="prettyprint">http://&lt;your-client-code&gt;.tt.omtrdc.net/rest/v1/profiles/thirdPartyId/a1-mbox3rdPartyId?client=&lt;your-client-code&gt;</code></p>
 
 <p>When this call is made, Target attempts to locate the profile first in the cluster noted in the edge request, or wherever the profile is located and return the content. The profile contents are returned in JSON format.</p>
 
