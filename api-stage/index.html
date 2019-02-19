@@ -89,7 +89,8 @@
     <link href="stylesheets/screen.css" rel="stylesheet" media="screen" />
     <link href="stylesheets/print.css" rel="stylesheet" media="print" />
     <link href="images/favicon.ico" rel="icon" type="image/ico" />
-      <script src="javascripts/all.js"></script>
+    <script src="//assets.adobedtm.com/98fab992275ef6366cc65f57f86b1e895a66c912/satelliteLib-0b150149f6d6c4efde46c497357c181b39c43b0a.js"></script>
+    <script src="javascripts/all.js"></script>
   </head>
 
   <body class="index" data-languages="[]">
@@ -106,6 +107,9 @@
         </div>
         <ul class="search-results"></ul>
       <div id="toc">
+      	<div>
+        	<ul id="tocify-header100" class="tocify-header"><li class="tocify-item" style="cursor: pointer;"><a href="/api/recommendations" target="_blank" style="color:white; ztext-decoration: none;">Target Recommendations</a></li></ul>
+      	</div>
       </div>
         <ul class="toc-footer">
             <li><a href='https://console.adobe.io'>Adobe I/O Console</a></li>
@@ -1482,7 +1486,7 @@ Don&rsquo;t forget to replace the clientcode and the mbox name with your own in 
 
 <p>Replace &ldquo;<your-client-code>&rdquo; and &ldquo;your-tnt-id&rdquo; and fire a GET request. Here is an example profile fetch call using a tntid</p>
 
-<p><code class="prettyprint">http://&lt;your-client-code&gt;.tt.omtrdc.net/rest/v1/profiles/111492025094307-353046?client=&lt;your-tenant-name&gt;</code></p>
+<p><code class="prettyprint">http://&lt;your-client-code&gt;.tt.omtrdc.net/rest/v1/profiles/111492025094307-353046?client=&lt;your-client-code&gt;</code></p>
 
 <h3 id="using-a-thirdpartyid">Using a thirdPartyId</h3>
 
@@ -1494,7 +1498,7 @@ Don&rsquo;t forget to replace the clientcode and the mbox name with your own in 
 
 <p>Replace &ldquo;<your-client-code>&rdquo; and &ldquo;your-thirdpartyid&rdquo; and fire a GET request. Here is an example profile fetch call using a thirdpartyid</p>
 
-<p><code class="prettyprint">http://&lt;your-client-code&gt;.tt.omtrdc.net/rest/v1/profiles/thirdPartyId/a1-mbox3rdPartyId?client=&lt;your-tenant-name&gt;</code></p>
+<p><code class="prettyprint">http://&lt;your-client-code&gt;.tt.omtrdc.net/rest/v1/profiles/thirdPartyId/a1-mbox3rdPartyId?client=&lt;your-client-code&gt;</code></p>
 
 <p>When this call is made, Target attempts to locate the profile first in the cluster noted in the edge request, or wherever the profile is located and return the content. The profile contents are returned in JSON format.</p>
 
@@ -1724,7 +1728,7 @@ If the correct version isn&rsquo;t specified (eg: If you use a V2 payload but do
 Don&rsquo;t forget to replace the {{tenant}}, {{access_token}} and {{api_key}} values with your own in the API calls.
 </aside>
 
-<p><a href="https://app.getpostman.com/run-collection/8df29390f5e380f44a7c"><img src="https://run.pstmn.io/button.svg" alt="Run in Postman" /></a></p>
+<p><a href="https://app.getpostman.com/run-collection/faf7b24288a06c359f4c"><img src="https://run.pstmn.io/button.svg" alt="Run in Postman" /></a></p>
 
 <h2 id="response-codes">Response Codes</h2>
 
@@ -1786,7 +1790,7 @@ curl -X GET
 https://mc.adobe.io/&lt;your-tenant-name&gt;/target/activities/ <span class="se">\</span>
   -H <span class="s1">'authorization: Bearer &lt;your-bearer-token&gt;'</span> <span class="se">\</span>
   -H <span class="s1">'cache-control: no-cache'</span> <span class="se">\</span>
-  -H <span class="s1">'content-type: application/vnd.adobe.target.v1+json'</span> <span class="se">\</span>
+  -H <span class="s1">'Accept: application/vnd.adobe.target.v3+json'</span> <span class="se">\</span>
   -H <span class="s1">'x-api-key: &lt;your-api-token&gt;'</span>
 
 </code></pre>
@@ -1805,7 +1809,8 @@ https://mc.adobe.io/&lt;your-tenant-name&gt;/target/activities/ <span class="se"
             </span><span class="nt">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"deactivated"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A3 - L4242 - Serversid testing"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"priority"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"modifiedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-05-11T10:11:35Z"</span><span class="w">
+            </span><span class="nt">"modifiedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-05-11T10:11:35Z"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"workspace"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234567"</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="p">{</span><span class="w">
             </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">168942</span><span class="p">,</span><span class="w">
@@ -1814,7 +1819,8 @@ https://mc.adobe.io/&lt;your-tenant-name&gt;/target/activities/ <span class="se"
             </span><span class="nt">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"deactivated"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A3-L4242-XT"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"priority"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"modifiedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-05-11T10:11:52Z"</span><span class="w">
+            </span><span class="nt">"modifiedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-05-11T10:11:52Z"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"workspace"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234567"</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="p">{</span><span class="w">
             </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">168816</span><span class="p">,</span><span class="w">
@@ -1823,7 +1829,8 @@ https://mc.adobe.io/&lt;your-tenant-name&gt;/target/activities/ <span class="se"
             </span><span class="nt">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"deactivated"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A5-L4242"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"priority"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"modifiedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-05-11T10:11:33Z"</span><span class="w">
+            </span><span class="nt">"modifiedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-05-11T10:11:33Z"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"workspace"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234567"</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="p">{</span><span class="w">
             </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">168824</span><span class="p">,</span><span class="w">
@@ -1832,7 +1839,8 @@ https://mc.adobe.io/&lt;your-tenant-name&gt;/target/activities/ <span class="se"
             </span><span class="nt">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"deactivated"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A6-L4242 AB Test SG"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"priority"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"modifiedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-05-11T10:11:18Z"</span><span class="w">
+            </span><span class="nt">"modifiedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-05-11T10:11:18Z"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"workspace"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234567"</span><span class="w">
         </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -1895,6 +1903,9 @@ https://mc.adobe.io/&lt;your-tenant-name&gt;/target/activities/ <span class="se"
 <p>GET activity list filtered by a date range
 <code class="prettyprint">https://mc.adobe.io/{tenant}/target/activities/?startsAt=1800-09-01T02:04:00.000-07:00/2114-11-30T14:10:00.000-07:00</code></p>
 
+<p>GET activity list filtered by workspaces
+<code class="prettyprint">https://mc.adobe.io/{tenant}/target/activities/?workspace=1234567,12345678</code></p>
+
 <h2 id="get-ab-activity-by-id">Get AB Activity by ID</h2>
 
 <blockquote>
@@ -1904,7 +1915,7 @@ https://mc.adobe.io/&lt;your-tenant-name&gt;/target/activities/ <span class="se"
 https://mc.adobe.io/&lt;your-tenant-name&gt;/target/activities/ab/168824 <span class="se">\</span>
   -H <span class="s1">'authorization: Bearer &lt;your-bearer-token&gt;'</span> <span class="se">\</span>
   -H <span class="s1">'cache-control: no-cache'</span> <span class="se">\</span>
-  -H <span class="s1">'content-type: application/vnd.adobe.target.v1+json'</span> <span class="se">\</span>
+  -H <span class="s1">'Accept: application/vnd.adobe.target.v3+json'</span> <span class="se">\</span>
   -H <span class="s1">'x-api-key: &lt;your-api-token&gt;'</span>
 
 </code></pre>
@@ -1981,6 +1992,11 @@ https://mc.adobe.io/&lt;your-tenant-name&gt;/target/activities/ab/168824 <span c
             </span><span class="p">}</span><span class="w">
         </span><span class="p">}</span><span class="w">
     </span><span class="p">],</span><span class="w">
+    </span><span class="nt">"workspace"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234567"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"propertyIds"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="mi">2</span><span class="w">
+    </span><span class="p">],</span><span class="w">
     </span><span class="nt">"modifiedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-05-11T10:11:18Z"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
@@ -1999,7 +2015,7 @@ curl -X DELETE <span class="se">\</span>
   https://mc.adobe.io/&lt;your-tenant-name&gt;/target/activities/ab/168805 <span class="se">\</span>
   -H <span class="s1">'authorization: Bearer &lt;your-bearer-token&gt;'</span> <span class="se">\</span>
   -H <span class="s1">'cache-control: no-cache'</span> <span class="se">\</span>
-  -H <span class="s1">'content-type: application/vnd.adobe.target.v1+json'</span> <span class="se">\</span>
+  -H <span class="s1">'Accept: application/vnd.adobe.target.v3+json'</span> <span class="se">\</span>
   -H <span class="s1">'x-api-key: &lt;your-api-token&gt;'</span>
 
 </code></pre>
@@ -2070,6 +2086,11 @@ curl -X DELETE <span class="se">\</span>
             </span><span class="p">}</span><span class="w">
         </span><span class="p">}</span><span class="w">
     </span><span class="p">],</span><span class="w">
+    </span><span class="nt">"workspace"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234567"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"propertyIds"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="mi">2</span><span class="w">
+    </span><span class="p">],</span><span class="w">
     </span><span class="nt">"modifiedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-07-09T21:42:42Z"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
@@ -2088,7 +2109,7 @@ curl -X POST <span class="se">\</span>
   https://mc.adobe.io/&lt;your-tenant-name&gt;/target/activities/ab/ <span class="se">\</span>
   -H <span class="s1">'authorization: Bearer &lt;your-bearer-token&gt;'</span> <span class="se">\</span>
   -H <span class="s1">'cache-control: no-cache'</span> <span class="se">\</span>
-  -H <span class="s1">'content-type: application/vnd.adobe.target.v1+json'</span> <span class="se">\</span>
+  -H <span class="s1">'content-type: application/vnd.adobe.target.v3+json'</span> <span class="se">\</span>
   -H <span class="s1">'x-api-key: &lt;your-api-token&gt;'</span>
   -d <span class="s1">'{
     "name": "New API Activity",
@@ -2158,6 +2179,11 @@ curl -X POST <span class="se">\</span>
                 "type": "count_once"
             }
         }
+    ],
+    "workspace": "1234567",
+    "propertyIds": [
+        1,
+        2
     ]
 }'</span>
 
@@ -2234,6 +2260,11 @@ curl -X POST <span class="se">\</span>
                 </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"count_once"</span><span class="w">
             </span><span class="p">}</span><span class="w">
         </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nt">"workspace"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234567"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"propertyIds"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="mi">2</span><span class="w">
     </span><span class="p">],</span><span class="w">
     </span><span class="nt">"modifiedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-07-10T05:11:03Z"</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -2338,6 +2369,18 @@ Activities created using the API can only be edited using the API. You can&rsquo
                     </li>
                 </ul>
             </td>
+        </tr>
+        <tr>
+            <td> <em>workspace</em>
+            </td>
+            <td> String</td>
+            <td>Optional id of workspace to which the activity belongs. Max length is 250 characters. By default, Default workspace is assumed. Applicable for Enterprise Permissions (Target Premium).</td>
+        </tr>
+        <tr>
+            <td> <em>propertyIds</em>
+            </td>
+            <td> Array</td>
+            <td> List of property ids to associate with the activity.</td>
         </tr>
         <tr>
             <td> <em>locations</em>
@@ -2537,7 +2580,7 @@ Activities created using the API can only be edited using the API. You can&rsquo
   https://mc.adobe.io/&lt;your-tenant-name&gt;/target/activities/ab/183916 <span class="se">\</span>
   -H <span class="s1">'authorization: Bearer &lt;your-bearer-token&gt;'</span> <span class="se">\</span>
   -H <span class="s1">'cache-control: no-cache'</span> <span class="se">\</span>
-  -H <span class="s1">'content-type: application/vnd.adobe.target.v1+json'</span> <span class="se">\</span>
+  -H <span class="s1">'content-type: application/vnd.adobe.target.v3+json'</span> <span class="se">\</span>
   -H <span class="s1">'x-api-key: &lt;your-api-token&gt;'</span>
   -d <span class="s1">'{
     "name": "New Activity Name",
@@ -2633,6 +2676,11 @@ Activities created using the API can only be edited using the API. You can&rsquo
             ]
         }
     ],
+    "workspace": "1234567",
+        "propertyIds": [
+                1,
+                2
+        ],
     "analytics": {
         "reportSuite": "mydemoreportsuite",
         "dataCollectionHost": "mydemoreportsuite.sc.omniture.com"
@@ -2734,10 +2782,14 @@ Activities created using the API can only be edited using the API. You can&rsquo
                 </span><span class="p">{</span><span class="w">
                     </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"event_3"</span><span class="p">,</span><span class="w">
                     </span><span class="nt">"successEvent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mbox_shown"</span><span class="w">
-                </span><span class="p">}</span><span class="w">
-            </span><span class="p">]</span><span class="w">
+            </span><span class="err">]</span><span class="w">
         </span><span class="p">}</span><span class="w">
     </span><span class="p">],</span><span class="w">
+    </span><span class="nt">"workspace"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234567"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"propertyIds"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="mi">1</span><span class="p">,</span><span class="w">
+                </span><span class="mi">2</span><span class="w">
+        </span><span class="p">],</span><span class="w">
     </span><span class="nt">"analytics"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nt">"reportSuite"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mydemoreportsuite"</span><span class="p">,</span><span class="w">
         </span><span class="nt">"dataCollectionHost"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mydemoreportsuite.sc.omniture.com"</span><span class="w">
@@ -2762,7 +2814,7 @@ Refer &ldquo;Create AB Activity&rdquo; for the available inputs, limitations and
 https://mc.adobe.io/&lt;your-tenant-name&gt;/target/activities/xt/168824 <span class="se">\</span>
   -H <span class="s1">'authorization: Bearer &lt;your-bearer-token&gt;'</span> <span class="se">\</span>
   -H <span class="s1">'cache-control: no-cache'</span> <span class="se">\</span>
-  -H <span class="s1">'content-type: application/vnd.adobe.target.v1+json'</span> <span class="se">\</span>
+  -H <span class="s1">'Accept: application/vnd.adobe.target.v3+json'</span> <span class="se">\</span>
   -H <span class="s1">'x-api-key: &lt;your-api-token&gt;'</span>
 
 </code></pre>
@@ -2844,6 +2896,11 @@ https://mc.adobe.io/&lt;your-tenant-name&gt;/target/activities/xt/168824 <span c
             </span><span class="p">}</span><span class="w">
         </span><span class="p">}</span><span class="w">
     </span><span class="p">],</span><span class="w">
+    </span><span class="nt">"workspace"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234567"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"propertyIds"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="mi">2</span><span class="w">
+    </span><span class="p">],</span><span class="w">
     </span><span class="nt">"analytics"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nt">"reportSuite"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;your-tenant-name&gt;iosdemo"</span><span class="p">,</span><span class="w">
         </span><span class="nt">"dataCollectionHost"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;your-tenant-name&gt;.sc.omtrdc.net"</span><span class="w">
@@ -2864,7 +2921,7 @@ curl -X DELETE <span class="se">\</span>
   https://mc.adobe.io/&lt;your-tenant-name&gt;/target/activities/xt/168333 <span class="se">\</span>
   -H <span class="s1">'authorization: Bearer &lt;your-bearer-token&gt;'</span> <span class="se">\</span>
   -H <span class="s1">'cache-control: no-cache'</span> <span class="se">\</span>
-  -H <span class="s1">'content-type: application/vnd.adobe.target.v1+json'</span> <span class="se">\</span>
+  -H <span class="s1">'Accept: application/vnd.adobe.target.v3+json'</span> <span class="se">\</span>
   -H <span class="s1">'x-api-key: &lt;your-api-token&gt;'</span>
 
 </code></pre>
@@ -2946,6 +3003,11 @@ curl -X DELETE <span class="se">\</span>
             </span><span class="p">}</span><span class="w">
         </span><span class="p">}</span><span class="w">
     </span><span class="p">],</span><span class="w">
+    </span><span class="nt">"workspace"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234567"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"propertyIds"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="mi">2</span><span class="w">
+    </span><span class="p">],</span><span class="w">
     </span><span class="nt">"modifiedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-07-10T04:09:39Z"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
@@ -2964,7 +3026,7 @@ curl -X POST <span class="se">\</span>
   https://mc.adobe.io/&lt;your-tenant-name&gt;/target/activities/xt/ <span class="se">\</span>
   -H <span class="s1">'authorization: Bearer &lt;your-bearer-token&gt;'</span> <span class="se">\</span>
   -H <span class="s1">'cache-control: no-cache'</span> <span class="se">\</span>
-  -H <span class="s1">'content-type: application/vnd.adobe.target.v1+json'</span> <span class="se">\</span>
+  -H <span class="s1">'content-type: application/vnd.adobe.target.v3+json'</span> <span class="se">\</span>
   -H <span class="s1">'x-api-key: &lt;your-api-token&gt;'</span>
   -d <span class="s1">'{
     "name": "New XT API Activity",
@@ -3051,6 +3113,11 @@ curl -X POST <span class="se">\</span>
                 "type": "count_once"
             }
         }
+    ],
+    "workspace": "1234567",
+    "propertyIds": [
+        1,
+        2
     ],
     "analytics": {
         "reportSuite": "&lt;your-tenant-name&gt;westeros",
@@ -3150,6 +3217,11 @@ curl -X POST <span class="se">\</span>
             </span><span class="p">}</span><span class="w">
         </span><span class="p">}</span><span class="w">
     </span><span class="p">],</span><span class="w">
+    </span><span class="nt">"workspace"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234567"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"propertyIds"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="mi">2</span><span class="w">
+    </span><span class="p">],</span><span class="w">
     </span><span class="nt">"analytics"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nt">"reportSuite"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;your-tenant-name&gt;westeros"</span><span class="p">,</span><span class="w">
         </span><span class="nt">"dataCollectionHost"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;your-tenant-name&gt;.sc.omtrdc.net"</span><span class="w">
@@ -3240,19 +3312,15 @@ curl -X PUT <span class="se">\</span>
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre>
-<p>Update state for an activity that is referenced by the provided id. Valid values are:
-* approved
-* deactivated
-* saved</p>
+<p>Update state for an activity that is referenced by the provided id. Valid values are:<br>
+- approved : corresponds to Live in Target UI.<br>
+- deactivated : corresponds to Inactive in Target UI.<br>
+- saved : corresponds to Inactive in Target UI.   </p>
 
 <p><code class="prettyprint">PUT: /{tenant}/target/activities/{id}/state</code></p>
 
 <aside class="notice">
 You can also use the specific endpoints <b>/activities/ab/{id}/state</b> and <b>/activities/xt/{id}/state</b> for updating the state of an AB or XT activity respectively. Best practice is to use the generic <b>/activities/{id}/state</b> so that you don&rsquo;t have to know or specify the type in the request.
-</aside>
-
-<aside class="warning">
-<b>Known Issue</b> : The Target UI has 5 states and the API only provides 3 out of the 5. Also, they use different terminologoes. Approved = Live, Deactivated = Inactive, Saved = Draft.
 </aside>
 
 <h2 id="update-activity-priority">Update Activity Priority</h2>
@@ -3451,7 +3519,7 @@ curl -X GET <span class="se">\</span>
   <span class="s1">'https://mc.adobe.io/&lt;your-tenant-name&gt;/target/offers?limit=10'</span> <span class="se">\</span>
   -H <span class="s1">'authorization: Bearer &lt;your-bearer-token&gt;'</span> <span class="se">\</span>
   -H <span class="s1">'cache-control: no-cache'</span> <span class="se">\</span>
-  -H <span class="s1">'content-type: application/vnd.adobe.target.v1+json'</span> <span class="se">\</span>
+  -H <span class="s1">'Accept: application/vnd.adobe.target.v2+json'</span> <span class="se">\</span>
   -H <span class="s1">'x-api-key: &lt;your-api-token&gt;'</span>
 
 </code></pre>
@@ -3467,61 +3535,71 @@ curl -X GET <span class="se">\</span>
             </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">391769</span><span class="p">,</span><span class="w">
             </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/l1_a_b_test/experiences/0/pages/0/zones/0/1489440825492"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"content"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"modifiedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-03-20T03:03:28Z"</span><span class="w">
+            </span><span class="nt">"modifiedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-03-20T03:03:28Z"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"workspace"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234567"</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="p">{</span><span class="w">
             </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">391902</span><span class="p">,</span><span class="w">
             </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10OFF"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"content"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"modifiedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-03-19T00:06:47Z"</span><span class="w">
+            </span><span class="nt">"modifiedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-03-19T00:06:47Z"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"workspace"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234567"</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="p">{</span><span class="w">
             </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">391903</span><span class="p">,</span><span class="w">
             </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SHIPFREE"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"content"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"modifiedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-03-19T00:06:29Z"</span><span class="w">
+            </span><span class="nt">"modifiedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-03-19T00:06:29Z"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"workspace"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234567"</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="p">{</span><span class="w">
             </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">391904</span><span class="p">,</span><span class="w">
             </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5OFF"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"content"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"modifiedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-03-19T00:06:26Z"</span><span class="w">
+            </span><span class="nt">"modifiedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-03-19T00:06:26Z"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"workspace"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234567"</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="p">{</span><span class="w">
             </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">391905</span><span class="p">,</span><span class="w">
             </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/a1_-_l4206a_-_ab/experiences/0/pages/0/zones/0/1489468580249"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"content"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"modifiedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-06-30T19:48:38Z"</span><span class="w">
+            </span><span class="nt">"modifiedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-06-30T19:48:38Z"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"workspace"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234567"</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="p">{</span><span class="w">
             </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">391906</span><span class="p">,</span><span class="w">
             </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/a1_-_l4206a_-_ab/experiences/1/pages/0/zones/0/1489468580252"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"content"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"modifiedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-06-14T20:24:39Z"</span><span class="w">
+            </span><span class="nt">"modifiedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-06-14T20:24:39Z"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"workspace"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234567"</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="p">{</span><span class="w">
             </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">391907</span><span class="p">,</span><span class="w">
             </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/a1_-_l4206a_-_ab/experiences/2/pages/0/zones/0/1489468580255"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"content"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"modifiedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-04-21T21:34:55Z"</span><span class="w">
+            </span><span class="nt">"modifiedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-04-21T21:34:55Z"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"workspace"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234567"</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="p">{</span><span class="w">
             </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">391910</span><span class="p">,</span><span class="w">
             </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/a1_-_l4206a_-_xt/experiences/0/pages/0/zones/0/1489470215324"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"content"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"modifiedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-03-19T03:51:21Z"</span><span class="w">
+            </span><span class="nt">"modifiedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-03-19T03:51:21Z"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"workspace"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234567"</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="p">{</span><span class="w">
             </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">391911</span><span class="p">,</span><span class="w">
             </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/a1_-_l4206a_-_xt/experiences/1/pages/0/zones/0/1489470215327"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"content"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"modifiedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-03-14T05:43:36Z"</span><span class="w">
+            </span><span class="nt">"modifiedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-03-14T05:43:36Z"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"workspace"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234567"</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="p">{</span><span class="w">
             </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">391919</span><span class="p">,</span><span class="w">
             </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/a1_-_l4206a_-_xt/experiences/2/pages/0/zones/0/1489474831626"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"content"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"modifiedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-03-19T03:51:21Z"</span><span class="w">
+            </span><span class="nt">"modifiedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-03-19T03:51:21Z"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"workspace"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234567"</span><span class="w">
         </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -3602,7 +3680,7 @@ curl -X GET <span class="se">\</span>
   https://mc.adobe.io/&lt;your-tenant-name&gt;/target/offers/content/391902 <span class="se">\</span>
   -H <span class="s1">'authorization: Bearer &lt;your-bearer-token&gt;'</span> <span class="se">\</span>
   -H <span class="s1">'cache-control: no-cache'</span> <span class="se">\</span>
-  -H <span class="s1">'content-type: application/vnd.adobe.target.v1+json'</span> <span class="se">\</span>
+  -H <span class="s1">'Accept: application/vnd.adobe.target.v2+json'</span> <span class="se">\</span>
   -H <span class="s1">'x-api-key: &lt;your-api-token&gt;'</span>
 
 </code></pre>
@@ -3613,7 +3691,8 @@ curl -X GET <span class="se">\</span>
     </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">391902</span><span class="p">,</span><span class="w">
     </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10OFF"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Use 10OFF for $10 off for orders over $100"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"modifiedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-03-19T00:06:47Z"</span><span class="w">
+    </span><span class="nt">"modifiedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-03-19T00:06:47Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"workspace"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234567"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre>
@@ -3630,11 +3709,12 @@ curl -X GET <span class="se">\</span>
   https://mc.adobe.io/&lt;your-tenant-name&gt;/target/offers/content <span class="se">\</span>
   -H <span class="s1">'authorization: Bearer &lt;your-bearer-token&gt;'</span> <span class="se">\</span>
   -H <span class="s1">'cache-control: no-cache'</span> <span class="se">\</span>
-  -H <span class="s1">'content-type: application/vnd.adobe.target.v1+json'</span> <span class="se">\</span>
+  -H <span class="s1">'content-type: application/vnd.adobe.target.v2+json'</span> <span class="se">\</span>
   -H <span class="s1">'x-api-key: &lt;your-api-token&gt;'</span>
   -d <span class="s1">' {
      "name": "My new offer",
-     "content": "&lt;div&gt;The content of the offer&lt;/div&gt;"
+     "content": "&lt;div&gt;The content of the offer&lt;/div&gt;",
+         "workspace": "1234567" 
  }
 '</span>
 
@@ -3647,13 +3727,38 @@ curl -X GET <span class="se">\</span>
     </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">438180</span><span class="p">,</span><span class="w">
     </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My new offer"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;div&gt;The content of the offer&lt;/div&gt;"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"modifiedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-07-10T20:46:53Z"</span><span class="w">
+    </span><span class="nt">"modifiedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-07-10T20:46:53Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"workspace"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234567"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre>
 <p><code class="prettyprint">POST: /{tenant}/target/offers/content</code></p>
 
 <p>Creates a new content offer as defined by the request data.</p>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>String</td>
+<td>A string to identify the Offer. The name cannot be empty. Max length is 250 characters.</td>
+</tr>
+<tr>
+<td>content</td>
+<td>String</td>
+<td>Content of an Offer shown to user.</td>
+</tr>
+<tr>
+<td>workspace</td>
+<td>String</td>
+<td>Optional id of workspace to which the activity belongs. Max length is 250 characters. By default, Default workspace is assumed. Applicable for Enterprise Permissions (Target Premium).</td>
+</tr>
+</tbody></table>
 
 <h2 id="update-offer-by-id">Update Offer by ID</h2>
 
@@ -3664,7 +3769,7 @@ curl -X GET <span class="se">\</span>
   https://mc.adobe.io/&lt;your-tenant-name&gt;/target/offers/content/438180 <span class="se">\</span>
   -H <span class="s1">'authorization: Bearer &lt;your-bearer-token&gt;'</span> <span class="se">\</span>
   -H <span class="s1">'cache-control: no-cache'</span> <span class="se">\</span>
-  -H <span class="s1">'content-type: application/vnd.adobe.target.v1+json'</span> <span class="se">\</span>
+  -H <span class="s1">'content-type: application/vnd.adobe.target.v2+json'</span> <span class="se">\</span>
   -H <span class="s1">'x-api-key: &lt;your-api-token&gt;'</span>
   -d <span class="s1">' {
     "name": "Your existing offer",
@@ -3699,7 +3804,7 @@ curl -X DELETE <span class="se">\</span>
   https://mc.adobe.io/&lt;your-tenant-name&gt;/target/offers/content/438180 <span class="se">\</span>
   -H <span class="s1">'authorization: Bearer &lt;your-bearer-token&gt;'</span> <span class="se">\</span>
   -H <span class="s1">'cache-control: no-cache'</span> <span class="se">\</span>
-  -H <span class="s1">'content-type: application/vnd.adobe.target.v1+json'</span> <span class="se">\</span>
+  -H <span class="s1">'Accept: application/vnd.adobe.target.v2+json'</span> <span class="se">\</span>
   -H <span class="s1">'x-api-key: &lt;your-api-token&gt;'</span>
 
 </code></pre>
@@ -3711,7 +3816,8 @@ curl -X DELETE <span class="se">\</span>
     </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">438180</span><span class="p">,</span><span class="w">
     </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Your existing offer"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;div&gt;Updated content&lt;/div&gt;"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"modifiedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-07-10T20:55:41Z"</span><span class="w">
+    </span><span class="nt">"modifiedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-07-10T20:55:41Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"workspace"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234567"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre>
@@ -3732,7 +3838,7 @@ curl -X DELETE <span class="se">\</span>
   <span class="s1">'https://mc.adobe.io/&lt;your-tenant-name&gt;/target/audiences/'</span> <span class="se">\</span>
   -H <span class="s1">'authorization: Bearer &lt;your-bearer-token&gt;'</span> <span class="se">\</span>
   -H <span class="s1">'cache-control: no-cache'</span> <span class="se">\</span>
-  -H <span class="s1">'content-type: application/vnd.adobe.target.v1+json'</span> <span class="se">\</span>
+  -H <span class="s1">'Accept: application/vnd.adobe.target.v3+json'</span> <span class="se">\</span>
   -H <span class="s1">'x-api-key: &lt;your-api-token&gt;'</span>
 
 </code></pre>
@@ -3750,70 +3856,80 @@ curl -X DELETE <span class="se">\</span>
             </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A1 -  Active account l-1489628809975"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"--"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"origin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"target"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"modifiedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-03-16T01:47:07Z"</span><span class="w">
+            </span><span class="nt">"modifiedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-03-16T01:47:07Z"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"workspace"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234567"</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="p">{</span><span class="w">
             </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1216183</span><span class="p">,</span><span class="w">
             </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A1 - Current Category -1489642111631"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"--"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"origin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"target"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"modifiedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-03-16T05:28:33Z"</span><span class="w">
+            </span><span class="nt">"modifiedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-03-16T05:28:33Z"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"workspace"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234567"</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="p">{</span><span class="w">
             </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1216184</span><span class="p">,</span><span class="w">
             </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A1 - Current category -1489642149723"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"--"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"origin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"target"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"modifiedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-03-16T05:29:11Z"</span><span class="w">
+            </span><span class="nt">"modifiedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-03-16T05:29:11Z"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"workspace"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234567"</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="p">{</span><span class="w">
             </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1222658</span><span class="p">,</span><span class="w">
             </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A1 - Customer Attribute -1489821120208"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"--"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"origin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"target"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"modifiedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-03-18T07:45:41Z"</span><span class="w">
+            </span><span class="nt">"modifiedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-03-18T07:45:41Z"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"workspace"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234567"</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="p">{</span><span class="w">
             </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1238132</span><span class="p">,</span><span class="w">
             </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A1 - L206 - Profile - -1490293696694"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"--"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"origin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"target"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"modifiedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-03-23T18:28:19Z"</span><span class="w">
+            </span><span class="nt">"modifiedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-03-23T18:28:19Z"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"workspace"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234567"</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="p">{</span><span class="w">
             </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1238133</span><span class="p">,</span><span class="w">
             </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A1 - L206 - Profile - -1490293722988"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"--"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"origin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"target"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"modifiedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-03-23T18:28:43Z"</span><span class="w">
+            </span><span class="nt">"modifiedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-03-23T18:28:43Z"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"workspace"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234567"</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="p">{</span><span class="w">
             </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1238134</span><span class="p">,</span><span class="w">
             </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A1 - L206 - Profile - -1490293734000"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"--"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"origin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"target"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"modifiedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-03-23T18:28:55Z"</span><span class="w">
+            </span><span class="nt">"modifiedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-03-23T18:28:55Z"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"workspace"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234567"</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="p">{</span><span class="w">
             </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1238135</span><span class="p">,</span><span class="w">
             </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A1 - L206 - Profile - -1490293749957"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"--"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"origin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"target"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"modifiedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-03-23T18:29:12Z"</span><span class="w">
+            </span><span class="nt">"modifiedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-03-23T18:29:12Z"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"workspace"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234567"</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="p">{</span><span class="w">
             </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1235754</span><span class="p">,</span><span class="w">
             </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A1 - L4206 - Alec - Us-1490221177054"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"--"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"origin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"target"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"modifiedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-03-22T22:19:38Z"</span><span class="w">
+            </span><span class="nt">"modifiedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-03-22T22:19:38Z"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"workspace"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234567"</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="p">{</span><span class="w">
             </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1229960</span><span class="p">,</span><span class="w">
             </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A1 - L4206 - Cart Amou-1490140690240"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"--"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"origin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"target"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"modifiedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-03-22T01:40:55Z"</span><span class="w">
+            </span><span class="nt">"modifiedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-03-22T01:40:55Z"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"workspace"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234567"</span><span class="w">
         </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -3919,7 +4035,7 @@ curl -X DELETE <span class="se">\</span>
   https://mc.adobe.io/&lt;your-tenant-name&gt;/target/audiences/1397972 <span class="se">\</span>
   -H <span class="s1">'authorization: Bearer &lt;your-bearer-token&gt;'</span> <span class="se">\</span>
   -H <span class="s1">'cache-control: no-cache'</span> <span class="se">\</span>
-  -H <span class="s1">'content-type: application/vnd.adobe.target.v1+json'</span> <span class="se">\</span>
+  -H <span class="s1">'Accept: application/vnd.adobe.target.v3+json'</span> <span class="se">\</span>
   -H <span class="s1">'x-api-key: &lt;your-api-token&gt;'</span>
 
 </code></pre>
@@ -3948,7 +4064,8 @@ curl -X DELETE <span class="se">\</span>
             </span><span class="p">}</span><span class="w">
         </span><span class="p">]</span><span class="w">
     </span><span class="p">},</span><span class="w">
-    </span><span class="nt">"modifiedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-05-18T19:44:34Z"</span><span class="w">
+    </span><span class="nt">"modifiedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-05-18T19:44:34Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"workspace"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234567"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre>
@@ -3966,7 +4083,7 @@ curl -X POST <span class="se">\</span>
   https://mc.adobe.io/&lt;your-tenant-name&gt;/target/audiences <span class="se">\</span>
   -H <span class="s1">'authorization: Bearer &lt;your-bearer-token&gt;'</span> <span class="se">\</span>
   -H <span class="s1">'cache-control: no-cache'</span> <span class="se">\</span>
-  -H <span class="s1">'content-type: application/vnd.adobe.target.v1+json'</span> <span class="se">\</span>
+  -H <span class="s1">'content-type: application/vnd.adobe.target.v3+json'</span> <span class="se">\</span>
   -H <span class="s1">'x-api-key: &lt;your-api-token&gt;'</span>
   -d <span class="s1">'{
     "name": "Homepage visitors from California",
@@ -3986,7 +4103,8 @@ curl -X POST <span class="se">\</span>
                 ]
             }
         ]
-    }
+    },
+    "workspace": "1234567"
 }'</span>
 
 </code></pre>
@@ -4015,7 +4133,8 @@ curl -X POST <span class="se">\</span>
             </span><span class="p">}</span><span class="w">
         </span><span class="p">]</span><span class="w">
     </span><span class="p">},</span><span class="w">
-    </span><span class="nt">"modifiedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-07-10T22:24:04Z"</span><span class="w">
+    </span><span class="nt">"modifiedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-07-10T22:24:04Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"workspace"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234567"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre>
@@ -4071,6 +4190,12 @@ Audiences created using the API can only be edited using the API. You can&rsquo;
                 <p>An array of rule objects that refer to pre-built audiences referred by their IDs</p>
             </td>
         </tr>
+        <tr>
+            <td> <em>workspace</em>
+            </td>
+            <td>String</td>
+            <td>Optional id of workspace to which the activity belongs. Max length is 250 characters. By default, Default workspace is assumed. Applicable for Enterprise Permissions (Target Premium).</td>
+        </tr>
     </tbody>
 </table>
 
@@ -4083,7 +4208,7 @@ Audiences created using the API can only be edited using the API. You can&rsquo;
   https://mc.adobe.io/&lt;your-tenant-name&gt;/target/audiences/1537195 <span class="se">\</span>
   -H <span class="s1">'authorization: Bearer &lt;your-bearer-token&gt;'</span> <span class="se">\</span>
   -H <span class="s1">'cache-control: no-cache'</span> <span class="se">\</span>
-  -H <span class="s1">'content-type: application/vnd.adobe.target.v1+json'</span> <span class="se">\</span>
+  -H <span class="s1">'content-type: application/vnd.adobe.target.v3+json'</span> <span class="se">\</span>
   -H <span class="s1">'x-api-key: &lt;your-api-token&gt;'</span>
   -d <span class="s1">'{
     "name": "Homepage visitors from California",
@@ -4131,7 +4256,8 @@ Audiences created using the API can only be edited using the API. You can&rsquo;
             </span><span class="p">}</span><span class="w">
         </span><span class="p">]</span><span class="w">
     </span><span class="p">},</span><span class="w">
-    </span><span class="nt">"modifiedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-07-10T22:29:28Z"</span><span class="w">
+    </span><span class="nt">"modifiedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-07-10T22:29:28Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"workspace"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234567"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
 
@@ -4149,7 +4275,7 @@ Audiences created using the API can only be edited using the API. You can&rsquo;
   https://mc.adobe.io/&lt;your-tenant-name&gt;/target/audiences/1537214 <span class="se">\</span>
   -H <span class="s1">'authorization: Bearer &lt;your-bearer-token&gt;'</span> <span class="se">\</span>
   -H <span class="s1">'cache-control: no-cache'</span> <span class="se">\</span>
-  -H <span class="s1">'content-type: application/vnd.adobe.target.v1+json'</span> <span class="se">\</span>
+  -H <span class="s1">'Accept: application/vnd.adobe.target.v3+json'</span> <span class="se">\</span>
   -H <span class="s1">'x-api-key: &lt;your-api-token&gt;'</span>
 
 </code></pre>
@@ -4177,13 +4303,103 @@ Audiences created using the API can only be edited using the API. You can&rsquo;
             </span><span class="p">}</span><span class="w">
         </span><span class="p">]</span><span class="w">
     </span><span class="p">},</span><span class="w">
-    </span><span class="nt">"modifiedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-07-10T22:31:18Z"</span><span class="w">
+    </span><span class="nt">"modifiedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-07-10T22:31:18Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"workspace"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234567"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre>
 <p><code class="prettyprint">DELETE /{tenant}/target/audiences/{id}</code></p>
 
 <p>Delete the audience referenced by the specified id.</p>
+
+<h1 id="property">Property</h1>
+
+<p>API methods for Properties. Applicable for Enterprise Permissions (Target Premium).</p>
+
+<h2 id="list-properties">List Properties</h2>
+
+<blockquote>
+<p>Sample Request to retrieve list of all properties</p>
+</blockquote>
+<pre class="highlight shell"><code>
+curl -X GET <span class="se">\</span>
+  https://mc.adobe.io/&lt;your-tenant-name&gt;/target/properties <span class="se">\</span>
+  -H <span class="s1">'authorization: Bearer &lt;your-bearer-token&gt;'</span> <span class="se">\</span>
+  -H <span class="s1">'cache-control: no-cache'</span> <span class="se">\</span>
+  -H <span class="s1">'Accept: application/vnd.adobe.target.v1+json'</span> <span class="se">\</span>
+  -H <span class="s1">'x-api-key: &lt;your-api-token&gt;'</span>
+
+
+</code></pre>
+<blockquote>
+<p>Sample Response for Get property</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"offset"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">2147483647</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"properties"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Products pagde"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This property will be required on all pages under Products section of website"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"channel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"web"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"segmentId"</span><span class="p">:</span><span class="w"> </span><span class="mi">410923</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"modifiedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-02-18T12:26:22.000Z"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"workspaces"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"12"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"15"</span><span class="w">
+            </span><span class="p">]</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Products page"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This property will be required on all pages under Products section of website"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"channel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"web"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"segmentId"</span><span class="p">:</span><span class="w"> </span><span class="mi">410923</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"modifiedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-02-18T12:25:20.000Z"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code class="prettyprint">GET /{tenant}/target/properties</code></p>
+
+<p>Retrieve list of all properties.</p>
+
+<h2 id="get-property-by-id">Get property by ID</h2>
+
+<blockquote>
+<p>Sample Request to retrieve property by property Id</p>
+</blockquote>
+<pre class="highlight shell"><code>
+curl -X GET <span class="se">\</span>
+  https://mc.adobe.io/&lt;your-tenant-name&gt;/target/properties/<span class="o">{</span>id<span class="o">}</span> <span class="se">\</span>
+  -H <span class="s1">'authorization: Bearer &lt;your-bearer-token&gt;'</span> <span class="se">\</span>
+  -H <span class="s1">'cache-control: no-cache'</span> <span class="se">\</span>
+  -H <span class="s1">'Accept: application/vnd.adobe.target.v1+json'</span> <span class="se">\</span>
+  -H <span class="s1">'x-api-key: &lt;your-api-token&gt;'</span>
+
+
+</code></pre>
+<blockquote>
+<p>Sample Response for Get property by property Id.</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Email property"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This is a email type of property"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"channel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"email"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"segmentId"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"workspaces"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"1234567"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"12345679"</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><code class="prettyprint">GET /{tenant}/target/properties/{id}</code></p>
+
+<p>Retrieve property by property Id.</p>
 
 <h1 id="reports">Reports</h1>
 
@@ -5379,5 +5595,6 @@ In order to execute batch API actions the underlying user has to have at least &
       <div class="dark-box">
       </div>
     </div>
+    <script type="text/javascript">_satellite.pageBottom();</script>
   </body>
 </html>
