@@ -1539,10 +1539,11 @@ Don&rsquo;t forget to replace the clientcode and the mbox name with your own in 
 
 <h3 id="single-profile-update">Single Profile Update</h3>
 
-<p>Specify the profile parameters in the format profile.paramName=value.
-There is a limit of one million profile updates in a 24-hour period.</p>
+<p>The Single Profile Update API allows sending a profile update for a single user and is generally used when an update must occur in relation to a transaction occurring in a channel that has not implemented Target.</p>
 
-<p>To update the profile for a pcId, use :</p>
+<p>The Single Profile Update API is limited to performing 1 million updates in any rolling 24-hour period. Updates generally occur in under 1 hour, but may take as long as 24 hours to be reflected. If you need to send more updates, or require updates to be processed in shorter timeframes, consider sending transactional profile updates via client-side update (preferred), or via the <a href="http://developers.adobetarget.com/api/#server-side-delivery">Server-Side Delivery API</a>.</p>
+
+<p>Specify the profile parameters in the format profile.paramName=value. To update the profile for a pcId, use:</p>
 
 <p><code class="prettyprint">https://&lt;your-client-code&gt;.tt.omtrdc.net/m2/client/profile/update?mboxPC=1368007744041-575948.01_00&amp;profile.attr=0&amp;profile.attr2=1...</code></p>
 
@@ -1562,7 +1563,6 @@ http://&lt;your-client-code&gt;.tt.omtrdc.net/m2/client/profile/update?mbox3rdPa
 <li>Parameters and values are case sensitive.</li>
 <li>Both GET and POST are supported.</li>
 <li>The current size limitations for limit is 8KB for GET and 60KB for POST.</li>
-<li>The calls to the profile update API do not count toward your mbox charges.</li>
 </ul>
 
 <p><strong>Response</strong></p>
@@ -1570,7 +1570,7 @@ http://&lt;your-client-code&gt;.tt.omtrdc.net/m2/client/profile/update?mbox3rdPa
 <p>A sample response for the above requests looks like this.
 <code class="prettyprint">trueRequest successfully submitted</code></p>
 
-<p>This response indicates the response has been submitted and will be processed soon. In general, lag time is less than a minute.</p>
+<p>This response indicates the response has been submitted and will be processed soon.</p>
 
 <h3 id="bulk-profile-update">Bulk Profile Update</h3>
 
