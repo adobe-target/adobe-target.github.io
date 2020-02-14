@@ -1,8 +1,8 @@
 {
 	"info": {
-		"_postman_id": "54d04cda-4f8d-414a-a290-58f027fb7ad6",
-		"name": "Recommendations-v1",
-		"description": "Adobe Target Recommendations API are based on [REST](https://en.wikipedia.org/wiki/Representational_state_transfer). This describes the resources that make up the official Adobe Target Recommendations API. The resources are designated by nouns or objects in the world of Recommendations like a feed or a design. The functionalities or operations on resources are designated by HTTP methods in each resource request.\n\n* Documentation available at [Adobe Target Developers Page](http://http://developers.adobetarget.com/api/recommendations)\n* Supported headers:\n\t* Bearer Authentication: Bearer token or access token can be generated using OAuth 2.0 flow described [here](https://www.adobe.io/apis/cloudplatform/console/authentication/oauth_workflow.html) \n\t* API Key: `X-Api-Key`, available at your [Adobe I/O Console](https://console.adobe.io/)\n\t* Accept: `application/vnd.adobe.target.v1+json`\n\t* Content-Type: `application/vnd.adobe.target.v1+json`",
+		"_postman_id": "13c89b0d-ac34-4316-b4d9-93cf654dfd84",
+		"name": "Recommendations",
+		"description": "Adobe Target Recommendations API are based on [REST](https://en.wikipedia.org/wiki/Representational_state_transfer). This describes the resources that make up the official Adobe Target Recommendations API. The resources are designated by nouns or objects in the world of Recommendations like a feed or a design. The functionalities or operations on resources are designated by HTTP methods in each resource request.\n\n* Documentation available at [Adobe Target Developers Page](http://http://developers.adobetarget.com/api/recommendations)",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -20,11 +20,11 @@
 							},
 							{
 								"key": "X-Api-Key",
-								"value": "{{xApiKey}}"
+								"value": "{{API_KEY}}"
 							}
 						],
 						"url": {
-							"raw": "https://mc.adobe.io/:tenantId/target/recs/collections/:collectionId",
+							"raw": "https://mc.adobe.io/{{TENANT_ID}}/target/recs/collections/:collectionId",
 							"protocol": "https",
 							"host": [
 								"mc",
@@ -32,17 +32,13 @@
 								"io"
 							],
 							"path": [
-								":tenantId",
+								"{{TENANT_ID}}",
 								"target",
 								"recs",
 								"collections",
 								":collectionId"
 							],
 							"variable": [
-								{
-									"key": "tenantId",
-									"value": "japacperf8"
-								},
 								{
 									"key": "collectionId",
 									"value": "1"
@@ -64,11 +60,11 @@
 							},
 							{
 								"key": "X-Api-Key",
-								"value": "{{xApiKey}}"
+								"value": "{{API_KEY}}"
 							}
 						],
 						"url": {
-							"raw": "https://mc.adobe.io/:tenantId/target/recs/collections",
+							"raw": "https://mc.adobe.io/{{TENANT_ID}}/target/recs/collections",
 							"protocol": "https",
 							"host": [
 								"mc",
@@ -76,16 +72,10 @@
 								"io"
 							],
 							"path": [
-								":tenantId",
+								"{{TENANT_ID}}",
 								"target",
 								"recs",
 								"collections"
-							],
-							"variable": [
-								{
-									"key": "tenantId",
-									"value": "japacperf8"
-								}
 							]
 						},
 						"description": "Gets all available collections."
@@ -103,7 +93,7 @@
 							},
 							{
 								"key": "X-Api-Key",
-								"value": "{{xApiKey}}"
+								"value": "{{API_KEY}}"
 							},
 							{
 								"key": "Content-Type",
@@ -115,7 +105,7 @@
 							"raw": "{\n\t\"name\": \"Backpacking Tents\",\n\t\"rules\": [\n\t\t{\n\t\t\t\"id\": {\n\t\t\t\t\"contains\": [\"backpacking\"]\n\t\t\t}\n\t\t}\n\t]\n}"
 						},
 						"url": {
-							"raw": "https://mc.adobe.io/:tenantId/target/recs/collections",
+							"raw": "https://mc.adobe.io/{{TENANT_ID}}/target/recs/collections",
 							"protocol": "https",
 							"host": [
 								"mc",
@@ -123,16 +113,10 @@
 								"io"
 							],
 							"path": [
-								":tenantId",
+								"{{TENANT_ID}}",
 								"target",
 								"recs",
 								"collections"
-							],
-							"variable": [
-								{
-									"key": "tenantId",
-									"value": "japacperf8"
-								}
 							]
 						},
 						"description": "Creates a new collection as specified by the rules provided and returns the newly created collection definition."
@@ -150,7 +134,7 @@
 							},
 							{
 								"key": "X-Api-Key",
-								"value": "{{xApiKey}}"
+								"value": "{{API_KEY}}"
 							},
 							{
 								"key": "Content-Type",
@@ -162,7 +146,7 @@
 							"raw": "{\n    \"name\": \"Backpacking & Camping Tents\",\n    \"rules\": [\n        {\n            \"id\": {\n                \"contains\": [\n                    \"backpacking\", \"camping\"\n                ]\n            }\n        }\n    ]\n}"
 						},
 						"url": {
-							"raw": "https://mc.adobe.io/:tenantId/target/recs/collections/:collectionId",
+							"raw": "https://mc.adobe.io/{{TENANT_ID}}/target/recs/collections/:collectionId",
 							"protocol": "https",
 							"host": [
 								"mc",
@@ -170,17 +154,13 @@
 								"io"
 							],
 							"path": [
-								":tenantId",
+								"{{TENANT_ID}}",
 								"target",
 								"recs",
 								"collections",
 								":collectionId"
 							],
 							"variable": [
-								{
-									"key": "tenantId",
-									"value": "japacperf8"
-								},
 								{
 									"key": "collectionId",
 									"value": "1"
@@ -198,7 +178,7 @@
 						"header": [
 							{
 								"key": "X-Api-Key",
-								"value": "{{xApiKey}}"
+								"value": "{{API_KEY}}"
 							},
 							{
 								"key": "Accept",
@@ -210,7 +190,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "https://mc.adobe.io/:tenantId/target/recs/collections/:collectionId",
+							"raw": "https://mc.adobe.io/{{TENANT_ID}}/target/recs/collections/:collectionId",
 							"protocol": "https",
 							"host": [
 								"mc",
@@ -218,17 +198,13 @@
 								"io"
 							],
 							"path": [
-								":tenantId",
+								"{{TENANT_ID}}",
 								"target",
 								"recs",
 								"collections",
 								":collectionId"
 							],
 							"variable": [
-								{
-									"key": "tenantId",
-									"value": "japacperf8"
-								},
 								{
 									"key": "collectionId",
 									"value": "1"
@@ -279,11 +255,11 @@
 							},
 							{
 								"key": "X-Api-Key",
-								"value": "{{xApiKey}}"
+								"value": "{{API_KEY}}"
 							}
 						],
 						"url": {
-							"raw": "https://mc.adobe.io/:tenantId/target/recs/criteria/:criteriaId",
+							"raw": "https://mc.adobe.io/{{TENANT_ID}}/target/recs/criteria/:criteriaId",
 							"protocol": "https",
 							"host": [
 								"mc",
@@ -291,17 +267,13 @@
 								"io"
 							],
 							"path": [
-								":tenantId",
+								"{{TENANT_ID}}",
 								"target",
 								"recs",
 								"criteria",
 								":criteriaId"
 							],
 							"variable": [
-								{
-									"key": "tenantId",
-									"value": "japacperf8"
-								},
 								{
 									"key": "criteriaId",
 									"value": "1"
@@ -324,11 +296,11 @@
 							},
 							{
 								"key": "X-Api-Key",
-								"value": "{{xApiKey}}"
+								"value": "{{API_KEY}}"
 							}
 						],
 						"url": {
-							"raw": "https://mc.adobe.io/:tenantId/target/recs/criteria",
+							"raw": "https://mc.adobe.io/{{TENANT_ID}}/target/recs/criteria",
 							"protocol": "https",
 							"host": [
 								"mc",
@@ -336,16 +308,10 @@
 								"io"
 							],
 							"path": [
-								":tenantId",
+								"{{TENANT_ID}}",
 								"target",
 								"recs",
 								"criteria"
-							],
-							"variable": [
-								{
-									"key": "tenantId",
-									"value": "japacperf8"
-								}
 							]
 						},
 						"description": "Gets all available criteria."
@@ -392,11 +358,11 @@
 							},
 							{
 								"key": "X-Api-Key",
-								"value": "{{xApiKey}}"
+								"value": "{{API_KEY}}"
 							}
 						],
 						"url": {
-							"raw": "https://mc.adobe.io/:tenantId/target/recs/criteria/category/:criteriaId",
+							"raw": "https://mc.adobe.io/{{TENANT_ID}}/target/recs/criteria/category/:criteriaId",
 							"protocol": "https",
 							"host": [
 								"mc",
@@ -404,7 +370,7 @@
 								"io"
 							],
 							"path": [
-								":tenantId",
+								"{{TENANT_ID}}",
 								"target",
 								"recs",
 								"criteria",
@@ -412,10 +378,6 @@
 								":criteriaId"
 							],
 							"variable": [
-								{
-									"key": "tenantId",
-									"value": "japacperf8"
-								},
 								{
 									"key": "criteriaId",
 									"value": "1"
@@ -438,11 +400,11 @@
 							},
 							{
 								"key": "X-Api-Key",
-								"value": "{{xApiKey}}"
+								"value": "{{API_KEY}}"
 							}
 						],
 						"url": {
-							"raw": "https://mc.adobe.io/:tenantId/target/recs/criteria/category",
+							"raw": "https://mc.adobe.io/{{TENANT_ID}}/target/recs/criteria/category",
 							"protocol": "https",
 							"host": [
 								"mc",
@@ -450,17 +412,11 @@
 								"io"
 							],
 							"path": [
-								":tenantId",
+								"{{TENANT_ID}}",
 								"target",
 								"recs",
 								"criteria",
 								"category"
-							],
-							"variable": [
-								{
-									"key": "tenantId",
-									"value": "japacperf8"
-								}
 							]
 						},
 						"description": "Gets all available category based criteria."
@@ -478,7 +434,7 @@
 							},
 							{
 								"key": "X-Api-Key",
-								"value": "{{xApiKey}}"
+								"value": "{{API_KEY}}"
 							},
 							{
 								"key": "Content-Type",
@@ -490,7 +446,7 @@
 							"raw": "{\n    \"name\": \"Most Popular Content from Visitor's Favorite Category\",\n    \"criteriaGroup\": \"CATEGORY\",\n    \"type\": \"VIEWED\",\n    \"key\": \"CURRENT\",\n    \"aggregation\": \"NONE\",\n    \"daysCount\": \"TWO_WEEKS\",\n    \"partialDesignAllowed\": false,\n    \"backupDisabled\": true,\n    \"excludePurchases\": false,\n    \"enableCaching\": false,\n    \"backupInclusionFilteringEnabled\": true,\n    \"configuration\": {\n        \"pastBehaviorOrdinal\": -1\n    }\n}"
 						},
 						"url": {
-							"raw": "https://mc.adobe.io/:tenantId/target/recs/criteria/category",
+							"raw": "https://mc.adobe.io/{{TENANT_ID}}/target/recs/criteria/category",
 							"protocol": "https",
 							"host": [
 								"mc",
@@ -498,17 +454,11 @@
 								"io"
 							],
 							"path": [
-								":tenantId",
+								"{{TENANT_ID}}",
 								"target",
 								"recs",
 								"criteria",
 								"category"
-							],
-							"variable": [
-								{
-									"key": "tenantId",
-									"value": "japacperf8"
-								}
 							]
 						},
 						"description": "Creates a new category based criteria as specified by the settings and configuration provided and returns the newly created criteria definition."
@@ -526,7 +476,7 @@
 							},
 							{
 								"key": "X-Api-Key",
-								"value": "{{xApiKey}}"
+								"value": "{{API_KEY}}"
 							},
 							{
 								"key": "Content-Type",
@@ -538,7 +488,7 @@
 							"raw": "{\n    \"name\": \"Most Popular Content from a Visitor's Favorite Category\",\n    \"criteriaGroup\": \"CATEGORY\",\n    \"type\": \"VIEWED\",\n    \"key\": \"FAVORITE\",\n    \"aggregation\": \"NONE\",\n    \"daysCount\": \"TWO_WEEKS\",\n    \"partialDesignAllowed\": true,\n    \"backupDisabled\": false,\n    \"excludePurchases\": true,\n    \"enableCaching\": false,\n    \"backupInclusionFilteringEnabled\": true,\n    \"configuration\": {\n        \"pastBehaviorOrdinal\": 0\n    }\n}"
 						},
 						"url": {
-							"raw": "https://mc.adobe.io/:tenantId/target/recs/criteria/category/:criteriaId",
+							"raw": "https://mc.adobe.io/{{TENANT_ID}}/target/recs/criteria/category/:criteriaId",
 							"protocol": "https",
 							"host": [
 								"mc",
@@ -546,7 +496,7 @@
 								"io"
 							],
 							"path": [
-								":tenantId",
+								"{{TENANT_ID}}",
 								"target",
 								"recs",
 								"criteria",
@@ -554,10 +504,6 @@
 								":criteriaId"
 							],
 							"variable": [
-								{
-									"key": "tenantId",
-									"value": "japacperf8"
-								},
 								{
 									"key": "criteriaId",
 									"value": "1"
@@ -575,7 +521,7 @@
 						"header": [
 							{
 								"key": "X-Api-Key",
-								"value": "{{xApiKey}}"
+								"value": "{{API_KEY}}"
 							},
 							{
 								"key": "Accept",
@@ -587,7 +533,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "https://mc.adobe.io/:tenantId/target/recs/criteria/category/:criteriaId",
+							"raw": "https://mc.adobe.io/{{TENANT_ID}}/target/recs/criteria/category/:criteriaId",
 							"protocol": "https",
 							"host": [
 								"mc",
@@ -595,7 +541,7 @@
 								"io"
 							],
 							"path": [
-								":tenantId",
+								"{{TENANT_ID}}",
 								"target",
 								"recs",
 								"criteria",
@@ -603,10 +549,6 @@
 								":criteriaId"
 							],
 							"variable": [
-								{
-									"key": "tenantId",
-									"value": "japacperf8"
-								},
 								{
 									"key": "criteriaId",
 									"value": "1"
@@ -657,11 +599,11 @@
 							},
 							{
 								"key": "X-Api-Key",
-								"value": "{{xApiKey}}"
+								"value": "{{API_KEY}}"
 							}
 						],
 						"url": {
-							"raw": "https://mc.adobe.io/:tenantId/target/recs/criteria/custom/:criteriaId",
+							"raw": "https://mc.adobe.io/{{TENANT_ID}}/target/recs/criteria/custom/:criteriaId",
 							"protocol": "https",
 							"host": [
 								"mc",
@@ -669,7 +611,7 @@
 								"io"
 							],
 							"path": [
-								":tenantId",
+								"{{TENANT_ID}}",
 								"target",
 								"recs",
 								"criteria",
@@ -677,10 +619,6 @@
 								":criteriaId"
 							],
 							"variable": [
-								{
-									"key": "tenantId",
-									"value": "japacperf8"
-								},
 								{
 									"key": "criteriaId",
 									"value": "1"
@@ -702,11 +640,11 @@
 							},
 							{
 								"key": "X-Api-Key",
-								"value": "{{xApiKey}}"
+								"value": "{{API_KEY}}"
 							}
 						],
 						"url": {
-							"raw": "https://mc.adobe.io/:tenantId/target/recs/criteria/custom",
+							"raw": "https://mc.adobe.io/{{TENANT_ID}}/target/recs/criteria/custom",
 							"protocol": "https",
 							"host": [
 								"mc",
@@ -714,17 +652,11 @@
 								"io"
 							],
 							"path": [
-								":tenantId",
+								"{{TENANT_ID}}",
 								"target",
 								"recs",
 								"criteria",
 								"custom"
-							],
-							"variable": [
-								{
-									"key": "tenantId",
-									"value": "japacperf8"
-								}
 							]
 						},
 						"description": "Gets all available custom criteria."
@@ -742,7 +674,7 @@
 							},
 							{
 								"key": "X-Api-Key",
-								"value": "{{xApiKey}}"
+								"value": "{{API_KEY}}"
 							},
 							{
 								"key": "Content-Type",
@@ -754,7 +686,7 @@
 							"raw": "{\n  \"backupDisabled\": true,\n  \"configuration\": {\n    \"feed\": {\n      \"connection\": {\n    \t\"type\": \"url\",\n        \"attributes\": {\n          \"URL\": \"http://54.91.177.93/evc4/feed/classesevents.csv\"\n        },\n        \"type\": \"url\"\n      },\n      \"environmentId\": -1,\n      \"scheduleTime\": \"00:00:00\",\n      \"scheduleType\": \"daily\"\n    }\n  },\n  \"criteriaGroup\": \"CUSTOM\",\n  \"criteriaTitle\": \"Classes & Events\",\n  \"excludePurchases\": true,\n  \"key\": \"CURRENT\",\n  \"name\": \"Classes Events\",\n  \"partialDesignAllowed\": true\n}"
 						},
 						"url": {
-							"raw": "https://mc.adobe.io/:tenantId/target/recs/criteria/custom",
+							"raw": "https://mc.adobe.io/{{TENANT_ID}}/target/recs/criteria/custom",
 							"protocol": "https",
 							"host": [
 								"mc",
@@ -762,17 +694,11 @@
 								"io"
 							],
 							"path": [
-								":tenantId",
+								"{{TENANT_ID}}",
 								"target",
 								"recs",
 								"criteria",
 								"custom"
-							],
-							"variable": [
-								{
-									"key": "tenantId",
-									"value": "japacperf8"
-								}
 							]
 						},
 						"description": "Creates a new custom criteria as specified by the settings, configuration, and feed provided and returns the newly created criteria definition."
@@ -790,7 +716,7 @@
 							},
 							{
 								"key": "X-Api-Key",
-								"value": "{{xApiKey}}"
+								"value": "{{API_KEY}}"
 							},
 							{
 								"key": "Content-Type",
@@ -802,7 +728,7 @@
 							"raw": "{\n  \"backupDisabled\": false,\n  \"configuration\": {\n    \"feed\": {\n      \"connection\": {\n    \t\"type\": \"url\",\n        \"attributes\": {\n          \"URL\": \"http://54.91.177.93/evc4/feed/classesevents.csv\"\n        },\n        \"type\": \"url\"\n      },\n      \"environmentId\": -1,\n      \"scheduleTime\": \"00:00:00\",\n      \"scheduleType\": \"daily\"\n    }\n  },\n  \"criteriaGroup\": \"CUSTOM\",\n  \"criteriaTitle\": \"Classes & Events\",\n  \"excludePurchases\": true,\n  \"key\": \"CURRENT\",\n  \"name\": \"Classes Events\",\n  \"partialDesignAllowed\": true\n}"
 						},
 						"url": {
-							"raw": "https://mc.adobe.io/:tenantId/target/recs/criteria/custom/:criteriaId",
+							"raw": "https://mc.adobe.io/{{TENANT_ID}}/target/recs/criteria/custom/:criteriaId",
 							"protocol": "https",
 							"host": [
 								"mc",
@@ -810,7 +736,7 @@
 								"io"
 							],
 							"path": [
-								":tenantId",
+								"{{TENANT_ID}}",
 								"target",
 								"recs",
 								"criteria",
@@ -818,10 +744,6 @@
 								":criteriaId"
 							],
 							"variable": [
-								{
-									"key": "tenantId",
-									"value": "japacperf8"
-								},
 								{
 									"key": "criteriaId",
 									"value": "1"
@@ -839,7 +761,7 @@
 						"header": [
 							{
 								"key": "X-Api-Key",
-								"value": "{{xApiKey}}"
+								"value": "{{API_KEY}}"
 							},
 							{
 								"key": "Accept",
@@ -851,7 +773,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "https://mc.adobe.io/:tenantId/target/recs/criteria/custom/:criteriaId",
+							"raw": "https://mc.adobe.io/{{TENANT_ID}}/target/recs/criteria/custom/:criteriaId",
 							"protocol": "https",
 							"host": [
 								"mc",
@@ -859,7 +781,7 @@
 								"io"
 							],
 							"path": [
-								":tenantId",
+								"{{TENANT_ID}}",
 								"target",
 								"recs",
 								"criteria",
@@ -867,10 +789,6 @@
 								":criteriaId"
 							],
 							"variable": [
-								{
-									"key": "tenantId",
-									"value": "japacperf8"
-								},
 								{
 									"key": "criteriaId",
 									"value": "1"
@@ -921,11 +839,11 @@
 							},
 							{
 								"key": "X-Api-Key",
-								"value": "{{xApiKey}}"
+								"value": "{{API_KEY}}"
 							}
 						],
 						"url": {
-							"raw": "https://mc.adobe.io/:tenantId/target/recs/criteria/item/:criteriaId",
+							"raw": "https://mc.adobe.io/{{TENANT_ID}}/target/recs/criteria/item/:criteriaId",
 							"protocol": "https",
 							"host": [
 								"mc",
@@ -933,7 +851,7 @@
 								"io"
 							],
 							"path": [
-								":tenantId",
+								"{{TENANT_ID}}",
 								"target",
 								"recs",
 								"criteria",
@@ -941,10 +859,6 @@
 								":criteriaId"
 							],
 							"variable": [
-								{
-									"key": "tenantId",
-									"value": "japacperf8"
-								},
 								{
 									"key": "criteriaId",
 									"value": "1"
@@ -966,11 +880,11 @@
 							},
 							{
 								"key": "X-Api-Key",
-								"value": "{{xApiKey}}"
+								"value": "{{API_KEY}}"
 							}
 						],
 						"url": {
-							"raw": "https://mc.adobe.io/:tenantId/target/recs/criteria/item",
+							"raw": "https://mc.adobe.io/{{TENANT_ID}}/target/recs/criteria/item",
 							"protocol": "https",
 							"host": [
 								"mc",
@@ -978,17 +892,11 @@
 								"io"
 							],
 							"path": [
-								":tenantId",
+								"{{TENANT_ID}}",
 								"target",
 								"recs",
 								"criteria",
 								"item"
-							],
-							"variable": [
-								{
-									"key": "tenantId",
-									"value": "japacperf8"
-								}
 							]
 						},
 						"description": "Gets all available item based criteria."
@@ -1006,7 +914,7 @@
 							},
 							{
 								"key": "X-Api-Key",
-								"value": "{{xApiKey}}"
+								"value": "{{API_KEY}}"
 							},
 							{
 								"key": "Content-Type",
@@ -1018,7 +926,7 @@
 							"raw": "{\n  \"aggregation\": \"NONE\",\n  \"backupDisabled\": true,\n  \"backupInclusionFilteringEnabled\": true,\n  \"configuration\": {\n    \"inclusionRules\": [\n      {\n        \"attribute\": \"brand\",\n        \"operation\": \"contains\",\n        \"source\": {\n          \"defaultValue\": \"rei-coop\",\n          \"name\": \"brand\",\n          \"type\": \"ENTITY\"\n        }\n      }\n    ],\n    \"pastBehaviorOrdinal\": -1\n  },\n  \"criteriaGroup\": \"ITEM\",\n  \"criteriaTitle\": \"Similar items\",\n  \"daysCount\": \"TWO_WEEKS\",\n  \"enableCaching\": false,\n  \"excludePurchases\": true,\n  \"key\": \"CURRENT\",\n  \"minInventory\": 1,\n  \"name\": \"Items with Brand Similarity\",\n  \"partialDesignAllowed\": false,\n  \"type\": \"SIMILARITY\"\n}"
 						},
 						"url": {
-							"raw": "https://mc.adobe.io/:tenantId/target/recs/criteria/item",
+							"raw": "https://mc.adobe.io/{{TENANT_ID}}/target/recs/criteria/item",
 							"protocol": "https",
 							"host": [
 								"mc",
@@ -1026,17 +934,11 @@
 								"io"
 							],
 							"path": [
-								":tenantId",
+								"{{TENANT_ID}}",
 								"target",
 								"recs",
 								"criteria",
 								"item"
-							],
-							"variable": [
-								{
-									"key": "tenantId",
-									"value": "japacperf8"
-								}
 							]
 						},
 						"description": "Creates a new item based criteria as specified by the settings and configuration provided and returns the newly created criteria definition."
@@ -1054,7 +956,7 @@
 							},
 							{
 								"key": "X-Api-Key",
-								"value": "{{xApiKey}}"
+								"value": "{{API_KEY}}"
 							},
 							{
 								"key": "Content-Type",
@@ -1066,7 +968,7 @@
 							"raw": "{\n  \"aggregation\": \"NONE\",\n  \"backupDisabled\": true,\n  \"backupInclusionFilteringEnabled\": true,\n  \"configuration\": {\n    \"inclusionRules\": [\n      {\n        \"attribute\": \"brand\",\n        \"operation\": \"contains\",\n        \"source\": {\n          \"defaultValue\": \"rei-coop\",\n          \"name\": \"brand\",\n          \"type\": \"ENTITY\"\n        }\n      }\n    ],\n    \"pastBehaviorOrdinal\": -1\n  },\n  \"criteriaGroup\": \"ITEM\",\n  \"criteriaTitle\": \"Similar items\",\n  \"daysCount\": \"TWO_WEEKS\",\n  \"enableCaching\": false,\n  \"excludePurchases\": true,\n  \"key\": \"CURRENT\",\n  \"minInventory\": 1,\n  \"name\": \"Items with Brand Similarity\",\n  \"partialDesignAllowed\": false,\n  \"type\": \"SIMILARITY\"\n}"
 						},
 						"url": {
-							"raw": "https://mc.adobe.io/:tenantId/target/recs/criteria/item/:criteriaId",
+							"raw": "https://mc.adobe.io/{{TENANT_ID}}/target/recs/criteria/item/:criteriaId",
 							"protocol": "https",
 							"host": [
 								"mc",
@@ -1074,7 +976,7 @@
 								"io"
 							],
 							"path": [
-								":tenantId",
+								"{{TENANT_ID}}",
 								"target",
 								"recs",
 								"criteria",
@@ -1082,10 +984,6 @@
 								":criteriaId"
 							],
 							"variable": [
-								{
-									"key": "tenantId",
-									"value": "japacperf8"
-								},
 								{
 									"key": "criteriaId",
 									"value": "1"
@@ -1103,7 +1001,7 @@
 						"header": [
 							{
 								"key": "X-Api-Key",
-								"value": "{{xApiKey}}"
+								"value": "{{API_KEY}}"
 							},
 							{
 								"key": "Accept",
@@ -1115,7 +1013,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "https://mc.adobe.io/:tenantId/target/recs/criteria/item/:criteriaId",
+							"raw": "https://mc.adobe.io/{{TENANT_ID}}/target/recs/criteria/item/:criteriaId",
 							"protocol": "https",
 							"host": [
 								"mc",
@@ -1123,7 +1021,7 @@
 								"io"
 							],
 							"path": [
-								":tenantId",
+								"{{TENANT_ID}}",
 								"target",
 								"recs",
 								"criteria",
@@ -1131,10 +1029,6 @@
 								":criteriaId"
 							],
 							"variable": [
-								{
-									"key": "tenantId",
-									"value": "japacperf8"
-								},
 								{
 									"key": "criteriaId",
 									"value": "1"
@@ -1185,11 +1079,11 @@
 							},
 							{
 								"key": "X-Api-Key",
-								"value": "{{xApiKey}}"
+								"value": "{{API_KEY}}"
 							}
 						],
 						"url": {
-							"raw": "https://mc.adobe.io/:tenantId/target/recs/criteria/popularity/:criteriaId",
+							"raw": "https://mc.adobe.io/{{TENANT_ID}}/target/recs/criteria/popularity/:criteriaId",
 							"protocol": "https",
 							"host": [
 								"mc",
@@ -1197,7 +1091,7 @@
 								"io"
 							],
 							"path": [
-								":tenantId",
+								"{{TENANT_ID}}",
 								"target",
 								"recs",
 								"criteria",
@@ -1205,10 +1099,6 @@
 								":criteriaId"
 							],
 							"variable": [
-								{
-									"key": "tenantId",
-									"value": "japacperf8"
-								},
 								{
 									"key": "criteriaId",
 									"value": "1"
@@ -1230,11 +1120,11 @@
 							},
 							{
 								"key": "X-Api-Key",
-								"value": "{{xApiKey}}"
+								"value": "{{API_KEY}}"
 							}
 						],
 						"url": {
-							"raw": "https://mc.adobe.io/:tenantId/target/recs/criteria/popularity",
+							"raw": "https://mc.adobe.io/{{TENANT_ID}}/target/recs/criteria/popularity",
 							"protocol": "https",
 							"host": [
 								"mc",
@@ -1242,17 +1132,11 @@
 								"io"
 							],
 							"path": [
-								":tenantId",
+								"{{TENANT_ID}}",
 								"target",
 								"recs",
 								"criteria",
 								"popularity"
-							],
-							"variable": [
-								{
-									"key": "tenantId",
-									"value": "japacperf8"
-								}
 							]
 						},
 						"description": "Gets all available popularity based criteria."
@@ -1270,7 +1154,7 @@
 							},
 							{
 								"key": "X-Api-Key",
-								"value": "{{xApiKey}}"
+								"value": "{{API_KEY}}"
 							},
 							{
 								"key": "Content-Type",
@@ -1282,7 +1166,7 @@
 							"raw": "{\n  \"aggregation\": \"NONE\",\n  \"backupDisabled\": false,\n  \"backupInclusionFilteringEnabled\": true,\n  \"configuration\": {\n    \"datasource\": \"mboxes\"\n  },\n  \"criteriaGroup\": \"POPULARITY\",\n  \"daysCount\": \"TWO_DAYS\",\n  \"enableCaching\": false,\n  \"excludePurchases\": true,\n  \"minInventory\": 1,\n  \"name\": \"Garage Top Viewed\",\n  \"partialDesignAllowed\": true,\n  \"type\": \"VIEWED\"\n}"
 						},
 						"url": {
-							"raw": "https://mc.adobe.io/:tenantId/target/recs/criteria/popularity",
+							"raw": "https://mc.adobe.io/{{TENANT_ID}}/target/recs/criteria/popularity",
 							"protocol": "https",
 							"host": [
 								"mc",
@@ -1290,17 +1174,11 @@
 								"io"
 							],
 							"path": [
-								":tenantId",
+								"{{TENANT_ID}}",
 								"target",
 								"recs",
 								"criteria",
 								"popularity"
-							],
-							"variable": [
-								{
-									"key": "tenantId",
-									"value": "japacperf8"
-								}
 							]
 						},
 						"description": "Creates a new popularity based criteria as specified by the settings and configuration provided and returns the newly created criteria definition."
@@ -1318,7 +1196,7 @@
 							},
 							{
 								"key": "X-Api-Key",
-								"value": "{{xApiKey}}"
+								"value": "{{API_KEY}}"
 							},
 							{
 								"key": "Content-Type",
@@ -1330,7 +1208,7 @@
 							"raw": "{\n    \"name\": \"Garage Top Viewed\",\n    \"criteriaGroup\": \"POPULARITY\",\n    \"type\": \"VIEWED\",\n    \"aggregation\": \"NONE\",\n    \"daysCount\": \"ONE_WEEK\",\n    \"minInventory\": 1,\n    \"partialDesignAllowed\": true,\n    \"backupDisabled\": false,\n    \"excludePurchases\": true,\n    \"enableCaching\": false,\n    \"backupInclusionFilteringEnabled\": true,\n    \"configuration\": {\n        \"datasource\": \"mboxes\"\n    }\n}"
 						},
 						"url": {
-							"raw": "https://mc.adobe.io/:tenantId/target/recs/criteria/popularity/:criteriaId",
+							"raw": "https://mc.adobe.io/{{TENANT_ID}}/target/recs/criteria/popularity/:criteriaId",
 							"protocol": "https",
 							"host": [
 								"mc",
@@ -1338,7 +1216,7 @@
 								"io"
 							],
 							"path": [
-								":tenantId",
+								"{{TENANT_ID}}",
 								"target",
 								"recs",
 								"criteria",
@@ -1346,10 +1224,6 @@
 								":criteriaId"
 							],
 							"variable": [
-								{
-									"key": "tenantId",
-									"value": "japacperf8"
-								},
 								{
 									"key": "criteriaId",
 									"value": "1"
@@ -1367,7 +1241,7 @@
 						"header": [
 							{
 								"key": "X-Api-Key",
-								"value": "{{xApiKey}}"
+								"value": "{{API_KEY}}"
 							},
 							{
 								"key": "Accept",
@@ -1379,7 +1253,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "https://mc.adobe.io/:tenantId/target/recs/criteria/popularity/:criteriaId",
+							"raw": "https://mc.adobe.io/{{TENANT_ID}}/target/recs/criteria/popularity/:criteriaId",
 							"protocol": "https",
 							"host": [
 								"mc",
@@ -1387,7 +1261,7 @@
 								"io"
 							],
 							"path": [
-								":tenantId",
+								"{{TENANT_ID}}",
 								"target",
 								"recs",
 								"criteria",
@@ -1395,10 +1269,6 @@
 								":criteriaId"
 							],
 							"variable": [
-								{
-									"key": "tenantId",
-									"value": "japacperf8"
-								},
 								{
 									"key": "criteriaId",
 									"value": "1"
@@ -1449,11 +1319,11 @@
 							},
 							{
 								"key": "X-Api-Key",
-								"value": "{{xApiKey}}"
+								"value": "{{API_KEY}}"
 							}
 						],
 						"url": {
-							"raw": "https://mc.adobe.io/:tenantId/target/recs/criteria/profileattribute/:criteriaId",
+							"raw": "https://mc.adobe.io/{{TENANT_ID}}/target/recs/criteria/profileattribute/:criteriaId",
 							"protocol": "https",
 							"host": [
 								"mc",
@@ -1461,7 +1331,7 @@
 								"io"
 							],
 							"path": [
-								":tenantId",
+								"{{TENANT_ID}}",
 								"target",
 								"recs",
 								"criteria",
@@ -1469,10 +1339,6 @@
 								":criteriaId"
 							],
 							"variable": [
-								{
-									"key": "tenantId",
-									"value": "japacperf8"
-								},
 								{
 									"key": "criteriaId",
 									"value": "1"
@@ -1494,11 +1360,11 @@
 							},
 							{
 								"key": "X-Api-Key",
-								"value": "{{xApiKey}}"
+								"value": "{{API_KEY}}"
 							}
 						],
 						"url": {
-							"raw": "https://mc.adobe.io/:tenantId/target/recs/criteria/profileattribute",
+							"raw": "https://mc.adobe.io/{{TENANT_ID}}/target/recs/criteria/profileattribute",
 							"protocol": "https",
 							"host": [
 								"mc",
@@ -1506,17 +1372,11 @@
 								"io"
 							],
 							"path": [
-								":tenantId",
+								"{{TENANT_ID}}",
 								"target",
 								"recs",
 								"criteria",
 								"profileattribute"
-							],
-							"variable": [
-								{
-									"key": "tenantId",
-									"value": "japacperf8"
-								}
 							]
 						},
 						"description": "Gets all available profile attribute based criteria."
@@ -1534,7 +1394,7 @@
 							},
 							{
 								"key": "X-Api-Key",
-								"value": "{{xApiKey}}"
+								"value": "{{API_KEY}}"
 							},
 							{
 								"key": "Content-Type",
@@ -1546,7 +1406,7 @@
 							"raw": "{\n  \"aggregation\": \"NONE\",\n  \"backupDisabled\": true,\n  \"backupInclusionFilteringEnabled\": true,\n  \"configuration\": {\n    \"attribute\": \"profile.city\"\n  },\n  \"criteriaGroup\": \"PROFILEATTRIBUTE\",\n  \"criteriaTitle\": \"Bike recommendations per city\",\n  \"daysCount\": \"TWO_WEEKS\",\n  \"enableCaching\": false,\n  \"excludePurchases\": true,\n  \"minInventory\": 1,\n  \"name\": \"city-bike-recs\",\n  \"partialDesignAllowed\": false,\n  \"superSlotCount\": 0,\n  \"type\": \"VIEWED\"\n}"
 						},
 						"url": {
-							"raw": "https://mc.adobe.io/:tenantId/target/recs/criteria/profileattribute",
+							"raw": "https://mc.adobe.io/{{TENANT_ID}}/target/recs/criteria/profileattribute",
 							"protocol": "https",
 							"host": [
 								"mc",
@@ -1554,17 +1414,11 @@
 								"io"
 							],
 							"path": [
-								":tenantId",
+								"{{TENANT_ID}}",
 								"target",
 								"recs",
 								"criteria",
 								"profileattribute"
-							],
-							"variable": [
-								{
-									"key": "tenantId",
-									"value": "japacperf8"
-								}
 							]
 						},
 						"description": "Creates a new profile attribute based criteria as specified by the settings and configuration provided and returns the newly created criteria definition."
@@ -1582,7 +1436,7 @@
 							},
 							{
 								"key": "X-Api-Key",
-								"value": "{{xApiKey}}"
+								"value": "{{API_KEY}}"
 							},
 							{
 								"key": "Content-Type",
@@ -1594,7 +1448,7 @@
 							"raw": "{\n  \"aggregation\": \"NONE\",\n  \"backupDisabled\": true,\n  \"backupInclusionFilteringEnabled\": true,\n  \"configuration\": {\n    \"attribute\": \"profile.city\"\n  },\n  \"criteriaGroup\": \"PROFILEATTRIBUTE\",\n  \"criteriaTitle\": \"Bike recommendations per city\",\n  \"daysCount\": \"ONE_MONTH\",\n  \"enableCaching\": false,\n  \"excludePurchases\": true,\n  \"minInventory\": 1,\n  \"name\": \"city-bike-recs\",\n  \"partialDesignAllowed\": false,\n  \"superSlotCount\": 0,\n  \"type\": \"VIEWED\"\n}"
 						},
 						"url": {
-							"raw": "https://mc.adobe.io/:tenantId/target/recs/criteria/profileattribute/:criteriaId",
+							"raw": "https://mc.adobe.io/{{TENANT_ID}}/target/recs/criteria/profileattribute/:criteriaId",
 							"protocol": "https",
 							"host": [
 								"mc",
@@ -1602,7 +1456,7 @@
 								"io"
 							],
 							"path": [
-								":tenantId",
+								"{{TENANT_ID}}",
 								"target",
 								"recs",
 								"criteria",
@@ -1610,10 +1464,6 @@
 								":criteriaId"
 							],
 							"variable": [
-								{
-									"key": "tenantId",
-									"value": "japacperf8"
-								},
 								{
 									"key": "criteriaId",
 									"value": "1"
@@ -1631,7 +1481,7 @@
 						"header": [
 							{
 								"key": "X-Api-Key",
-								"value": "{{xApiKey}}"
+								"value": "{{API_KEY}}"
 							},
 							{
 								"key": "Accept",
@@ -1643,7 +1493,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "https://mc.adobe.io/:tenantId/target/recs/criteria/popularity/:criteriaId",
+							"raw": "https://mc.adobe.io/{{TENANT_ID}}/target/recs/criteria/popularity/:criteriaId",
 							"protocol": "https",
 							"host": [
 								"mc",
@@ -1651,7 +1501,7 @@
 								"io"
 							],
 							"path": [
-								":tenantId",
+								"{{TENANT_ID}}",
 								"target",
 								"recs",
 								"criteria",
@@ -1659,10 +1509,6 @@
 								":criteriaId"
 							],
 							"variable": [
-								{
-									"key": "tenantId",
-									"value": "japacperf8"
-								},
 								{
 									"key": "criteriaId",
 									"value": "1"
@@ -1713,11 +1559,11 @@
 							},
 							{
 								"key": "X-Api-Key",
-								"value": "{{xApiKey}}"
+								"value": "{{API_KEY}}"
 							}
 						],
 						"url": {
-							"raw": "https://mc.adobe.io/:tenantId/target/recs/criteria/recent/:criteriaId",
+							"raw": "https://mc.adobe.io/{{TENANT_ID}}/target/recs/criteria/recent/:criteriaId",
 							"protocol": "https",
 							"host": [
 								"mc",
@@ -1725,7 +1571,7 @@
 								"io"
 							],
 							"path": [
-								":tenantId",
+								"{{TENANT_ID}}",
 								"target",
 								"recs",
 								"criteria",
@@ -1733,10 +1579,6 @@
 								":criteriaId"
 							],
 							"variable": [
-								{
-									"key": "tenantId",
-									"value": "japacperf8"
-								},
 								{
 									"key": "criteriaId",
 									"value": "1"
@@ -1758,11 +1600,11 @@
 							},
 							{
 								"key": "X-Api-Key",
-								"value": "{{xApiKey}}"
+								"value": "{{API_KEY}}"
 							}
 						],
 						"url": {
-							"raw": "https://mc.adobe.io/:tenantId/target/recs/criteria/recent",
+							"raw": "https://mc.adobe.io/{{TENANT_ID}}/target/recs/criteria/recent",
 							"protocol": "https",
 							"host": [
 								"mc",
@@ -1770,17 +1612,11 @@
 								"io"
 							],
 							"path": [
-								":tenantId",
+								"{{TENANT_ID}}",
 								"target",
 								"recs",
 								"criteria",
 								"recent"
-							],
-							"variable": [
-								{
-									"key": "tenantId",
-									"value": "japacperf8"
-								}
 							]
 						},
 						"description": "Gets all available recent view based criteria."
@@ -1798,7 +1634,7 @@
 							},
 							{
 								"key": "X-Api-Key",
-								"value": "{{xApiKey}}"
+								"value": "{{API_KEY}}"
 							},
 							{
 								"key": "Content-Type",
@@ -1810,7 +1646,7 @@
 							"raw": "{\n  \"name\": \"Recently Viewed Hammocks\",\n  \"configuration\": {\n    \"inclusionRules\": [\n      {\n        \"attribute\": \"equipmentType\",\n        \"operation\": \"contains\",\n        \"values\": [\n          \"hammock\"\n        ]\n      }\n    ]\n  },\n  \"criteriaGroup\": \"RECENT\",\n  \"criteriaTitle\": \"Just seen Hammocks\",\n  \"minInventory\": 3\n}"
 						},
 						"url": {
-							"raw": "https://mc.adobe.io/:tenantId/target/recs/criteria/recent",
+							"raw": "https://mc.adobe.io/{{TENANT_ID}}/target/recs/criteria/recent",
 							"protocol": "https",
 							"host": [
 								"mc",
@@ -1818,17 +1654,11 @@
 								"io"
 							],
 							"path": [
-								":tenantId",
+								"{{TENANT_ID}}",
 								"target",
 								"recs",
 								"criteria",
 								"recent"
-							],
-							"variable": [
-								{
-									"key": "tenantId",
-									"value": "japacperf8"
-								}
 							]
 						},
 						"description": "Creates a new recent view based criteria as specified by the settings and configuration provided and returns the newly created criteria definition."
@@ -1846,7 +1676,7 @@
 							},
 							{
 								"key": "X-Api-Key",
-								"value": "{{xApiKey}}"
+								"value": "{{API_KEY}}"
 							},
 							{
 								"key": "Content-Type",
@@ -1858,7 +1688,7 @@
 							"raw": "{\n  \"name\": \"Recently Viewed Hammocks\",\n  \"configuration\": {\n    \"inclusionRules\": [\n      {\n        \"attribute\": \"equipmentType\",\n        \"operation\": \"contains\",\n        \"values\": [\n          \"hammock\"\n        ]\n      }\n    ],\n    \"rankingRules\": []\n  },\n  \"criteriaGroup\": \"RECENT\",\n  \"criteriaTitle\": \"Just seen Hammocks\",\n  \"minInventory\": 0\n}"
 						},
 						"url": {
-							"raw": "https://mc.adobe.io/:tenantId/target/recs/criteria/recent/:criteriaId",
+							"raw": "https://mc.adobe.io/{{TENANT_ID}}/target/recs/criteria/recent/:criteriaId",
 							"protocol": "https",
 							"host": [
 								"mc",
@@ -1866,7 +1696,7 @@
 								"io"
 							],
 							"path": [
-								":tenantId",
+								"{{TENANT_ID}}",
 								"target",
 								"recs",
 								"criteria",
@@ -1874,10 +1704,6 @@
 								":criteriaId"
 							],
 							"variable": [
-								{
-									"key": "tenantId",
-									"value": "japacperf8"
-								},
 								{
 									"key": "criteriaId",
 									"value": "1"
@@ -1895,7 +1721,7 @@
 						"header": [
 							{
 								"key": "X-Api-Key",
-								"value": "{{xApiKey}}"
+								"value": "{{API_KEY}}"
 							},
 							{
 								"key": "Accept",
@@ -1907,7 +1733,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "https://mc.adobe.io/:tenantId/target/recs/criteria/recent/:criteriaId",
+							"raw": "https://mc.adobe.io/{{TENANT_ID}}/target/recs/criteria/recent/:criteriaId",
 							"protocol": "https",
 							"host": [
 								"mc",
@@ -1915,7 +1741,7 @@
 								"io"
 							],
 							"path": [
-								":tenantId",
+								"{{TENANT_ID}}",
 								"target",
 								"recs",
 								"criteria",
@@ -1923,10 +1749,6 @@
 								":criteriaId"
 							],
 							"variable": [
-								{
-									"key": "tenantId",
-									"value": "japacperf8"
-								},
 								{
 									"key": "criteriaId",
 									"value": "1"
@@ -1977,11 +1799,11 @@
 							},
 							{
 								"key": "X-Api-Key",
-								"value": "{{xApiKey}}"
+								"value": "{{API_KEY}}"
 							}
 						],
 						"url": {
-							"raw": "https://mc.adobe.io/:tenantId/target/recs/criteria/sequence/:criteriaId",
+							"raw": "https://mc.adobe.io/{{TENANT_ID}}/target/recs/criteria/sequence/:criteriaId",
 							"protocol": "https",
 							"host": [
 								"mc",
@@ -1989,7 +1811,7 @@
 								"io"
 							],
 							"path": [
-								":tenantId",
+								"{{TENANT_ID}}",
 								"target",
 								"recs",
 								"criteria",
@@ -1997,10 +1819,6 @@
 								":criteriaId"
 							],
 							"variable": [
-								{
-									"key": "tenantId",
-									"value": "japacperf8"
-								},
 								{
 									"key": "criteriaId",
 									"value": "1"
@@ -2022,11 +1840,11 @@
 							},
 							{
 								"key": "X-Api-Key",
-								"value": "{{xApiKey}}"
+								"value": "{{API_KEY}}"
 							}
 						],
 						"url": {
-							"raw": "https://mc.adobe.io/:tenantId/target/recs/criteria/sequence",
+							"raw": "https://mc.adobe.io/{{TENANT_ID}}/target/recs/criteria/sequence",
 							"protocol": "https",
 							"host": [
 								"mc",
@@ -2034,17 +1852,11 @@
 								"io"
 							],
 							"path": [
-								":tenantId",
+								"{{TENANT_ID}}",
 								"target",
 								"recs",
 								"criteria",
 								"sequence"
-							],
-							"variable": [
-								{
-									"key": "tenantId",
-									"value": "japacperf8"
-								}
 							]
 						},
 						"description": "Gets all available sequence criteria."
@@ -2062,7 +1874,7 @@
 							},
 							{
 								"key": "X-Api-Key",
-								"value": "{{xApiKey}}"
+								"value": "{{API_KEY}}"
 							},
 							{
 								"key": "Content-Type",
@@ -2074,7 +1886,7 @@
 							"raw": "{\n  \"backupDisabled\": true,\n  \"backupInclusionFilteringEnabled\": true,\n  \"criteriaGroup\": \"SEQUENCE\",\n  \"criteriaTitle\": \"Top Dashboard Items\",\n  \"name\": \"Top Dashboard Items\",\n  \"partialDesignAllowed\": true,\n  \"sequence\": [\n    {\n      \"id\": 227\n    },\n    {\n      \"id\": 2027\n    }\n  ]\n}"
 						},
 						"url": {
-							"raw": "https://mc.adobe.io/:tenantId/target/recs/criteria/sequence",
+							"raw": "https://mc.adobe.io/{{TENANT_ID}}/target/recs/criteria/sequence",
 							"protocol": "https",
 							"host": [
 								"mc",
@@ -2082,17 +1894,11 @@
 								"io"
 							],
 							"path": [
-								":tenantId",
+								"{{TENANT_ID}}",
 								"target",
 								"recs",
 								"criteria",
 								"sequence"
-							],
-							"variable": [
-								{
-									"key": "tenantId",
-									"value": "japacperf8"
-								}
 							]
 						},
 						"description": "Creates a new sequence criteria as specified by the settings, and single criteria IDs provided and returns the newly created criteria definition."
@@ -2110,7 +1916,7 @@
 							},
 							{
 								"key": "X-Api-Key",
-								"value": "{{xApiKey}}"
+								"value": "{{API_KEY}}"
 							},
 							{
 								"key": "Content-Type",
@@ -2122,7 +1928,7 @@
 							"raw": "{\n    \"name\": \"Top Dashboard Items\",\n    \"criteriaTitle\": \"Top Dashboard Items\",\n    \"criteriaGroup\": \"SEQUENCE\",\n    \"sequence\": [\n        {\n            \"id\": 227\n        },\n        {\n            \"id\": 2027\n        }\n    ],\n    \"partialDesignAllowed\": false,\n    \"backupDisabled\": true,\n    \"backupInclusionFilteringEnabled\": true\n}"
 						},
 						"url": {
-							"raw": "https://mc.adobe.io/:tenantId/target/recs/criteria/sequence/:criteriaId",
+							"raw": "https://mc.adobe.io/{{TENANT_ID}}/target/recs/criteria/sequence/:criteriaId",
 							"protocol": "https",
 							"host": [
 								"mc",
@@ -2130,7 +1936,7 @@
 								"io"
 							],
 							"path": [
-								":tenantId",
+								"{{TENANT_ID}}",
 								"target",
 								"recs",
 								"criteria",
@@ -2138,10 +1944,6 @@
 								":criteriaId"
 							],
 							"variable": [
-								{
-									"key": "tenantId",
-									"value": "japacperf8"
-								},
 								{
 									"key": "criteriaId",
 									"value": "1"
@@ -2159,7 +1961,7 @@
 						"header": [
 							{
 								"key": "X-Api-Key",
-								"value": "{{xApiKey}}"
+								"value": "{{API_KEY}}"
 							},
 							{
 								"key": "Accept",
@@ -2171,7 +1973,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "https://mc.adobe.io/:tenantId/target/recs/criteria/sequence/:criteriaId",
+							"raw": "https://mc.adobe.io/{{TENANT_ID}}/target/recs/criteria/sequence/:criteriaId",
 							"protocol": "https",
 							"host": [
 								"mc",
@@ -2179,7 +1981,7 @@
 								"io"
 							],
 							"path": [
-								":tenantId",
+								"{{TENANT_ID}}",
 								"target",
 								"recs",
 								"criteria",
@@ -2187,10 +1989,6 @@
 								":criteriaId"
 							],
 							"variable": [
-								{
-									"key": "tenantId",
-									"value": "japacperf8"
-								},
 								{
 									"key": "criteriaId",
 									"value": "1"
@@ -2241,11 +2039,11 @@
 							},
 							{
 								"key": "X-Api-Key",
-								"value": "{{xApiKey}}"
+								"value": "{{API_KEY}}"
 							}
 						],
 						"url": {
-							"raw": "https://mc.adobe.io/:tenantId/target/recs/designs/:designId",
+							"raw": "https://mc.adobe.io/{{TENANT_ID}}/target/recs/designs/:designId",
 							"protocol": "https",
 							"host": [
 								"mc",
@@ -2253,17 +2051,13 @@
 								"io"
 							],
 							"path": [
-								":tenantId",
+								"{{TENANT_ID}}",
 								"target",
 								"recs",
 								"designs",
 								":designId"
 							],
 							"variable": [
-								{
-									"key": "tenantId",
-									"value": "japacperf8"
-								},
 								{
 									"key": "designId",
 									"value": "1"
@@ -2285,11 +2079,11 @@
 							},
 							{
 								"key": "X-Api-Key",
-								"value": "{{xApiKey}}"
+								"value": "{{API_KEY}}"
 							}
 						],
 						"url": {
-							"raw": "https://mc.adobe.io/:tenantId/target/recs/designs",
+							"raw": "https://mc.adobe.io/{{TENANT_ID}}/target/recs/designs",
 							"protocol": "https",
 							"host": [
 								"mc",
@@ -2297,16 +2091,10 @@
 								"io"
 							],
 							"path": [
-								":tenantId",
+								"{{TENANT_ID}}",
 								"target",
 								"recs",
 								"designs"
-							],
-							"variable": [
-								{
-									"key": "tenantId",
-									"value": "japacperf8"
-								}
 							]
 						},
 						"description": "Gets all available designs."
@@ -2324,7 +2112,7 @@
 							},
 							{
 								"key": "X-Api-Key",
-								"value": "{{xApiKey}}"
+								"value": "{{API_KEY}}"
 							},
 							{
 								"key": "Content-Type",
@@ -2336,7 +2124,7 @@
 							"raw": "{\n\t\"name\": \"Simple design2\",\n\t\"script\": \" entity Id = $entity1.id <br/> entity name = $entity1.name\"\n}"
 						},
 						"url": {
-							"raw": "https://mc.adobe.io/:tenantId/target/recs/designs",
+							"raw": "https://mc.adobe.io/{{TENANT_ID}}/target/recs/designs",
 							"protocol": "https",
 							"host": [
 								"mc",
@@ -2344,16 +2132,10 @@
 								"io"
 							],
 							"path": [
-								":tenantId",
+								"{{TENANT_ID}}",
 								"target",
 								"recs",
 								"designs"
-							],
-							"variable": [
-								{
-									"key": "tenantId",
-									"value": "japacperf8"
-								}
 							]
 						},
 						"description": "Creates a new design as specified by the script provided and returns the newly created design definition."
@@ -2371,7 +2153,7 @@
 							},
 							{
 								"key": "X-Api-Key",
-								"value": "{{xApiKey}}"
+								"value": "{{API_KEY}}"
 							},
 							{
 								"key": "Content-Type",
@@ -2383,7 +2165,7 @@
 							"raw": "{\n    \"name\": \"Simple design3\",\n    \"script\": \" entity Id = $entity1.id <br/> entity name = $entity1.name\"\n}"
 						},
 						"url": {
-							"raw": "https://mc.adobe.io/:tenantId/target/recs/designs/:designId",
+							"raw": "https://mc.adobe.io/{{TENANT_ID}}/target/recs/designs/:designId",
 							"protocol": "https",
 							"host": [
 								"mc",
@@ -2391,17 +2173,13 @@
 								"io"
 							],
 							"path": [
-								":tenantId",
+								"{{TENANT_ID}}",
 								"target",
 								"recs",
 								"designs",
 								":designId"
 							],
 							"variable": [
-								{
-									"key": "tenantId",
-									"value": "japacperf8"
-								},
 								{
 									"key": "designId",
 									"value": "1"
@@ -2423,7 +2201,7 @@
 							},
 							{
 								"key": "X-Api-Key",
-								"value": "{{xApiKey}}"
+								"value": "{{API_KEY}}"
 							},
 							{
 								"key": "Content-Type",
@@ -2435,7 +2213,7 @@
 							"raw": "{\n    \"name\": \"Simple design4\",\n    \"script\": \" entity Id = $entity.id\"\n}"
 						},
 						"url": {
-							"raw": "https://mc.adobe.io/:tenantId/target/recs/designs/validate",
+							"raw": "https://mc.adobe.io/{{TENANT_ID}}/target/recs/designs/validate",
 							"protocol": "https",
 							"host": [
 								"mc",
@@ -2443,17 +2221,11 @@
 								"io"
 							],
 							"path": [
-								":tenantId",
+								"{{TENANT_ID}}",
 								"target",
 								"recs",
 								"designs",
 								"validate"
-							],
-							"variable": [
-								{
-									"key": "tenantId",
-									"value": "japacperf8"
-								}
 							]
 						},
 						"description": "Validates a design by verifying the correctness of the script. If its correct, it returns number of entity objects used in the script; otherwise it returns the validation error.\n\n_Note this POST request does not create any resource. The endpoint is not a resource but rather it is simply a method to validate the design in request payload._."
@@ -2467,7 +2239,7 @@
 						"header": [
 							{
 								"key": "X-Api-Key",
-								"value": "{{xApiKey}}"
+								"value": "{{API_KEY}}"
 							},
 							{
 								"key": "Accept",
@@ -2479,7 +2251,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "https://mc.adobe.io/:tenantId/target/recs/designs/:designId",
+							"raw": "https://mc.adobe.io/{{TENANT_ID}}/target/recs/designs/:designId",
 							"protocol": "https",
 							"host": [
 								"mc",
@@ -2487,17 +2259,13 @@
 								"io"
 							],
 							"path": [
-								":tenantId",
+								"{{TENANT_ID}}",
 								"target",
 								"recs",
 								"designs",
 								":designId"
 							],
 							"variable": [
-								{
-									"key": "tenantId",
-									"value": "japacperf8"
-								},
 								{
 									"key": "designId",
 									"value": "1"
@@ -2548,11 +2316,11 @@
 							},
 							{
 								"key": "X-Api-Key",
-								"value": "{{xApiKey}}"
+								"value": "{{API_KEY}}"
 							}
 						],
 						"url": {
-							"raw": "https://mc.adobe.io/:tenantId/target/recs/entities/:entityId",
+							"raw": "https://mc.adobe.io/{{TENANT_ID}}/target/recs/entities/:entityId",
 							"protocol": "https",
 							"host": [
 								"mc",
@@ -2560,17 +2328,13 @@
 								"io"
 							],
 							"path": [
-								":tenantId",
+								"{{TENANT_ID}}",
 								"target",
 								"recs",
 								"entities",
 								":entityId"
 							],
 							"variable": [
-								{
-									"key": "tenantId",
-									"value": "japacperf8"
-								},
 								{
 									"key": "entityId",
 									"value": "1"
@@ -2592,7 +2356,7 @@
 							},
 							{
 								"key": "X-Api-Key",
-								"value": "{{xApiKey}}"
+								"value": "{{API_KEY}}"
 							},
 							{
 								"key": "Content-Type",
@@ -2604,7 +2368,7 @@
 							"raw": "{\n    \"entities\":[\n        {\n            \"attributes\": {\n                \"inventory\": \"77\",\n                \"margin\": \"23\",\n                \"message\": \"Yummy in the tummy\",\n                \"pageUrl\": \"www.foobar.foo.com/rotisserie.html\",\n                \"thumbnailUrl\": \"www.foobar.foo.com/rotisserie.jpg\",\n                \"value\": \"19.2\"\n            },\n            \"categories\": [\n                \"recreation:food\"\n            ],\n            \"environment\": \"292\",\n            \"id\": \"Foobar1\",\n            \"name\": \"Rotisserie Chicken\"\n        }\n    ]\n}"
 						},
 						"url": {
-							"raw": "https://mc.adobe.io/:tenantId/target/recs/entities",
+							"raw": "https://mc.adobe.io/{{TENANT_ID}}/target/recs/entities",
 							"protocol": "https",
 							"host": [
 								"mc",
@@ -2612,16 +2376,10 @@
 								"io"
 							],
 							"path": [
-								":tenantId",
+								"{{TENANT_ID}}",
 								"target",
 								"recs",
 								"entities"
-							],
-							"variable": [
-								{
-									"key": "tenantId",
-									"value": "japacperf8"
-								}
 							]
 						},
 						"description": "Creates entities, updates if present, with the given entity details and returns the numbers of entities rejected, and created or updated. Entities can be rejected if entity details do not conform to the schema. [More info](https://docs.adobe.com/content/help/en/target/using/recommendations/entities/entity-attributes.html).\n\n_Note this POST request does not create a singular resource. The endpoint is not a resource but rather it is simply a method to save multiple entities specified in request payload._"
@@ -2635,7 +2393,7 @@
 						"header": [
 							{
 								"key": "X-Api-Key",
-								"value": "{{xApiKey}}"
+								"value": "{{API_KEY}}"
 							},
 							{
 								"key": "Accept",
@@ -2647,7 +2405,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "https://mc.adobe.io/:tenantId/target/recs/entities?ids=cloudventureshoes,chameleonshoes&environment=234",
+							"raw": "https://mc.adobe.io/{{TENANT_ID}}/target/recs/entities?ids=cloudventureshoes,chameleonshoes&environment=234",
 							"protocol": "https",
 							"host": [
 								"mc",
@@ -2655,7 +2413,7 @@
 								"io"
 							],
 							"path": [
-								":tenantId",
+								"{{TENANT_ID}}",
 								"target",
 								"recs",
 								"entities"
@@ -2668,12 +2426,6 @@
 								{
 									"key": "environment",
 									"value": "234"
-								}
-							],
-							"variable": [
-								{
-									"key": "tenantId",
-									"value": "japacperf8"
 								}
 							]
 						},
@@ -2721,11 +2473,11 @@
 							},
 							{
 								"key": "X-Api-Key",
-								"value": "{{xApiKey}}"
+								"value": "{{API_KEY}}"
 							}
 						],
 						"url": {
-							"raw": "https://mc.adobe.io/:tenantId/target/recs/promotions/:promotionId",
+							"raw": "https://mc.adobe.io/{{TENANT_ID}}/target/recs/promotions/:promotionId",
 							"protocol": "https",
 							"host": [
 								"mc",
@@ -2733,17 +2485,13 @@
 								"io"
 							],
 							"path": [
-								":tenantId",
+								"{{TENANT_ID}}",
 								"target",
 								"recs",
 								"promotions",
 								":promotionId"
 							],
 							"variable": [
-								{
-									"key": "tenantId",
-									"value": "japacperf8"
-								},
 								{
 									"key": "promotionId",
 									"value": "1"
@@ -2765,11 +2513,11 @@
 							},
 							{
 								"key": "X-Api-Key",
-								"value": "{{xApiKey}}"
+								"value": "{{API_KEY}}"
 							}
 						],
 						"url": {
-							"raw": "https://mc.adobe.io/:tenantId/target/recs/promotions",
+							"raw": "https://mc.adobe.io/{{TENANT_ID}}/target/recs/promotions",
 							"protocol": "https",
 							"host": [
 								"mc",
@@ -2777,16 +2525,10 @@
 								"io"
 							],
 							"path": [
-								":tenantId",
+								"{{TENANT_ID}}",
 								"target",
 								"recs",
 								"promotions"
-							],
-							"variable": [
-								{
-									"key": "tenantId",
-									"value": "japacperf8"
-								}
 							]
 						},
 						"description": "Gets all available promotions."
@@ -2804,7 +2546,7 @@
 							},
 							{
 								"key": "X-Api-Key",
-								"value": "{{xApiKey}}"
+								"value": "{{API_KEY}}"
 							},
 							{
 								"key": "Content-Type",
@@ -2816,7 +2558,7 @@
 							"raw": "{\n  \"name\": \"Hiking shoes summer promotion\",\n  \"type\": \"INTERNAL\",\n  \"schedule\": {\n    \"start\": \"2018-07-01T00:00:00Z\",\n    \"end\": \"2018-08-31T23:59:59Z\"\n  },\n  \"order\": {\n    \"type\": \"ORIGINAL\"\n  },\n  \"rules\": [\n    {\n      \"attribute\": \"category\",\n      \"operation\": \"endsWith\",\n      \"values\": [\n        \"Hiking Shoes\"\n      ]\n    }\n  ]\n}"
 						},
 						"url": {
-							"raw": "https://mc.adobe.io/:tenantId/target/recs/promotions",
+							"raw": "https://mc.adobe.io/{{TENANT_ID}}/target/recs/promotions",
 							"protocol": "https",
 							"host": [
 								"mc",
@@ -2824,16 +2566,10 @@
 								"io"
 							],
 							"path": [
-								":tenantId",
+								"{{TENANT_ID}}",
 								"target",
 								"recs",
 								"promotions"
-							],
-							"variable": [
-								{
-									"key": "tenantId",
-									"value": "japacperf8"
-								}
 							]
 						},
 						"description": "Creates a new promotion as specified by the settings and configuration provided and returns the newly created promotion definition."
@@ -2851,7 +2587,7 @@
 							},
 							{
 								"key": "X-Api-Key",
-								"value": "{{xApiKey}}"
+								"value": "{{API_KEY}}"
 							},
 							{
 								"key": "Content-Type",
@@ -2863,7 +2599,7 @@
 							"raw": "{\n    \"name\": \"Hiking shoes summer promotion\",\n    \"type\": \"INTERNAL\",\n    \"schedule\": {\n        \"start\": \"2018-08-01T00:00:00Z\",\n        \"end\": \"2018-08-31T23:59:59Z\"\n    },\n    \"order\": {\n        \"type\": \"ORIGINAL\"\n    },\n    \"configuration\": {},\n    \"rules\": [\n        {\n            \"attribute\": \"category\",\n            \"operation\": \"endsWith\",\n            \"values\": [\n                \"Hiking Shoes\"\n            ]\n        }\n    ]\n}"
 						},
 						"url": {
-							"raw": "https://mc.adobe.io/:tenantId/target/recs/promotions/:promotionId",
+							"raw": "https://mc.adobe.io/{{TENANT_ID}}/target/recs/promotions/:promotionId",
 							"protocol": "https",
 							"host": [
 								"mc",
@@ -2871,17 +2607,13 @@
 								"io"
 							],
 							"path": [
-								":tenantId",
+								"{{TENANT_ID}}",
 								"target",
 								"recs",
 								"promotions",
 								":promotionId"
 							],
 							"variable": [
-								{
-									"key": "tenantId",
-									"value": "japacperf8"
-								},
 								{
 									"key": "promotionId",
 									"value": "1"
@@ -2899,7 +2631,7 @@
 						"header": [
 							{
 								"key": "X-Api-Key",
-								"value": "{{xApiKey}}"
+								"value": "{{API_KEY}}"
 							},
 							{
 								"key": "Accept",
@@ -2911,7 +2643,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "https://mc.adobe.io/:tenantId/target/recs/promotions/:promotionId",
+							"raw": "https://mc.adobe.io/{{TENANT_ID}}/target/recs/promotions/:promotionId",
 							"protocol": "https",
 							"host": [
 								"mc",
@@ -2919,17 +2651,13 @@
 								"io"
 							],
 							"path": [
-								":tenantId",
+								"{{TENANT_ID}}",
 								"target",
 								"recs",
 								"promotions",
 								":promotionId"
 							],
 							"variable": [
-								{
-									"key": "tenantId",
-									"value": "japacperf8"
-								},
 								{
 									"key": "promotionId",
 									"value": "1"
@@ -2968,11 +2696,11 @@
 		}
 	],
 	"auth": {
-		"type": "oauth2",
-		"oauth2": [
+		"type": "bearer",
+		"bearer": [
 			{
-				"key": "addTokenTo",
-				"value": "header",
+				"key": "token",
+				"value": "{{ACCESS_TOKEN}}",
 				"type": "string"
 			}
 		]
@@ -2997,14 +2725,6 @@
 					""
 				]
 			}
-		}
-	],
-	"variable": [
-		{
-			"id": "6b12457a-bbc5-496c-bc00-dc7b50dee378",
-			"key": "xApiKey",
-			"value": "<X-API-KEY>",
-			"type": "string"
 		}
 	],
 	"protocolProfileBehavior": {}
