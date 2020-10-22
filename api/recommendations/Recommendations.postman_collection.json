@@ -1055,7 +1055,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "3e0c0be5-30c4-4738-987a-730d511374ee",
+						"id": "4d35cc1d-5c86-4ac9-8a4f-66a71c49b456",
 						"type": "text/javascript",
 						"exec": [
 							""
@@ -2005,7 +2005,243 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "bab01b64-dc1e-4ec6-aaf1-2900dd63a378",
+						"id": "503172bf-7170-4428-a836-9ef7abc0e4b4",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "ef2ba7e3-e081-42bf-b5e3-090b63ec36ce",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "User History Criteria",
+			"item": [
+				{
+					"name": "Get user history criteria",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/vnd.adobe.target.v1+json"
+							},
+							{
+								"key": "X-Api-Key",
+								"value": "{{API_KEY}}"
+							}
+						],
+						"url": {
+							"raw": "https://mc.adobe.io/{{TENANT_ID}}/target/recs/criteria/userhistory/:criteriaId",
+							"protocol": "https",
+							"host": [
+								"mc",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"{{TENANT_ID}}",
+								"target",
+								"recs",
+								"criteria",
+								"userhistory",
+								":criteriaId"
+							],
+							"variable": [
+								{
+									"key": "criteriaId",
+									"value": "1"
+								}
+							]
+						},
+						"description": "Get the user history based criteria with the given ID."
+					},
+					"response": []
+				},
+				{
+					"name": "List user history criteria",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/vnd.adobe.target.v1+json"
+							},
+							{
+								"key": "X-Api-Key",
+								"value": "{{API_KEY}}"
+							}
+						],
+						"url": {
+							"raw": "https://mc.adobe.io/{{TENANT_ID}}/target/recs/criteria/userhistory",
+							"protocol": "https",
+							"host": [
+								"mc",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"{{TENANT_ID}}",
+								"target",
+								"recs",
+								"criteria",
+								"userhistory"
+							]
+						},
+						"description": "Gets all available user history based criteria."
+					},
+					"response": []
+				},
+				{
+					"name": "Create user history criteria",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/vnd.adobe.target.v1+json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/vnd.adobe.target.v1+json"
+							},
+							{
+								"key": "X-Api-Key",
+								"value": "{{API_KEY}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\" : \"User History Based Criteria\", \n    \"criteriaTitle\" : \"Recommend for you\",\n    \"daysCount\": \"ONE_DAY\",       \n    \"backupDisabled\" : false,                \n    \"partialDesignAllowed\" : true,        \n    \"excludePurchases\": true,                                  \n    \"backupInclusionFilteringEnabled\": true, \n    \"configuration\" : {\n    \"datasource\" : \"mboxes\",\n     \"priceRange\" : {  \n            \"min\": \"10.0\",\n            \"max\": \"50.0\"\n        }\n    }\n}"
+						},
+						"url": {
+							"raw": "https://mc.adobe.io/{{TENANT_ID}}/target/recs/criteria/userhistory",
+							"protocol": "https",
+							"host": [
+								"mc",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"{{TENANT_ID}}",
+								"target",
+								"recs",
+								"criteria",
+								"userhistory"
+							]
+						},
+						"description": "Creates a new user history based criteria as specified in the request payload and returns newly created criteria."
+					},
+					"response": []
+				},
+				{
+					"name": "Edit user history criteria",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/vnd.adobe.target.v1+json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/vnd.adobe.target.v1+json"
+							},
+							{
+								"key": "X-Api-Key",
+								"value": "{{API_KEY}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\" : \"User History Based Crieria\", \n    \"daysCount\": \"ONE_DAY\",\n    \"criteriaTitle\" : \"Recommend for you\",      \n    \"minInventory\": 5,  \n    \"backupDisabled\" : false,                \n    \"partialDesignAllowed\" : true,      \n    \"excludePurchases\": true,               \n    \"excludeViews\": true,                    \n    \"backupInclusionFilteringEnabled\": true, \n    \"configuration\" : {\n        \"datasource\" : \"mboxes\"\n    }\n}"
+						},
+						"url": {
+							"raw": "https://mc.adobe.io/{{TENANT_ID}}/target/recs/criteria/userhistory/:criteriaId",
+							"protocol": "https",
+							"host": [
+								"mc",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"{{TENANT_ID}}",
+								"target",
+								"recs",
+								"criteria",
+								"userhistory",
+								":criteriaId"
+							],
+							"variable": [
+								{
+									"key": "criteriaId",
+									"value": "1"
+								}
+							]
+						},
+						"description": "Updates the user history based criteria with new request payload and returns the updated criteria definition."
+					},
+					"response": []
+				},
+				{
+					"name": "Delete user history criteria",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/vnd.adobe.target.v1+json"
+							},
+							{
+								"key": "X-Api-Key",
+								"value": "{{API_KEY}}"
+							}
+						],
+						"url": {
+							"raw": "https://mc.adobe.io/{{TENANT_ID}}/target/recs/criteria/userhistory/:criteriaId",
+							"protocol": "https",
+							"host": [
+								"mc",
+								"adobe",
+								"io"
+							],
+							"path": [
+								"{{TENANT_ID}}",
+								"target",
+								"recs",
+								"criteria",
+								"userhistory",
+								":criteriaId"
+							],
+							"variable": [
+								{
+									"key": "criteriaId",
+									"value": "1"
+								}
+							]
+						},
+						"description": "Deletes the user history based criteria referenced by the given ID."
+					},
+					"response": []
+				}
+			],
+			"description": "[User History Criteria](https://docs.adobe.com/content/help/en/target/using/recommendations/criteria/algorithms.html) are criteria based on visitor's browsing, viewing or purchasing history. It is generally referred to as `Recommended for You`.",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "d541db82-8b46-43f5-92b9-3af7f9276f81",
 						"type": "text/javascript",
 						"exec": [
 							""
