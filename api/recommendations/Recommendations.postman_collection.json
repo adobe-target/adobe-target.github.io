@@ -1,5 +1,6 @@
 {
 	"info": {
+		"_postman_id": "13c89b0d-ac34-4316-b4d9-93cf654dfd84",
 		"name": "Recommendations",
 		"description": "Adobe Target Recommendations API are based on [REST](https://en.wikipedia.org/wiki/Representational_state_transfer). This describes the resources that make up the official Adobe Target Recommendations API. The resources are designated by nouns or objects in the world of Recommendations like a feed or a design. The functionalities or operations on resources are designated by HTTP methods in each resource request.\n\n* Documentation available at [Adobe Target Developers Page](http://http://developers.adobetarget.com/api/recommendations)",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -220,6 +221,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
+						"id": "bab01b64-dc1e-4ec6-aaf1-2900dd63a378",
 						"type": "text/javascript",
 						"exec": [
 							""
@@ -229,13 +231,15 @@
 				{
 					"listen": "test",
 					"script": {
+						"id": "3e0c0be5-30c4-4738-987a-730d511374ee",
 						"type": "text/javascript",
 						"exec": [
 							""
 						]
 					}
 				}
-			]
+			],
+			"protocolProfileBehavior": {}
 		},
 		{
 			"name": "Criteria",
@@ -320,6 +324,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
+						"id": "bab01b64-dc1e-4ec6-aaf1-2900dd63a378",
 						"type": "text/javascript",
 						"exec": [
 							""
@@ -329,13 +334,15 @@
 				{
 					"listen": "test",
 					"script": {
+						"id": "3e0c0be5-30c4-4738-987a-730d511374ee",
 						"type": "text/javascript",
 						"exec": [
 							""
 						]
 					}
 				}
-			]
+			],
+			"protocolProfileBehavior": {}
 		},
 		{
 			"name": "Category Criteria",
@@ -558,6 +565,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
+						"id": "bab01b64-dc1e-4ec6-aaf1-2900dd63a378",
 						"type": "text/javascript",
 						"exec": [
 							""
@@ -567,13 +575,15 @@
 				{
 					"listen": "test",
 					"script": {
+						"id": "3e0c0be5-30c4-4738-987a-730d511374ee",
 						"type": "text/javascript",
 						"exec": [
 							""
 						]
 					}
 				}
-			]
+			],
+			"protocolProfileBehavior": {}
 		},
 		{
 			"name": "Custom Criteria",
@@ -795,6 +805,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
+						"id": "bab01b64-dc1e-4ec6-aaf1-2900dd63a378",
 						"type": "text/javascript",
 						"exec": [
 							""
@@ -804,13 +815,15 @@
 				{
 					"listen": "test",
 					"script": {
+						"id": "3e0c0be5-30c4-4738-987a-730d511374ee",
 						"type": "text/javascript",
 						"exec": [
 							""
 						]
 					}
 				}
-			]
+			],
+			"protocolProfileBehavior": {}
 		},
 		{
 			"name": "Item Criteria",
@@ -1032,6 +1045,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
+						"id": "bab01b64-dc1e-4ec6-aaf1-2900dd63a378",
 						"type": "text/javascript",
 						"exec": [
 							""
@@ -1041,13 +1055,15 @@
 				{
 					"listen": "test",
 					"script": {
+						"id": "4d35cc1d-5c86-4ac9-8a4f-66a71c49b456",
 						"type": "text/javascript",
 						"exec": [
 							""
 						]
 					}
 				}
-			]
+			],
+			"protocolProfileBehavior": {}
 		},
 		{
 			"name": "Popularity Criteria",
@@ -1147,7 +1163,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"aggregation\": \"NONE\",\n  \"backupDisabled\": false,\n  \"backupInclusionFilteringEnabled\": true,\n  \"configuration\": {\n    \"datasource\": \"mboxes\"\n  },\n  \"criteriaGroup\": \"POPULARITY\",\n  \"daysCount\": \"TWO_DAYS\",\n  \"enableCaching\": false,\n  \"excludePurchases\": true,\n  \"minInventory\": 1,\n  \"name\": \"Garage Top Viewed\",\n  \"partialDesignAllowed\": true,\n  \"type\": \"VIEWED\"\n}"
+							"raw": "{\n  \"aggregation\": \"NONE\",\n  \"backupDisabled\": false,\n  \"backupInclusionFilteringEnabled\": true,\n  \"configuration\": {\n    \"datasource\": \"mboxes\",\n    \"attribute\": \"user.name\",\n    \"groupByEntityAttribute\": \"name\"\n  },\n  \"criteriaGroup\": \"POPULARITY\",\n  \"daysCount\": \"TWO_DAYS\",\n  \"enableCaching\": false,\n  \"excludePurchases\": true,\n  \"minInventory\": 1,\n  \"name\": \"Garage Top Viewed\", \n  \"key\": \"customProfileAttribute\",\n  \"partialDesignAllowed\": true,\n  \"type\": \"VIEWED\"\n}"
 						},
 						"url": {
 							"raw": "https://mc.adobe.io/{{TENANT_ID}}/target/recs/criteria/popularity",
@@ -1269,6 +1285,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
+						"id": "bab01b64-dc1e-4ec6-aaf1-2900dd63a378",
 						"type": "text/javascript",
 						"exec": [
 							""
@@ -1278,13 +1295,15 @@
 				{
 					"listen": "test",
 					"script": {
+						"id": "3e0c0be5-30c4-4738-987a-730d511374ee",
 						"type": "text/javascript",
 						"exec": [
 							""
 						]
 					}
 				}
-			]
+			],
+			"protocolProfileBehavior": {}
 		},
 		{
 			"name": "Profile Attribute Criteria",
@@ -1506,6 +1525,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
+						"id": "bab01b64-dc1e-4ec6-aaf1-2900dd63a378",
 						"type": "text/javascript",
 						"exec": [
 							""
@@ -1515,13 +1535,15 @@
 				{
 					"listen": "test",
 					"script": {
+						"id": "3e0c0be5-30c4-4738-987a-730d511374ee",
 						"type": "text/javascript",
 						"exec": [
 							""
 						]
 					}
 				}
-			]
+			],
+			"protocolProfileBehavior": {}
 		},
 		{
 			"name": "Recent Criteria",
@@ -1743,6 +1765,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
+						"id": "bab01b64-dc1e-4ec6-aaf1-2900dd63a378",
 						"type": "text/javascript",
 						"exec": [
 							""
@@ -1752,13 +1775,15 @@
 				{
 					"listen": "test",
 					"script": {
+						"id": "3e0c0be5-30c4-4738-987a-730d511374ee",
 						"type": "text/javascript",
 						"exec": [
 							""
 						]
 					}
 				}
-			]
+			],
+			"protocolProfileBehavior": {}
 		},
 		{
 			"name": "Sequence Criteria",
@@ -1980,6 +2005,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
+						"id": "503172bf-7170-4428-a836-9ef7abc0e4b4",
 						"type": "text/javascript",
 						"exec": [
 							""
@@ -1989,13 +2015,15 @@
 				{
 					"listen": "test",
 					"script": {
+						"id": "ef2ba7e3-e081-42bf-b5e3-090b63ec36ce",
 						"type": "text/javascript",
 						"exec": [
 							""
 						]
 					}
 				}
-			]
+			],
+			"protocolProfileBehavior": {}
 		},
 		{
 			"name": "User History Criteria",
@@ -2213,6 +2241,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
+						"id": "d541db82-8b46-43f5-92b9-3af7f9276f81",
 						"type": "text/javascript",
 						"exec": [
 							""
@@ -2222,13 +2251,15 @@
 				{
 					"listen": "test",
 					"script": {
+						"id": "3e0c0be5-30c4-4738-987a-730d511374ee",
 						"type": "text/javascript",
 						"exec": [
 							""
 						]
 					}
 				}
-			]
+			],
+			"protocolProfileBehavior": {}
 		},
 		{
 			"name": "Designs",
@@ -2487,6 +2518,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
+						"id": "bab01b64-dc1e-4ec6-aaf1-2900dd63a378",
 						"type": "text/javascript",
 						"exec": [
 							""
@@ -2496,13 +2528,15 @@
 				{
 					"listen": "test",
 					"script": {
+						"id": "3e0c0be5-30c4-4738-987a-730d511374ee",
 						"type": "text/javascript",
 						"exec": [
 							""
 						]
 					}
 				}
-			]
+			],
+			"protocolProfileBehavior": {}
 		},
 		{
 			"name": "Entities",
@@ -2636,11 +2670,12 @@
 					"response": []
 				}
 			],
-			"description": "[Entities](https://docs.adobe.com/content/help/en/target/using/recommendations/entities/products.html) refer to the items you want to recommend. Entities can be anything such as products, content (such as articles, slide shows, images, movies, and tv shows), job listings, restaurants, and so forth.",
+			"description": "[Entities](https://docs.adobe.com/content/help/en/target/using/recommendations/entities/products.html) refer to the items you want to recommend. Entities can be anything such as products, content (such as articles, slide shows, images, movies, and tv shows), job listings, restaurants, and so forth. .",
 			"event": [
 				{
 					"listen": "prerequest",
 					"script": {
+						"id": "bab01b64-dc1e-4ec6-aaf1-2900dd63a378",
 						"type": "text/javascript",
 						"exec": [
 							""
@@ -2650,13 +2685,15 @@
 				{
 					"listen": "test",
 					"script": {
+						"id": "3e0c0be5-30c4-4738-987a-730d511374ee",
 						"type": "text/javascript",
 						"exec": [
 							""
 						]
 					}
 				}
-			]
+			],
+			"protocolProfileBehavior": {}
 		},
 		{
 			"name": "Promotions",
@@ -2873,6 +2910,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
+						"id": "a676c8a5-463f-4d7c-8335-c2a388988adf",
 						"type": "text/javascript",
 						"exec": [
 							""
@@ -2882,101 +2920,15 @@
 				{
 					"listen": "test",
 					"script": {
+						"id": "597ea54a-33b0-45d6-ae24-4b05d70fc5ed",
 						"type": "text/javascript",
 						"exec": [
 							""
 						]
 					}
 				}
-			]
-		},
-		{
-			"name": "Catalog Search",
-			"item": [
-				{
-					"name": "Simple Search",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/vnd.adobe.target.v1+json"
-							},
-							{
-								"key": "X-Api-Key",
-								"value": "{{API_KEY}}"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/vnd.adobe.target.v1+json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"meta\": {\n        \"environmentId\": 1776,\n        \"displayFields\": [\n            \"name\",\n            \"description\"\n        ]\n    },\n    \"query\": {\n        \"type\": \"simple\",\n        \"queryFields\": [\n            \"inventory\"\n        ],\n        \"matchValue\": 1000,\n        \"operator\": \"lt\"\n    }\n}"
-						},
-						"url": {
-							"raw": "https://mc.adobe.io/{{TENANT_ID}}/target/recs/catalogsearch",
-							"protocol": "https",
-							"host": [
-								"mc",
-								"adobe",
-								"io"
-							],
-							"path": [
-								"{{TENANT_ID}}",
-								"target",
-								"recs",
-								"catalogsearch"
-							]
-						},
-						"description": "This is an example of a simple search, which only contains a single search criterion.  Specifically, this example is searching for entities which have low inventory.\n\n_Note this POST request does not create a singular resource. The endpoint is not a resource but rather it is simply a method for searching._"
-					},
-					"response": []
-				},
-				{
-					"name": "Compound Search",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/vnd.adobe.target.v1+json"
-							},
-							{
-								"key": "X-Api-Key",
-								"value": "{{API_KEY}}"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/vnd.adobe.target.v1+json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"meta\": {\n        \"environmentId\": 1776,\n        \"displayFields\": [\n            \"name\",\n            \"description\"\n        ]\n    },\n    \"query\": {\n        \"type\": \"compound\",\n        \"joinOperator\": \"AND\",\n        \"filters\": [\n            {\n                \"type\": \"simple\",\n                \"queryFields\": [\n                    \"description\"\n                ],\n                \"matchValue\": \"shoe\",\n                \"operator\": \"contains\"\n            },\n            {\n                \"type\": \"compound\",\n                \"joinOperator\": \"OR\",\n                \"filters\": [\n                    {\n                        \"type\": \"simple\",\n                        \"queryFields\": [\n                            \"brand\"\n                        ],\n                        \"matchValue\": \"LuxeBrand\",\n                        \"operator\": \"eq\"\n                    },\n                    {\n                        \"type\": \"simple\",\n                        \"queryFields\": [\n                            \"brand\"\n                        ],\n                        \"matchValue\": \"FancyBrand\",\n                        \"operator\": \"eq\"\n                    }\n                ]\n            }\n        ]\n    }\n}"
-						},
-						"url": {
-							"raw": "https://mc.adobe.io/{{TENANT_ID}}/target/recs/catalogsearch",
-							"protocol": "https",
-							"host": [
-								"mc",
-								"adobe",
-								"io"
-							],
-							"path": [
-								"{{TENANT_ID}}",
-								"target",
-								"recs",
-								"catalogsearch"
-							]
-						},
-						"description": "This is an example of a compound search, which can include arbitrarily many (and arbitrarily deep) simple and compound searches combined how the various joinOperator values specify.  This example is searching for shoes from either of two different brands.\n\n_Note this POST request does not create a singular resource. The endpoint is not a resource but rather it is simply a method for searching._"
-					},
-					"response": []
-				}
 			],
-			"description": "Catalog Search allows you to search the current set of [Entities](https://docs.adobe.com/content/help/en/target/using/recommendations/entities/products.html) which have been uploaded into Recommendations.\n\n_Note this POST request does not create a singular resource. The endpoint is not a resource but rather it is simply a method for searching._"
+			"protocolProfileBehavior": {}
 		}
 	],
 	"auth": {
@@ -2993,6 +2945,7 @@
 		{
 			"listen": "prerequest",
 			"script": {
+				"id": "73aca3b3-cbb2-442b-a39b-50cfe9a887ff",
 				"type": "text/javascript",
 				"exec": [
 					""
@@ -3002,11 +2955,13 @@
 		{
 			"listen": "test",
 			"script": {
+				"id": "29c7a150-ed8d-4261-b3c1-7f3d95ddc53e",
 				"type": "text/javascript",
 				"exec": [
 					""
 				]
 			}
 		}
-	]
+	],
+	"protocolProfileBehavior": {}
 }
